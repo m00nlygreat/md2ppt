@@ -7,7 +7,7 @@ def read_markdown_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as file:
         return file.read()
 
-def flatten_markdown(filepath, base_path=None, export_base_path=None):
+def flatten_markdown(filepath, base_path=None, export_base_path=None, is_root=True):
     if base_path is None:
         base_path = os.path.dirname(filepath)
     if export_base_path is None:
@@ -16,8 +16,28 @@ def flatten_markdown(filepath, base_path=None, export_base_path=None):
     content = read_markdown_file(filepath)
     lines = content.splitlines()
     flattened_content = []
+    
+    # YAML frontmatter 처리 - 하위 마크다운에서만 무시
+    in_frontmatter = False
+    for i, line in enumerate(lines):
+        # frontmatter 시작 확인
+        if i == 0 and line.strip() == '---':
+            in_frontmatter = True
+            if is_root:  # 최상위 마크다운인 경우 frontmatter 포함
+                flattened_content.append(line)
+            continue
+        # frontmatter 종료 확인
+        if in_frontmatter and line.strip() == '---':
+            in_frontmatter = False
+            if is_root:  # 최상위 마크다운인 경우 frontmatter 포함
+                flattened_content.append(line)
+            continue
+        # frontmatter 내부 처리
+        if in_frontmatter:
+            if is_root:  # 최상위 마크다운인 경우 frontmatter 포함
+                flattened_content.append(line)
+            continue
 
-    for line in lines:
         # Check if the line is an embedded markdown reference
         embed_match = re.match(r'^!\[.*\]\((.*\.md)\)$', line)
         if embed_match:
@@ -26,8 +46,11 @@ def flatten_markdown(filepath, base_path=None, export_base_path=None):
             embedded_path = urllib.parse.unquote(embedded_path)
             embedded_full_path = os.path.abspath(os.path.join(base_path, embedded_path))
             if os.path.isfile(embedded_full_path):
-                # Recursively flatten the embedded markdown
-                embedded_content = flatten_markdown(embedded_full_path, os.path.dirname(embedded_full_path), export_base_path)
+                # 하위 마크다운 처리 시 is_root=False로 설정
+                embedded_content = flatten_markdown(embedded_full_path, 
+                                                 os.path.dirname(embedded_full_path), 
+                                                 export_base_path,
+                                                 is_root=False)
                 flattened_content.append(embedded_content)
             else:
                 flattened_content.append(f"<!-- Embedded file not found: {embedded_path} -->")
@@ -60,7 +83,7 @@ if __name__ == "__main__":
     mother_base_path = os.path.dirname(mother_filepath)
 
     # Flatten the markdown file
-    flattened_markdown = flatten_markdown(mother_filepath, mother_base_path)
+    flattened_markdown = flatten_markdown(mother_filepath, mother_base_path, is_root=True)
 
     # Check if export flag is provided
     if len(sys.argv) > 2 and sys.argv[2] == "--export":
