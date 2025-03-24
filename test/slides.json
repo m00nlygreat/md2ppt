@@ -1,0 +1,2203 @@
+{
+    "frontmatter": {
+        "title": "아는 만큼 쓰는 ChatGPT",
+        "type": "text"
+    },
+    "slides": [
+        {
+            "title": {},
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "들어가며"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "hyperlink": "https://naver.com",
+                        "italic": true,
+                        "bold": true,
+                        "monospace": true,
+                        "text": "강사"
+                    },
+                    {
+                        "text": " "
+                    },
+                    {
+                        "monospace": true,
+                        "text": "소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "이력"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/57460fdf0c00e161901a1359ea5ba690.png",
+                        "alt": "함정카드"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "생성형 AI (Generative AI)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "block_quote",
+                        "runs": [
+                            {
+                                "text": "이것은 "
+                            },
+                            {
+                                "bold": true,
+                                "text": "인용"
+                            },
+                            {
+                                "text": "입니다."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "block_quote",
+                        "runs": [
+                            {
+                                "text": "이것은 그 다음줄 인용입니다."
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/a11611eae1484ae28180a6560f8a51d7.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "대규모 언어모델 (Large Language Models, LLM)"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/62c1b5d77e55b59b68a78c492e8a12b5.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/b0a0da8916cc1ecb76eb3d2771e6b901.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "멀티 모달"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/9ce9d4d1d35e73e233aec82e4e1dc236.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "환각 (Hallucination)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "RAG (Retrieval-Augmented Generation)"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT와 생성형 AI에 대한 오해"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [],
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "그럼 어떻게 공부할까"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/3f5651eb5f7ae2fedd55035c2f16da81.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "그럼 어떻게 공부할까"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "S.T.A.R 프레임워크"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/7fa6be53f57fc29acb551fb16ab8df9e.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "왜 내 GPT는 대답을 이상하게 할까?"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "환각 현상"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "질문이 잘못됨"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "왜 내 GPT는 대답을 이상하게 할까?"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "챗봇의 기억력"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "맥락에 대한 컨트롤"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "왜 내 GPT는 대답을 이상하게 할까?"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "AI 윤리"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/539be8df4e6616f2abcf257f090141c0.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 역사"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "인공지능 (Artificial Inteligence)의 두 갈래"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 역사"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/e7d941a213bbc7f8c53c236aca603edb.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 역사"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/5a0cd7df2feffc65cba09c9a4783051d.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 역사"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "알고리즘과 신경망의 대결"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 역사"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ae4a8830da2812646ce602469986d0fe.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "LLM의 종류"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ff3af17b592d95fe5c3754e07c7a9779.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "오픈 AI와 일론 머스크"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8d03e9f1f945d93dd2fb4a6a5e881458.png"
+                    }
+                ],
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "::: notes"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "딥마인드 구글에 인수"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": ":::"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "오픈 AI와 일론 머스크"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "머스크 오픈AI 설립"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "오픈AI의 대성공"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/9394f65b0b4883f2778a5e8f8711fd84.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 미래"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "인공 일반지능 (AGI)"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "AI 3대천왕"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI의 미래"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "AI와 인간의 가치"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/4979ccf3476707c1bee77ec32442cb81.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "하드웨어 vs 소프트웨어?"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "Data 보유"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "GPT-4o"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/484bafff5c4c116c3d834d0b5978b254.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "대규모 언어모델 경쟁심화"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "새로운 전장, AI 에이전트"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "GPT-4 o1"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/88925e4a754e81f58e2b521089d239ff.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "AI 이모저모"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "딥시크(Deepseek) 충격"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "OpenAI o3 / o3 mini 출시"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/bac59702c005aca8741f935e7f06117f.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT 사용해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/d062f447b80a0d71c1068bf7c82b6421.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/485210f534c5512fdff06aabda1124b8.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "질문해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "간단한 의견 물어보기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/1191774588bf3a504670c4885f57193b.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "질문해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "맥락을 유지한 채 계속 질문하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/4ea2acad91acff60f5e8e106397509c5.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "질문해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "회신하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/9977ca45d920df4e3683764a14a37e47.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "질문해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "계속 생성하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/23b54a5218270ca74e58d04fc86469d6.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "질문해보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "답변 재생성하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/23b54a5218270ca74e58d04fc86469d6.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 엔지니어링"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 엔지니어링"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "미래의 유망직종?"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "대화를 잘 한다. 라는 것"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ba5c83835290b17deb36b9d3a39d6e73.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "프롬프트의 필수 요소들"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/4831dc35ef1641308c5975b40da4979e.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "Before"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "block_quote",
+                        "runs": [
+                            {
+                                "text": "\"LK-99의 실패를 보고하는 보고서를 작성해줘\""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "After"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "block_quote",
+                        "runs": [
+                            {
+                                "text": "\"상온 상압 초전도 물질 LK-99의 개발 실패를 보고하는 보고서를 작성해줘. 너는 세계 최첨단 수준의 연구를 진행하는 연구소의 가장 유능한 시니어 연구원으로서 LK-99의 실패에 대한 보고서를 작성해줘야해. LK-99는 실패했지만 우리 연구소에 지원되는 자금에 영향은 없어야 하므로 앞으로의 연구를 계속해야 한다는 뉘앙스를 띠어야해. 물론 그러한 의도는 숨겨야 하고. 예를 들면 다음 번 연구에서는 어떤 물질을 더 첨가해서 초전도성을 띠도록 유도할 수 있을지도 모른다는 예측을 추가해서 설득력을 높일 수 있어. 답변은 요약, 도입, 배경, 실패의 원인, 기술적 필요사항, 앞으로의 로드맵, 결론 등의 항목을 중심으로 전문용어를 섞어 전문가처럼 보이도록 설명해주면 좋겠어.\""
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "스무고개형으로 질문하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/b6b6a80f8b84619a2e08b13ab9570bb7.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "'가스라이팅'"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "언어모델을 다그치거나 회유하는 어조를 사용해 답변 결과의 품질을 높일 수 있다는 연구결과"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/299b3037996e2d715fd48d898ba51adf.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "few-shot"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/fad19e5573f7519651d3e91305dd427c.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "chain-of-thought"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ca6f17c3e08cb96a44029d8e76a1c4e0.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "'해줘'"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "목적을 제시하고, 이를 위한 정보를 GPT가 사용자에게 질문하게 하여 맥락을 채워나가는 방법"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "프롬프트 잘 쓰기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/54669d4bedb283bcebff121a3b9783c3.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "마크다운(Markdown)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "플레인 텍스트와 리치 텍스트"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "사용처"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/7dd1ed901e32a1721fc5ad0b4c554d46.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "마크다운(Markdown)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/df5d4daf4b1374162fe083ebea9b58d6.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "마크다운의 문법 소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [],
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "마크다운의 문법 소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [],
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Markdown is the new MS Word"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "옵시디언 (Obsidian)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/e0ffc0abe0048d055fcb6dfc2e642c4a.gif"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Mermaid.js"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/5b6cffdb1fb4a0c81df96f4e917a08ed.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Obsidian과 GPT를 사용한 개인 지식DB 챗봇 구축"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/e0ffab185ae6167de1bf60efe892c797.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT 고급 기능 소개"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Custom Instruction & Memory"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "Custom Instruction"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "Memory"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/88db67d372fadc7a6bc0ac93364f7348.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Vision & DALL-E"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "::: notes"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8febf0d19a2b3b70a8a0ffc9259ccfea.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Browsing"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/e660357c14c96b918121177e863ac344.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Data Analysis"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/d75a495e774c8443c68bb04918a6e770.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPTs"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/d5fc40e675ee19c9b9aa9df65fa6e1b3.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPTs 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "제작하기"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPTs 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/792507cf98f305413e83724b7b1b13de.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "구성(Instruction)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "지식(Knowledge)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "기능(Capabilities)"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/3af4a529f73de89bc338936199370be9.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "구성(Instruction)"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "작업(Actions)"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "italic": true,
+                                "text": "OpenAPI 스키마"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/11c7ab323f5c96a6c92b8d8442f9df47.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT App"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/3f2d7f686248abd90db37984ae24016d.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "실전 ChatGPT"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                []
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "이력서를 주고 물어보기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/6b41cdacfd2a9953eeee370b79cd7455.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "회사의 재무제표 분석"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/17b686530c78f88f5a37c753ad54f8ef.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "아보카도 가격 분석"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/d68f54d0ac36210cfd31678a5312ad06.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "스포티파이 곡 재생 데이터 분석"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/6c1c4ed0d0042d5fba0595f3a02d9507.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPTs"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/2862e502d184d8c508d285b2d48aed7f.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "원영적사고 GPT 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/f4c5748c5a4fb3e57ff33e917f005c62.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "텍스트를 파워포인트 슬라이드로 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8bd6877f8b9ebf43bc309a4e1e24af10.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "엑셀에서 ChatGPT 활용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "샘플 데이터 만들어주기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/76573fd6183ebd1540568aa49548c632.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "엑셀에서 ChatGPT 활용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "수식 대신 만들어주기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ac4db0c14b9126bb274ec3adb0fa163e.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPT를 엑셀 안에서 사용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/07d2d3049823dacf5ee3b1d3941e1eee.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPT를 엑셀 안에서 사용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "기존 데이터와 연관된 데이터 생성하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/7ab79304774bde61095264c1ba53048a.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPT를 엑셀 안에서 사용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "알맞은 해시태그 달기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/19d92207fcafeeea3978bcc9679c4d0d.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPT를 엑셀 안에서 사용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "내용 분류하기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/87ade8ae4e3daa92f8b0c58fc390ad36.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "GPT를 엑셀 안에서 사용하기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "패턴 파악해서 채우기"
+                            }
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/4f4263d8ba5fbc4c4917e40c19900716.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "OpenAI API Key 발급"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/ce85ea5c4fd1e0f139a072b68e61b526.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "VBA"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "두 가지 사용 방식"
+                            }
+                        ]
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "근태 체크 엑셀 매크로 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/84837ceb3e90aea8e3dc22611ad3376f.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "파일명 변경 엑셀 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/b751f9382dd899ae32fcb96b4dadd323.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "ChatGPT를 엑셀에서 사용할 수 있도록 커스텀 함수 만들기"
+                    }
+                ]
+            },
+            "layout": "",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8f276d6461e88f846b234db5129cbee1.png"
+                    }
+                ]
+            ]
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "감사합니다"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                []
+            ]
+        }
+    ]
+}

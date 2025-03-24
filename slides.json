@@ -1,0 +1,345 @@
+{
+    "slides": [
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": []
+        },
+        {
+            "title": "소개",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "질문해보기",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "간단한 의견 물어보기",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 검색엔진을 대신하는 GPT의 사용법\n• 질문해볼 만한 내용들"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "맥락을 유지한 채 계속 질문하기",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 하나의 스레드(Thread)에서 계속 질문하면, 이전 대화의 맥락을 모두 가진 채 대답을 계속함\n• 계속해서 질문"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "회신하기",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 답변 내용 중 일부를 선택하면, 추가 질문에 답변 내용 일부를 첨부하여 ChatGPT에게 지시하고 싶은 내용을 가리킬 수 있다.\n• 맘에 안 드는 부분, 잘못된 부분 궁금한 부분을 가리킬 때 필수"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "example",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "계속 생성하기",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 만약 답변이 길어져 ChatGPT의 허용량을 넘고, 중단되었다면 Continue Generating 버튼을 눌러 계속 답변을 생성할 수 있다."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "샘플 페이지",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "이것은 소리없는 아우성"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 어쩌구 저쩌구"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "제목도 있고",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• 리스트도 있네"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "",
+            "layout": "title_and_content",
+            "placeholders": [
+                {
+                    "type": "text",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "답변 재생성하기",
+                                            "bold": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": [
+                                        {
+                                            "text": "• ChatGPT는 일종의 창의성(Creativeness)을 가지고 있는데,  ,  ,   와 같은 하이퍼 파라미터(Hyper Parameter)에 의한 것.\n• 따라서 같은 프롬프트로 생성해도 항상 다른 결과물이 나오므로,  [ 답변] [ ref]이 불만족스러울 경우 재생성을 통해 같은 맥락에서의 다른 답변을 받아볼 수 있음."
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "content": [
+                                {
+                                    "runs": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

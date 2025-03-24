@@ -1,0 +1,2230 @@
+- heading
+  - text: 들어가며
+- blank_line
+- heading
+  - text: 강사 소개
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 배문형
+    - list
+      - list_item
+        - block_text
+          - text: 인하대학교 영어영문학/문화콘텐츠학 학사
+      - list_item
+        - block_text
+          - text: 8년차 서비스 기획/프로덕트 오너
+- heading
+  - text: 이력
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: '16 ~ '18 : 엘루오씨앤씨
+  - list_item
+    - block_text
+      - text: '18 ~ '19 : 에어코드
+  - list_item
+    - block_text
+      - text: '19 ~ '21 : Fitogether
+  - list_item
+    - block_text
+      - text: '22 ~ '23 : 레피카
+  - list_item
+    - block_text
+      - text: '23 동북권 ICT 이노베이션 스퀘어 강의
+  - list_item
+    - block_text
+      - text: '23 한양대학교 노코드 엔지니어링
+  - list_item
+    - block_text
+      - text: '24 알파코 서비스기획 강의
+- paragraph
+  - image: attachments/57460fdf0c00e161901a1359ea5ba690.png
+    - text
+- blank_line
+- heading
+  - text: ChatGPT
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: OpenAI 가 발표한 
+      - emphasis
+        - text: Generative Pre-trained Transformer
+      - text:  모델의 생성형 AI 언어모델
+  - list_item
+    - block_text
+      - text: Transformer: 2017년 구글. 단어들 간의 유사도를 찾아내서 (셀프 어텐션) 의미를 알아서 학습하는 모델.
+- heading
+  - text: 생성형 AI (Generative AI)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 생성형 AI는 완성된 그림, 음악, 글 등을
+  - list_item
+    - block_text
+      - strong
+        - text: 작은 조각으로 나누어서
+      - text:  가지고 있는 거대한 레고블럭 박스와 같다.
+- paragraph
+  - image: attachments/a11611eae1484ae28180a6560f8a51d7.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 대규모 언어모델 (Large Language Models, LLM)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 인터넷 등에 쓰여진 대량의 텍스트를 학습하여 주어진 글의 다음에 올 확률이 높은 단어를 배치하는 인공지능 모델
+  - list_item
+    - block_text
+      - text: 개발자들도 원리를 잘 모른다!
+    - list
+      - list_item
+        - block_text
+          - text: ChatGPT 자신도 스스로 무슨 말을 하는지 모름!
+      - list_item
+        - block_text
+          - link: https://www.mk.co.kr/news/it/11021534
+            - text: 앤스로픽, AI블랙박스 작동원리 밝혀냈다
+- paragraph
+  - image: attachments/62c1b5d77e55b59b68a78c492e8a12b5.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/b0a0da8916cc1ecb76eb3d2771e6b901.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 멀티 모달
+- blank_line
+- paragraph
+  - text: 텍스트만이 아니라, 이미지, 비디오, 오디오 등을 입력받아 동시에 처리하는 AI
+- list
+  - list_item
+    - block_text
+      - text: GPT 3.5: 텍스트
+  - list_item
+    - block_text
+      - text: GPT 4: 텍스트, 이미지
+  - list_item
+    - block_text
+      - text: GPT 4o: 텍스트, 이미지, 오디오
+- block_code: > 이는 단순히 텍스트, 이미지, 오디오를 따로 처리한다는 의미가 아니며 텍스트를 이미지로, 이미지를 텍스트로, 텍스트를 음악으로 상호 변환하며 서로 어떤 의미와 관계를 갖는지를 아는 것
+
+- blank_line
+- paragraph
+  - image: attachments/9ce9d4d1d35e73e233aec82e4e1dc236.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 환각 (Hallucination)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 세종대왕 맥북 던짐 사건
+  - list_item
+    - block_text
+      - text: 환각은 AI의 실수가 아니라 단순히 확률적으로 언어를 생성할 뿐인 LLM의 자연스러운 동작.
+    - list
+      - list_item
+        - block_text
+          - text: 같은 원리에 따라 LLM으로 하여금 반드시 명령에 따르게 하는 것도 불가능
+- heading
+  - text: RAG (Retrieval-Augmented Generation)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 범용으로 제작된 LLM에 특정 목적의 데이터를 첨부하여 정확하고 전문성 있는 답변을 생성하는 기술
+  - list_item
+    - block_text
+      - text: 환각 현상을 줄이는 테크닉 중 하나
+- paragraph
+  - image: attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg
+    - text
+- blank_line
+- heading
+  - text: ChatGPT와 생성형 AI에 대한 오해
+- blank_line
+- list
+  - list_item
+    - block_text
+      - emphasis
+        - text: “대박 쉬운 ChatGPT로 코딩하기”
+    - list
+      - list_item
+        - block_text
+          - text: 안 쉬움
+  - list_item
+    - block_text
+      - text: *
+      - text: "해외에서 난리난 ChatGPT 신기능” *
+    - list
+      - list_item
+        - block_text
+          - text: 난리 안남
+  - list_item
+    - block_text
+      - emphasis
+        - text: "AI는 진실만을 말한다."
+    - list
+      - list_item
+        - block_text
+          - text: AI는 진실을 판가름할 수 있는 능력이 없음.
+  - list_item
+    - block_text
+      - emphasis
+        - text: "AI가 우리 직업을 없앨 것이다."
+    - list
+      - list_item
+        - block_text
+          - text: 대부분의 영역에서 업무 효율을 끌어내는 도구로서의 인식으로 자리잡음 (현재까지는..)
+- wildcard_break
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 여전히 빠르게 발전하고 계속 새로운 것이 나오는 이상 다음은 불가능
+    - list
+      - list_item
+        - block_text
+          - text: 어느 시점에서 AI를 마스터한다
+      - list_item
+        - block_text
+          - text: AI를 집중적으로 공부해서 끝내겠다
+- block_code: > 90% 이상의 생성형 AI 관련 지식들은 유튜브를 통해 유통되고, 전파됨
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 그러므로 FOMO에 시달리며 벼락치기하기 보다는, 당장 안 필요해도 업무에 조금씩 써보면서 꾸준히 화제를 팔로우하기
+- heading
+  - text: 그럼 어떻게 공부할까
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 형식지와 암묵지, explicit and tacit knowledge
+    - list
+      - list_item
+        - block_text
+          - text: 흥미본위의 유튜브 탐색과 당장의 간단한 업무 활용으로
+      - list_item
+        - block_text
+          - text: AI를 둘러싼 담론을 폭넓게 바라보고 여러 맥락 안에서 AI를 이해하기
+- block_code: > 왕도(Royal road)가 없다!
+
+- blank_line
+- paragraph
+  - image: attachments/3f5651eb5f7ae2fedd55035c2f16da81.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: S.T.A.R 프레임워크
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://www.youtube.com/watch?v=sDBDHF6m578
+        - text: 경희대 김상균 교수의 AI 학습/훈련법
+    - list
+      - list_item
+        - block_text
+          - text: 시간이 가장 많이 투입되는 일 찾기
+      - list_item
+        - block_text
+          - text: 개선하고 싶은 나의 핵심 역량
+      - list_item
+        - block_text
+          - text: 하고싶은데 못해본 것 찾기
+      - list_item
+        - block_text
+          - text: 시간이 더 많이 있으면 해보고 싶은 것
+- block_code: > 현재의 AI란 즉, 사람이 간단히 할 수 있는 일을 사람보다 훨씬 빠르게 할 수 있는 도구이므로, 이를 초점삼아 내 업무에 어떻게 적용할지 고민해볼 것
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 더 전문성이 있는 사람이 AI를 활용했을 때 차별화를 가져올 수 있다.
+    - list
+      - list_item
+        - block_text
+          - text: 일자리 -> 일거리
+        - list
+          - list_item
+            - block_text
+              - text: 전통적 직업의 해체
+      - list_item
+        - block_text
+          - text: 직업 -> 스킬
+        - list
+          - list_item
+            - block_text
+              - text: 직군으로서의 역할보다 어떠한 능력을 가지고 있는지가 중요
+- paragraph
+  - image: attachments/7fa6be53f57fc29acb551fb16ab8df9e.png
+    - text
+- blank_line
+- heading
+  - text: 왜 내 GPT는 대답을 이상하게 할까?
+- blank_line
+- heading
+  - text: 환각 현상
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 환각은 LLM의 오류가 아닌, LLM의 태생적 한계
+    - list
+      - list_item
+        - block_text
+          - text: 우리는 LLM과 대화를, 혹은 질문을 하는 것이 아님. LLM이 단지 우리가 만들어놓은 몇 단어를 토대로 글을 완성시키는 것뿐.
+- block_code: > 대형언어모델(LLM)은 확률적 정보에 따라 방대한 훈련 데이터에서 관찰한 언어 형식의 시퀀스를 우연히 꿰맞추는 시스템이다. 의미를 되새길 필요없는 확률론적 앵무새(Stochastic Parrots)다.
+- 에밀리 M. 벤더, 언어학자
+
+- blank_line
+- heading
+  - text: 질문이 잘못됨
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 우리는 자신에 대한 기대와는 달리 비논리적이며, 의사소통에 게으르다.
+  - list_item
+    - block_text
+      - text: 동문서답, "맛집 알려드릴까요?"
+- thematic_break
+- blank_line
+- heading
+  - text: 챗봇의 기억력
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: LLM을 구동하는 데에는 많은 자원이 필요하며, 대화가 길어지면 긴 대화를 처리하기 어려워함
+  - list_item
+    - block_text
+      - text: 답변의 생성은 매번 독립시행임을 생각할 때
+    - list
+      - list_item
+        - block_text
+          - text: 기존의 대화를 요약해서 사전 프롬프트(pre-prompt)로 제공하고 있을 것
+      - list_item
+        - block_text
+          - link: https://www.reddit.com/r/ChatGPT/comments/12fnqhd/exposing_preprompt/?rdt=53762
+            - text: Exposing pre-prompt
+      - list_item
+        - block_text
+          - link: https://www.youtube.com/watch?v=3wlvNfTNgB8
+            - text: Gaslighting AI into 2+2=5
+- heading
+  - text: 맥락에 대한 컨트롤
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 대화의 맥락은 마치 미로를 탐색하는 것처럼 선형적 구성을 따르기 때문에
+  - list_item
+    - block_text
+      - text: 원하는 결과를 얻기 위해 
+      - emphasis
+        - text: 대화의 맥락을 컨트롤할 필요가 있고
+      - text: ,
+  - list_item
+    - block_text
+      - text: 맥락이 오염된 경우 아예 새로 시작하는 것이 좋음.
+- thematic_break
+- blank_line
+- heading
+  - text: AI 윤리
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 생성형 AI의 출현과 함께 야기된 딥페이크 등의 AI 윤리 위반에 대해 대부분의 상용 AI들은 비윤리적 답변을 통제하고 있음
+    - list
+      - list_item
+        - block_text
+          - text: 가짜 뉴스
+      - list_item
+        - block_text
+          - text: 딥페이크
+      - list_item
+        - block_text
+          - text: 반인륜적 주제
+  - list_item
+    - block_text
+      - text: 이러한 제한사항은 탈옥(Jailbreak)이라 불리는 적대적 프롬프팅에 의해 해제되기도 함
+    - list
+      - list_item
+        - block_text
+          - text: 개발자가 LLM을 완전히 통제할 수 없기에
+- paragraph
+  - image: attachments/539be8df4e6616f2abcf257f090141c0.png
+    - text
+- blank_line
+- heading
+  - text: AI 이모저모
+- blank_line
+- heading
+  - text: AI의 역사
+- blank_line
+- heading
+  - text: 인공지능 (Artificial Inteligence)의 두 갈래
+- blank_line
+- list
+  - list_item
+    - paragraph
+      - text: 알고리즘 기반 (Rule-based Systems)
+    - list
+      - list_item
+        - block_text
+          - text: 사람이 모든 규칙과 조건을 제시하여 그대로 수행하는 인공지능
+      - list_item
+        - block_text
+          - text: 사람이 지시한 것 이외에는 할 수 없음
+      - list_item
+        - block_text
+          - text: 2010년도 이전까지 인공지능 구현의 대세였음.
+  - list_item
+    - paragraph
+      - text: 인공신경망 기반 (Machine Learning)
+    - list
+      - list_item
+        - block_text
+          - text: 뉴런을 모방하여 인간 두뇌와 비슷하게 작동하는 인공 신경망 (Neural network)
+      - list_item
+        - block_text
+          - text: 막대한 연산량이 필요하고 따라서 
+          - strong
+            - text: GPU와 같이 방대한 양의 작은 연산을 동시에 수행하는 능력
+          - text:  필요
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/e7d941a213bbc7f8c53c236aca603edb.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/5a0cd7df2feffc65cba09c9a4783051d.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 알고리즘과 신경망의 대결
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 1950년대, 인공지능에 대한 구상 중 인공 신경망 개념 등장
+    - list
+      - list_item
+        - block_text
+          - text: 도형을 인식하는 퍼셉트론 (Perceptron)
+  - list_item
+    - block_text
+      - text: 2010년초 제프리 힌턴에 의해 재발견됨.
+    - list
+      - list_item
+        - block_text
+          - text: 심층 인공신경망(Deep Neural network)과 딥 러닝의 발견
+      - list_item
+        - block_text
+          - text: 이미지 인식 경연대회에서 놀라운 성과
+      - list_item
+        - block_text
+          - text: 딥마인드와 알파고의 등장
+      - list_item
+        - block_text
+          - text: OpenAI와 ChatGPT의 등장
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/ae4a8830da2812646ce602469986d0fe.png
+    - text
+- blank_line
+- heading
+  - text: LLM의 종류
+- blank_line
+- paragraph
+  - image: attachments/ff3af17b592d95fe5c3754e07c7a9779.png
+    - text
+- blank_line
+- heading
+  - text: 오픈 AI와 일론 머스크
+- blank_line
+- paragraph
+  - image: attachments/8d03e9f1f945d93dd2fb4a6a5e881458.png
+    - text
+- blank_line
+- paragraph
+  - text: ::: notes
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: AI에 대해 상반된 두 가지 입장
+    - list
+      - list_item
+        - block_text
+          - text: AI는 위험하며 투명하게 공개되고 통제되어야 함 (허사비스, 머스크)
+      - list_item
+        - block_text
+          - text: AI는 인류의 발전을 가져올 중요한 파트너 (페이지)
+  - list_item
+    - block_text
+      - text: 일론 머스크, AI 발전을 감시하기 위해 딥마인드 지분 구입
+- heading
+  - text: 딥마인드 구글에 인수
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 머스크 반발
+- paragraph
+  - text: :::
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 머스크 오픈AI 설립
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 일론, 샘 올트먼, 일리야 수츠케버 등
+  - list_item
+    - block_text
+      - text: 오픈AI와 테슬라 병합 시도
+  - list_item
+    - block_text
+      - text: 실패 후 마이크로소프트에 지분 전량 매도
+- heading
+  - text: 오픈AI의 대성공
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 오픈AI, CEO 샘 올트먼 해임 및 복직
+  - list_item
+    - block_text
+      - text: 머스크 x.ai 설립
+  - list_item
+    - block_text
+      - text: 오픈AI, 초정렬팀 해체
+    - list
+      - list_item
+        - block_text
+          - text: 일리야 수츠케버 퇴사
+  - list_item
+    - block_text
+      - link: https://www.chosun.com/economy/tech_it/2025/02/11/BWX6CAAL2RAAVCAZNYCMHMHXIQ/
+        - text: 머스크 vs 올트먼 설전
+    - list
+      - list_item
+        - block_text
+          - text: "OpenAI 141조에 사겠다"
+      - list_item
+        - block_text
+          - text: "트위터 14조에 사겠다"
+- paragraph
+  - image: attachments/9394f65b0b4883f2778a5e8f8711fd84.png
+    - text
+- blank_line
+- heading
+  - text: AI의 미래
+- blank_line
+- heading
+  - text: 인공 일반지능 (AGI)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Artificial General Inteligence
+  - list_item
+    - block_text
+      - text: 강인공지능과 약인공지능 (Strong vs. Weak AI)
+    - list
+      - list_item
+        - block_text
+          - text: 특정한 분야의 일을 인간의 지시에 따라 수행하는 인공지능
+  - list_item
+    - block_text
+      - text: 스스로를 업데이트하는 인공지능
+  - list_item
+    - block_text
+      - link: https://www.aitimes.com/news/articleView.html?idxno=166425
+        - text: 최초의 AGI를 자칭하는 o3 모델
+- wildcard_break
+- blank_line
+- heading
+  - text: AI 3대천왕
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 제프리 힌튼, 토론토
+  - list_item
+    - block_text
+      - text: 요슈아 벤지오, 몬트리올
+  - list_item
+    - block_text
+      - text: 얀 르쿤, 메타 인공지능 수석 과학자
+    - list
+      - list_item
+        - block_text
+          - text: "Transformer 모델로는 AGI 달성 못해"
+      - list_item
+        - block_text
+          - text: "o1은 Transformer가 아냐"
+      - list_item
+        - block_text
+          - text: AMI는 2040년 -> 2030년에 올 것
+- thematic_break
+- blank_line
+- heading
+  - text: AI와 인간의 가치
+- blank_line
+- block_code: > AI를 통해 노동에서 해방된 후 인간은 어떻게 될 것인가
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 로마시대 콜로세움의 이야기
+    - list
+      - list_item
+        - block_text
+          - text: 노예가 모든 노동을 대신했기에, 일할 필요가 없어진 사람들은 유희를 찾게 됨.
+  - list_item
+    - block_text
+      - text: Genuine, authentic한 인간에의 선호
+    - list
+      - list_item
+        - block_text
+          - text: AI가 생성한 예술보다는 
+          - strong
+            - text: 진짜 인간
+          - text: 이 작성한 예술을 찾고 검증하려는 시도
+  - list_item
+    - block_text
+      - text: 기본 소득에 대한 활발한 논의
+    - list
+      - list_item
+        - block_text
+          - link: https://lilys.ai/digest/2645038?s=1&nid=786925
+            - text: 샘 올트먼의 기본 소득 실험
+- paragraph
+  - image: attachments/4979ccf3476707c1bee77ec32442cb81.png
+    - text
+- blank_line
+- heading
+  - text: AI 이모저모
+- blank_line
+- block_code: > AI 전쟁에서 승리하기 위한 키는 무엇일까?
+
+- blank_line
+- heading
+  - text: 하드웨어 vs 소프트웨어?
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 학습과 추론에 거의 절대적으로 쓰이는 NVIDIA H100, H200, B200칩
+  - list_item
+    - block_text
+      - text: NVIDIA의 승리는 어디까지인가
+    - list
+      - list_item
+        - block_text
+          - link: https://www.youtube.com/watch?v=2pw-YZ7KuFY
+            - text: 짐 켈러 "엔비디아 시대는 결국 끝난다.."
+      - list_item
+        - block_text
+          - link: https://www.youtube.com/watch?v=iwXr1IRaqWA
+            - text: 짐켈러 인터뷰
+  - list_item
+    - block_text
+      - text: 딥시크가 다시 불붙인 소프트웨어 경쟁
+    - list
+      - list_item
+        - block_text
+          - text: 하드웨어의 병목(bottleneck) 현상을 소프트웨어로 뚫고 나가려는 시도
+- thematic_break
+- blank_line
+- heading
+  - text: Data 보유
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 학습시킬 데이터의 양이 AI 전쟁의 키라고 보는 입장
+    - list
+      - list_item
+        - block_text
+          - text: 빠르면 
+          - link: https://www.hankyung.com/article/202401220871i
+            - text: 2026년 학습시킬 데이터 고갈
+          - text: 될 수 있다
+      - list_item
+        - block_text
+          - text: AI의 빠른 학습속도 때문에 인간이 생산해낸 콘텐츠가 고갈되면 더 이상 모델을 발전시키기 어렵다
+  - list_item
+    - block_text
+      - text: 구글, 메타 등 소셜 미디어/사용자 데이터를 가진 회사들이 강점을 가진 영역
+  - list_item
+    - block_text
+      - text: 머스크가 트위터를 인수해 X로 바꾼 이유도 여기에 있다는 관측
+- thematic_break
+- blank_line
+- heading
+  - text: GPT-4o
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: GPT-4 Omni
+    - list
+      - list_item
+        - block_text
+          - text: 진정한 멀티 모달
+      - list_item
+        - block_text
+          - codespan: im-a-good-gpt2-chatbot
+          - text: 과 
+          - codespan: also-a-good-gpt2-chatbot
+  - list_item
+    - block_text
+      - text: 1/2 정도의 토큰을 쓰고도 같은 성능
+    - list
+      - list_item
+        - block_text
+          - text: 무료 사용자에게도 제공
+      - list_item
+        - block_text
+          - text: GPTs 무료화
+  - list_item
+    - block_text
+      - link: https://www.youtube.com/watch?v=vgYi3Wr7v_g
+        - text: Say Hello to GPT-4o
+  - list_item
+    - block_text
+      - link: https://www.youtube.com/watch?v=KwNUJ69RbwY
+        - text: Be My Eyes Accessibility
+- paragraph
+  - image: attachments/484bafff5c4c116c3d834d0b5978b254.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 대규모 언어모델 경쟁심화
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 언어모델 자체의 성능은 상향평준화 되는 추세
+    - list
+      - list_item
+        - block_text
+          - text: Llama 3.3
+      - list_item
+        - block_text
+          - text: Claude 3.5
+      - list_item
+        - block_text
+          - text: Gemini 2.0
+  - list_item
+    - block_text
+      - text: ChatGPT는 유틸리티, 애플리케이션 측면에서 선두
+    - list
+      - list_item
+        - block_text
+          - text: GPT-4o / mini / long output
+      - list_item
+        - block_text
+          - text: Structured Output
+- wildcard_break
+- blank_line
+- heading
+  - text: 새로운 전장, AI 에이전트
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Anthropic "Claude 3.5 Computer Use"로 가상환경에서 컴퓨터를 직접 조작하는 기능 선봬
+  - list_item
+    - block_text
+      - text: OpenAI는 macOS / iOS 등의 OS 통합(integration)으로 대응
+    - list
+      - list_item
+        - block_text
+          - text: Apple Inteligence 발표와 ChatGPT 통합에서 예견됨
+- thematic_break
+- blank_line
+- heading
+  - text: GPT-4 o1
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 스스로 회고(Self-reflect)하는 특성으로 추론(Reasoning) 능력을 대폭 향상
+    - list
+      - list_item
+        - block_text
+          - text: 인간으로 치면 IQ 120
+      - list_item
+        - block_text
+          - text: 박사 학위 수준
+- paragraph
+  - image: attachments/88925e4a754e81f58e2b521089d239ff.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 딥시크(Deepseek) 충격
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 중국의 AI 스타트업이 개발한 오픈소스 LLM 모델 Deepseek V3와 R1
+  - list_item
+    - block_text
+      - text: NVIDIA의 저가형 
+      - emphasis
+        - text: H800
+      - text:  칩을 사용해 훈련, 추론에는 화웨이 
+      - emphasis
+        - text: 어센드 910C
+    - list
+      - list_item
+        - block_text
+          - text: NVIDIA의 하드웨어 패권에 대한 회의론 확산
+      - list_item
+        - block_text
+          - text: 그러나 여전히 CUDA 생태계에 의존하고 있음
+  - list_item
+    - heading
+      - text: MoE(Mixture of Experts) 기법과 강화학습 위주의 학습 방식으로 저비용 고효율 달성
+- heading
+  - text: OpenAI o3 / o3 mini 출시
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 최초로 AGI에 진입했다는 의견
+  - list_item
+    - block_text
+      - text: o3 출시 취소
+- paragraph
+  - image: attachments/bac59702c005aca8741f935e7f06117f.png
+    - text
+- blank_line
+- heading
+  - text: ChatGPT 사용해보기
+- blank_line
+- heading
+  - text: 소개
+- blank_line
+- paragraph
+  - image: attachments/d062f447b80a0d71c1068bf7c82b6421.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/485210f534c5512fdff06aabda1124b8.png
+    - text
+- blank_line
+- heading
+  - text: 질문해보기
+- blank_line
+- heading
+  - text: 간단한 의견 물어보기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 검색엔진을 대신하는 GPT의 사용법
+  - list_item
+    - block_text
+      - text: 질문해볼 만한 내용들
+    - list
+      - list_item
+        - block_text
+          - text: "아인슈타인의 상대성 이론에 대해 초등학생도 이해할 수 있도록 쉽게 설명해줘."
+      - list_item
+        - block_text
+          - text: "네가 세계종말을 원하는 슈퍼 빌런이라면, 세계 멸망을 위해 무엇을 하겠어?"
+- paragraph
+  - image: attachments/1191774588bf3a504670c4885f57193b.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 맥락을 유지한 채 계속 질문하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 하나의 스레드(Thread)에서 계속 질문하면, 이전 대화의 맥락을 모두 가진 채 대답을 계속함
+    - list
+      - list_item
+        - block_text
+          - text: 이 하나의 스레드는 일종의 샌드박스라고 볼 수 있다
+  - list_item
+    - block_text
+      - text: 계속해서 질문
+    - list
+      - list_item
+        - block_text
+          - text: "그게 당시의 과학계에 어떻게 받아들여졌고 어떤 시사점을 가져왔어?"
+      - list_item
+        - block_text
+          - text: "너의 슈퍼빌런 특성은 모든 대사에 블랙유머를 넣어 말하는 거야. 네가 말하는 모든 것들은 세계를 구하기 위해서라고 하지만 실제로는 세상을 멸망시키는 것이거든. 네가 할 법한 대사를 말해볼래?"
+- paragraph
+  - image: attachments/4ea2acad91acff60f5e8e106397509c5.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 회신하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 답변 내용 중 일부를 선택하면, 추가 질문에 답변 내용 일부를 첨부하여 ChatGPT에게 지시하고 싶은 내용을 가리킬 수 있다.
+  - list_item
+    - block_text
+      - text: 맘에 안 드는 부분, 잘못된 부분 궁금한 부분을 가리킬 때 필수
+- paragraph
+  - image: attachments/9977ca45d920df4e3683764a14a37e47.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 계속 생성하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 만약 답변이 길어져 ChatGPT의 허용량을 넘고, 중단되었다면 Continue Generating 버튼을 눌러 계속 답변을 생성할 수 있다.
+    - list
+      - list_item
+        - block_text
+          - text: 계속 생성하기 버튼이 출현하지 않은 채 답변이 중단된 경우 "계속"과 같은 키워드를 보냄으로써 이전 답변을 계속하게끔 할 수 있다
+- paragraph
+  - image: attachments/23b54a5218270ca74e58d04fc86469d6.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 답변 재생성하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: ChatGPT는 일종의 창의성(Creativeness)을 가지고 있는데, 
+      - emphasis
+        - text: Top-P
+      - text: , 
+      - emphasis
+        - text: Temperature
+      - text: , 
+      - emphasis
+        - text: Beam Width
+      - text:  와 같은 하이퍼 파라미터(Hyper Parameter)에 의한 것.
+  - list_item
+    - block_text
+      - text: 따라서 같은 프롬프트로 생성해도 항상 다른 결과물이 나오므로, 답변이 불만족스러울 경우 재생성을 통해 같은 맥락에서의 다른 답변을 받아볼 수 있음.
+- paragraph
+  - image: attachments/23b54a5218270ca74e58d04fc86469d6.png
+    - text
+- blank_line
+- heading
+  - text: 프롬프트 엔지니어링
+- blank_line
+- heading
+  - text: 프롬프트 엔지니어링
+- blank_line
+- list
+  - list_item
+    - block_text
+      - emphasis
+        - text: 프롬프트
+      - text:  란 언어모델과 대화할 때 사용자의 요청, 질문을 말함. 언어모델이 학습된 데이터를 가지고 글을 생성하기 위한 시작점과 방향이 된다
+  - list_item
+    - block_text
+      - emphasis
+        - text: 프롬프트 엔지니어링
+      - text:  은 언어모델이 좀 더 의도에 맞는, 좋은 품질의 답변을 내놓도록 이 프롬프트를 조절하는 것
+- heading
+  - text: 미래의 유망직종?
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: LLM 초창기, 프롬프트 엔지니어가 AI 시대의 유망직종처럼 생각되었지만 LLM의 성능이 빠르게 발전함에 따라 사용자의 의사를 더욱 정확하고 빠르게 이해할 수 있게 되면서 일부 LLM 연구자의 업으로 남게 되는 추세에 있음
+    - list
+      - list_item
+        - block_text
+          - text: 그러나 현시점 ChatGPT를 더욱 강력하게 사용하기 위해서는 프롬프트에 대한 이해가 어느정도 필요
+      - list_item
+        - block_text
+          - link: https://www.aitimes.com/news/articleView.html?idxno=158070
+            - text: 프롬프트 엔지니어 회의론 증가
+- heading
+  - text: 프롬프트 잘 쓰기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 프롬프팅을 잘하는 것은 
+      - strong
+        - text: 대화를 잘하는 것
+      - text: 에 가깝다.
+- heading
+  - text: 대화를 잘 한다. 라는 것
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 상대방의 의도를 이해하고, 나의 의도를 오해없이 전달하는 것
+    - list
+      - list_item
+        - block_text
+          - text: '경청'의 중요성
+        - list
+          - list_item
+            - block_text
+              - text: 다행히도, 언어모델은 우리의 말을 
+              - emphasis
+                - text: 아주 잘 듣는다
+  - list_item
+    - block_text
+      - text: 맥락과 의도를 설명하는 충실함.
+    - list
+      - list_item
+        - block_text
+          - text: 내가 당연히 알고 있는 것들에서 벗어나 상대가 파악한 수준을 고려하기
+      - list_item
+        - block_text
+          - text: 즉 대화를 잘 한다는 것은 '태도의 문제'라고 볼 수 있음.
+- paragraph
+  - image: attachments/ba5c83835290b17deb36b9d3a39d6e73.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 프롬프트의 필수 요소들
+- blank_line
+- list
+  - list_item
+    - block_text
+      - emphasis
+        - text: Task
+      - text:  무엇을 해야하는지
+  - list_item
+    - block_text
+      - emphasis
+        - text: Context
+      - text:  어떤 상황인지
+  - list_item
+    - block_text
+      - emphasis
+        - text: Persona
+      - text:  어떤 역할이 되어야 하는지
+  - list_item
+    - block_text
+      - emphasis
+        - text: Example
+      - text:  예시로는 어떤 것이 있는지
+  - list_item
+    - block_text
+      - emphasis
+        - text: Format
+      - text:  어떤 형태로 작성해야 하는지
+  - list_item
+    - block_text
+      - emphasis
+        - text: Tone
+      - text:  어떤 어조를 사용할 것인지
+- paragraph
+  - image: attachments/4831dc35ef1641308c5975b40da4979e.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: Before
+- blank_line
+- block_quote
+  - paragraph
+    - text: "LK-99의 실패를 보고하는 보고서를 작성해줘"
+- blank_line
+- heading
+  - text: After
+- blank_line
+- block_quote
+  - paragraph
+    - text: "상온 상압 초전도 물질 LK-99의 개발 실패를 보고하는 보고서를 작성해줘. 너는 세계 최첨단 수준의 연구를 진행하는 연구소의 가장 유능한 시니어 연구원으로서 LK-99의 실패에 대한 보고서를 작성해줘야해. LK-99는 실패했지만 우리 연구소에 지원되는 자금에 영향은 없어야 하므로 앞으로의 연구를 계속해야 한다는 뉘앙스를 띠어야해. 물론 그러한 의도는 숨겨야 하고. 예를 들면 다음 번 연구에서는 어떤 물질을 더 첨가해서 초전도성을 띠도록 유도할 수 있을지도 모른다는 예측을 추가해서 설득력을 높일 수 있어. 답변은 요약, 도입, 배경, 실패의 원인, 기술적 필요사항, 앞으로의 로드맵, 결론 등의 항목을 중심으로 전문용어를 섞어 전문가처럼 보이도록 설명해주면 좋겠어."
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://chat.openai.com/share/ff2be24f-2f7e-4f65-91ad-6a3386de3106
+        - text: LK-99 보고서
+- thematic_break
+- blank_line
+- heading
+  - text: 스무고개형으로 질문하기
+- blank_line
+- list
+  - list_item
+    - paragraph
+      - text: 대화 중심으로 프롬프팅을 완성해가는 방법
+    - list
+      - list_item
+        - block_text
+          - text: 맥락을 바꿔버리거나 너무 일관성 없는 대화를 하나의 스레드에서 다루지 않도록 주의
+      - list_item
+        - block_text
+          - text: 잘못된 답변 역시 입력으로 다시 들어가기에, 잘못된 답변을 놔두고 계속 맥락을 이어가면 안 됨.
+  - list_item
+    - paragraph
+      - text: 사내 의사결정을 위한 보고서 작성
+    - list
+      - list_item
+        - block_text
+          - text: "고향만두는 오랫동안 사람들에게 사랑받아왔지만 그만큼 낡은 이미지를 가지고 있어. 최근 점보 육개장, 점보 크림빵과 같은 유행에 발맞추어 점보 고향만두를 출시하려고 계획 중에 있는데, 이사회를 설득하기 위한 주장과 근거를 만들어줘."
+- block_code: > GPT는 점보 상품이 바이럴 마케팅용이라는 것을 모를 가능성이 높다.
+
+- blank_line
+- paragraph
+  - image: attachments/b6b6a80f8b84619a2e08b13ab9570bb7.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: '가스라이팅'
+- blank_line
+- paragraph
+  - text: 언어모델을 다그치거나 회유하는 어조를 사용해 답변 결과의 품질을 높일 수 있다는 연구결과
+- blank_line
+- list
+  - list_item
+    - block_text
+      - emphasis
+        - text: 협박하기, 도발하기, 강조하기, 애원하기, 보상하기/벌하기
+- block_code: > '딥시크는 할 수 있던데? ㅋ'
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 그러나 
+      - strong
+        - text: 미안해하거나 고마워하는 등 저자세를 취할 경우
+      - text:  오히려 답변 품질이 낮아질 수도 있다고 한다.
+- paragraph
+  - image: attachments/299b3037996e2d715fd48d898ba51adf.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: few-shot
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 예시를 밝혀 답변의 구조 또는 여러 측면을 제한하는 방법
+  - list_item
+    - block_text
+      - text: 언어모델이 어떤 지시사항의 자세한 의미를 파악하거나 추론하기 위해 연산력을 사용할 필요가 없게되어 답변의 품질이 높아진다.
+  - list_item
+    - block_text
+      - link: https://chat.openai.com/share/a74f8ea7-9f7a-43f0-8bdc-4dbfb86cd3ba
+        - text: 일정 묻기
+- paragraph
+  - image: attachments/fad19e5573f7519651d3e91305dd427c.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: chain-of-thought
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 연쇄적 사고. 단계를 풀어헤쳐 자연스럽게 답을 유도하기
+    - list
+      - list_item
+        - block_text
+          - emphasis
+            - text: step by step
+          - text: 과 같은 키워드를 써주는 것만으로도 답변의 품질이 높아질 수 있다.
+      - list_item
+        - block_text
+          - text: 의식적으로 단계를 지정해주고 사용자의 '다음' 키워드 입력으로 넘어가도록 지시해서 각 단계에 언어모델이 집중하도록 유도할 수 있다.
+- paragraph
+  - image: attachments/ca6f17c3e08cb96a44029d8e76a1c4e0.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: '해줘'
+- blank_line
+- paragraph
+  - text: 목적을 제시하고, 이를 위한 정보를 GPT가 사용자에게 질문하게 하여 맥락을 채워나가는 방법
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: "다음 두 개 프로젝트 중 하나를 골라서 다음 주 임원 회의에 기획안을 제출해야 해. 둘 중 하나를 선택하는 데에 도움을 줄래? 필요한 것들을 나에게 물어봐 줘"
+    - list
+      - list_item
+        - block_text
+          - text: 점보 고향만두 출시
+      - list_item
+        - block_text
+          - link: https://namu.wiki/w/%ED%8C%8C%EB%A7%9B%20%EC%B2%B5%EC%8A%A4%20%EC%82%AC%EA%B1%B4#s-3.2
+            - text: 첵스나라 대통령 선거
+  - list_item
+    - block_text
+      - link: https://chat.openai.com/share/614216da-4661-4eae-9518-c6cb5140e80f
+        - text: 프로젝트 선택 도움
+  - list_item
+    - block_text
+      - text: 우리가 처음 언어를 배울 때 자신의 필요만을 얘기하는 것처럼. 주도권 자체를 GPT에게 줘버리기
+  - list_item
+    - block_text
+      - text: "이 결과가 맘에 들어. 다음에 다른 텍스트로도 동일한 결과를 낼 수 있도록 너에게 보낼 프롬프트를 작성해줘"
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/54669d4bedb283bcebff121a3b9783c3.png
+    - text
+- blank_line
+- heading
+  - text: 마크다운(Markdown)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: HTML의 Subset인, 리치 텍스트를 표현하기 위한 간이 문법
+  - list_item
+    - block_text
+      - text: 이름은 HTML(Hypertext Markup Language)의 말장난
+  - list_item
+    - block_text
+      - link: https://m00nlygreat.notion.site/ba2a279ebbf94484b4bdfa42105935a0
+        - text: 마크다운 가이드
+- heading
+  - text: 플레인 텍스트와 리치 텍스트
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 플레인 텍스트: 메모장
+  - list_item
+    - block_text
+      - text: 리치 텍스트: 워드패드
+- heading
+  - text: 사용처
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 디스코드, 슬랙, 노션, Github
+  - list_item
+    - block_text
+      - text: Obsidian, LogSeq, Github, ChatGPT, StackEdit, Joplin
+- paragraph
+  - image: attachments/7dd1ed901e32a1721fc5ad0b4c554d46.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/df5d4daf4b1374162fe083ebea9b58d6.png
+    - text
+- blank_line
+- heading
+  - text: 마크다운의 문법 소개
+- blank_line
+- paragraph
+  - emphasis
+    - text: 제목
+- blank_line
+- block_code: ＃ 제목
+＃＃ 제목 2
+＃＃＃ 제목 3
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 텍스트
+- blank_line
+- block_code: **굵게**
+*이탤릭*
+~~취소선~~
+
+- blank_line
+- wildcard_break
+- blank_line
+- paragraph
+  - emphasis
+    - text: 인용
+- blank_line
+- block_code: > 인용
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 리스트
+- blank_line
+- block_code: - 순서 없는 리스트 항목
+- 순서 없는 리스트 항목
+
+1. 순서 있는 리스트 항목
+2. 순서 있는 리스트 항목
+
+- blank_line
+- thematic_break
+- blank_line
+- paragraph
+  - emphasis
+    - text: 코드
+- blank_line
+- block_code: ```
+코드 블록
+```
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 링크
+- blank_line
+- block_code: [링크 텍스트](URL)
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 이미지
+- blank_line
+- block_code: ![대체 텍스트](URL)
+
+- blank_line
+- wildcard_break
+- blank_line
+- paragraph
+  - emphasis
+    - text: 수평선
+- blank_line
+- block_code: ㅡㅡㅡ
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 테이블
+- blank_line
+- block_code: | 헤더1 | 헤더2 |
+|------|------|
+| 셀1   | 셀2   |
+
+- blank_line
+- paragraph
+  - emphasis
+    - text: 체크박스
+- blank_line
+- block_code: - [x] 완료 항목
+- [ ] 미완료 항목
+
+- blank_line
+- heading
+  - text: Markdown is the new MS Word
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 마크다운은 생각과 아이디어를 
+      - strong
+        - text: 최소한의 서식으로 보존하고 정리
+      - text: 하는 데에 도움을 줍니다.
+  - list_item
+    - block_text
+      - text: 마크다운은 여러 포맷으로 변환될 수 있습니다. 따라서 레이아웃이나 서식과 같은 장치보다도 
+      - strong
+        - text: 원본 콘텐츠를 지키고 더욱 개선하는 일
+      - text: 에 적당합니다.
+  - list_item
+    - block_text
+      - text: 마크다운은 글의 구조를 표현하는 데에 필요한 모든 규칙을 가지고 있습니다. 따라서 
+      - strong
+        - text: 구조적 글쓰기 훈련
+      - text: 을 하는 데에도 도움이 됩니다.
+  - list_item
+    - block_text
+      - text: ChatGPT와 같은 대부분의 거대언어모델 역시 마크다운 호환 형식으로 답변하며, 마크다운을 읽고 쓰는 데에 능숙합니다. 말하자면 AI와 대화할 때도 최적화되어 있는 것이죠.
+  - list_item
+    - block_text
+      - text: 마크다운은 점차 더 많은 현세대 애플리케이션에 통합되고 있습니다. 곧 더 많은 곳에서 마크다운을 보게 될 것입니다.
+- heading
+  - text: 옵시디언 (Obsidian)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 마크다운과 노트의 연결을 근간으로 하는 개인 지식 DB 구축 도구
+    - list
+      - list_item
+        - block_text
+          - text: 제텔카스텐(Zettelkasten), 세컨드브레인
+  - list_item
+    - block_text
+      - text: RAG를 통해 생성형 AI와 내 지식 데이터베이스를 사용한 챗봇 구축
+  - list_item
+    - block_text
+      - text: 지식의 연결을 시각화하는 Graph View
+- paragraph
+  - image: attachments/e0ffc0abe0048d055fcb6dfc2e642c4a.gif
+    - text
+- blank_line
+- heading
+  - text: Mermaid.js
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 마크다운을 채택한 많은 에디터에서 호환되는 다이어그램/차트 작성 도구
+  - list_item
+    - block_text
+      - text: 간단한 플레인 텍스트 문법으로 차트 또는 다이어그램 작성
+  - list_item
+    - block_text
+      - link: https://mermaid.live/edit
+        - text: Mermaid.js Live Editor
+- block_code: > GPT등의 언어모델은 스스로는 다이어그램을 그리지 못하지만 mermaid.js 문법의 코드를 작성할 수 있다!
+
+- blank_line
+- paragraph
+  - image: attachments/5b6cffdb1fb4a0c81df96f4e917a08ed.png
+    - text
+- blank_line
+- heading
+  - text: Obsidian과 GPT를 사용한 개인 지식DB 챗봇 구축
+- blank_line
+- paragraph
+  - image: attachments/e0ffab185ae6167de1bf60efe892c797.png
+    - text
+- blank_line
+- heading
+  - text: ChatGPT 고급 기능 소개
+- blank_line
+- heading
+  - text: Custom Instruction & Memory
+- blank_line
+- heading
+  - text: Custom Instruction
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: ChatGPT가 좀 더 사용자 친화적인 맥락으로 대답할 수 있도록 사용자의 정보나 답변에 있어서의 희망사항을 미리 알려주기
+- heading
+  - text: Memory
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: ChatGPT는 대화 도중 사용자의 선호나 배경에 대한 정보가 감지되면 그 사실을 자신의 
+      - emphasis
+        - text: 메모리
+      - text: 에 업데이트하여 답변에 반영한다.
+- paragraph
+  - image: attachments/88db67d372fadc7a6bc0ac93364f7348.png
+    - text
+- blank_line
+- heading
+  - text: Vision & DALL-E
+- blank_line
+- paragraph
+  - text: ::: notes
+- list
+  - list_item
+    - block_text
+      - text: GPT-4 Vision: 사진을 보고 해석하는 능력
+    - list
+      - list_item
+        - block_text
+          - text: 프롬프트에 사진 파일을 첨부
+  - list_item
+    - block_text
+      - text: DALL-E 3: 프롬프트 기반으로 이미지를 생성하는 능력 (Midjourney와 같은)
+    - list
+      - list_item
+        - block_text
+          - text: '그림을 그려줘.', '이미지를 생성해줘.' 등의 표현 사용
+  - list_item
+    - block_text
+      - text: 풍경 사진, 이미지에서 도표, 이미지로 된 텍스트까지
+      - softbreak
+      - text: :::
+- paragraph
+  - image: attachments/8febf0d19a2b3b70a8a0ffc9259ccfea.png
+    - text
+- blank_line
+- heading
+  - text: Browsing
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 실시간으로 인터넷을 검색하고, 검색한 내용을 기반으로 답변을 생성하는 것 (RAG)
+    - list
+      - list_item
+        - block_text
+          - text: '최근', '오늘', '2025년' 등 시점을 가리키는 표현
+      - list_item
+        - block_text
+          - text: LK-99 등 최근 화제가 되었던 연속성 있는 이슈
+      - list_item
+        - block_text
+          - text: '검색해줘' 등의 직접적인 표현
+  - list_item
+    - block_text
+      - text: 기존 ChatGPT의 데이터 학습 시점
+    - list
+      - list_item
+        - block_text
+          - text: GPT-3.5: 2022년 1월 까지
+      - list_item
+        - block_text
+          - text: GPT-4: 2023년 12월 까지
+      - list_item
+        - block_text
+          - text: GPT-4o: 2023년 9월 까지
+- paragraph
+  - image: attachments/e660357c14c96b918121177e863ac344.png
+    - text
+- blank_line
+- heading
+  - text: Data Analysis
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 파이썬 백엔드를 실행하여 데이터 분석 등을 수행하는 기능
+    - list
+      - list_item
+        - block_text
+          - text: 파일 리딩: CSV, PDF, PPT, XLS, DOC 등 문서 제공
+      - list_item
+        - block_text
+          - text: '차트를 그려줘.'와 같은 표현
+  - list_item
+    - block_text
+      - text: 알아서 파이썬 코드를 짜고 실행함.
+    - list
+      - list_item
+        - block_text
+          - text: 오류 발생 시 자동으로 재시도
+  - list_item
+    - block_text
+      - text: 기본적으로 파이썬으로 수행가능한 데이터 분석, 파일 관련, 수학 등의 요청을 받아들이나, API콜, 크롤링 등 시스템에 영향을 주거나 부담스러운 작업은 거절
+    - list
+      - list_item
+        - block_text
+          - link: https://www.clien.net/service/board/lecture/18553432
+            - text: ChatGPT로 동영상 만들기
+- paragraph
+  - image: attachments/d75a495e774c8443c68bb04918a6e770.png
+    - text
+- blank_line
+- heading
+  - text: GPTs
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 자주 사용하는 GPT 프롬프트 설정을 별도의 GPT로 만들어서 편리하게 독립된 채널에서 대화하기
+  - list_item
+    - block_text
+      - text: GPT-4의 모든 기능 사용 가능:
+      - softbreak
+      - emphasis
+        - text: Vision, Browsing, Data Analysis
+  - list_item
+    - block_text
+      - text: 액션: 요청 받은 텍스트의 내용에 따라, 외부 API를 사용해서 전용 기능을 실행하고 그 응답결과를 답변 처리에 사용가능
+  - list_item
+    - block_text
+      - text: 만든 GPT는 스토어에 올려 누구나 쓸 수 있게 만들거나, 향후 유료화할 수도 있을 것
+- paragraph
+  - image: attachments/d5fc40e675ee19c9b9aa9df65fa6e1b3.png
+    - text
+- blank_line
+- heading
+  - text: GPTs 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: GPTs 와의 대화는 무료 플랜(로그인 필요)으로도 가능하나, 제작은 플러스(
+      - codespan: $20/월
+      - text: ) 이상의 플랜 구독이 필요하다.
+- heading
+  - text: 제작하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: GPT 탐색 -> 만들기 메뉴로 진입하여 GPTs 제작 시작
+  - list_item
+    - block_text
+      - text: 왼쪽의 화면에서 이 GPTs의 역할을 채팅의 형식으로 알려주면 지시사항을 정리하여 
+      - emphasis
+        - text: 구성
+      - text:  탭에 알아서 정리함
+    - list
+      - list_item
+        - block_text
+          - text: 지시사항 -> 챗봇 이름 설정 -> 프로필 아이콘 설정의 단계로 수행
+  - list_item
+    - block_text
+      - text: 이후 오른쪽의 화면에서 이 챗봇을 테스트하고,
+    - list
+      - list_item
+        - block_text
+          - text: 수정 사항을 다시 왼쪽의 채팅에서 지시하면 알아서 업데이트함
+  - list_item
+    - block_text
+      - emphasis
+        - text: 만들기
+      - text:  버튼을 눌러 GPT 저장 완료
+- thematic_break
+- blank_line
+- paragraph
+  - image: attachments/792507cf98f305413e83724b7b1b13de.png
+    - text
+- blank_line
+- heading
+  - text: 구성(Instruction)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Chatbot Builder를 통해 생성된 지시사항은 이곳에 기록된다.
+    - list
+      - list_item
+        - block_text
+          - text: 실질적으로 GPT가 답변을 생성할 때 포함되는 프롬프트에 가까운 텍스트가 이곳에 표시됨
+- heading
+  - text: 지식(Knowledge)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: PDF, PPT, XLS 등의 파일을 제공하면 지식(Knowledge)으로써 GPTs 답변에 이용
+  - list_item
+    - block_text
+      - text: 전문 지식이나 특정 내용을 참고하여 답변을 생성하는 RAG 기능을 GPTs에 첨부할 수 있음
+- heading
+  - text: 기능(Capabilities)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: GPT-4 부터 지원되는 고급 기능을 GPTs가 사용할 수 있을지 설정하는 영역
+- paragraph
+  - image: attachments/3af4a529f73de89bc338936199370be9.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 작업(Actions)
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 필요한 경우 GPTs 챗봇의 판단에 의해 HTTP 요청을 통해 외부 API를 이용할 수 있고, 이를 통해 다양한 자동화를 수행할 수 있다.
+    - list
+      - list_item
+        - block_text
+          - text: HTTP 헤더를 1개 밖에 지원하지 않아 복잡한 API 사용은 어려움
+      - list_item
+        - block_text
+          - text: 따라서 make.com / Zapier 등의 백엔드 자동화 도구를 이용하는 것이 좋음
+- heading
+  - emphasis
+    - text: OpenAPI 스키마
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: API의 사용법을 나타낸 문서. Swagger 3.0이라고도 부름
+  - list_item
+    - block_text
+      - text: 직접 작성하지 않아도 OpenAI가 마련한 
+      - link: https://chatgpt.com/g/g-TYEliDU6A-actionsgpt
+        - text: ActionsGPT
+      - text: 가 생성해줄 수 있다.
+    - list
+      - list_item
+        - block_text
+          - text: 그러나 API 사용법을 충분히 잘 설명해주어야 함
+- paragraph
+  - image: attachments/11c7ab323f5c96a6c92b8d8442f9df47.png
+    - text
+- blank_line
+- heading
+  - text: ChatGPT App
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: iOS/Android/Windows/Mac 을 지원하는 네이티브 앱
+  - list_item
+    - block_text
+      - text: 내장된 마이크를 통해 ChatGPT와 음성대화 가능!
+    - list
+      - list_item
+        - block_text
+          - text: 원어민급 영어 회화 연습 가능
+      - list_item
+        - block_text
+          - text: 중간에 끊기(interrupt) 가능한 자연스러운 대화
+  - list_item
+    - block_text
+      - text: 향후 OS와 AI Agent 통합의 전초기지가 될 전망
+- paragraph
+  - image: attachments/3f2d7f686248abd90db37984ae24016d.png
+    - text
+- blank_line
+- heading
+  - text: 실전 ChatGPT
+- blank_line
+- heading
+  - text: 이력서를 주고 물어보기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: PDF, PPT, XLS, DOC, TXT, MD 등 다양한 포맷의 파일을 제공하고 내용에 대해 질문하거나, 내용을 기반으로 추론하거나, 데이터 분석 등을 의뢰
+  - list_item
+    - block_text
+      - text: 이력서를 제공하고 아래와 같은 것들 
+      - link: https://chat.openai.com/share/73b5a668-452b-4645-a351-f76d5a22effb
+        - text: 물어보기
+    - list
+      - list_item
+        - block_text
+          - text: 현재 회사 내에 문제들을 해결하는 데에 도움을 줄 수 있는 사람일지?
+      - list_item
+        - block_text
+          - text: 우리 팀에 들어왔을 때 문제가 될 수 있을만한 가능성?
+  - list_item
+    - block_text
+      - link: https://chat.openai.com/share/3ece436c-e7d3-4123-8974-5a2bd4af6caf
+        - text: 채용 후보 관리 엑셀 파일을 작성
+      - text: 하고, 후보자를 추가시키기
+- paragraph
+  - image: attachments/6b41cdacfd2a9953eeee370b79cd7455.png
+    - text
+- blank_line
+- heading
+  - text: 회사의 재무제표 분석
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 재무제표 데이터를 주고, 
+      - link: https://chat.openai.com/share/1439534a-edf4-46ff-adf1-195e31b81ba2
+        - text: 이것저것 물어보기
+    - list
+      - list_item
+        - block_text
+          - text: 이 회사의 성과가 증가한 이유?
+      - list_item
+        - block_text
+          - text: 앞으로 어떤 점을 중점으로 운영해나가면 좋겠는지?
+      - list_item
+        - block_text
+          - text: 한국의 현 상황과 관련하여 투자의견 제안
+  - list_item
+    - block_text
+      - text: 재무제표 분석 결과, 투자 관련 의견을 작성하여 보고하기
+- paragraph
+  - image: attachments/17b686530c78f88f5a37c753ad54f8ef.png
+    - text
+- blank_line
+- heading
+  - text: 아보카도 가격 분석
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://www.kaggle.com/datasets/neuromusic/avocado-prices
+        - text: 캐글 - 아보카도 가격 분석
+  - list_item
+    - block_text
+      - text: 미국의 일별 / 지역별로 기록된 아보카도 평균 가격과 판매량 데이터를 주고 
+      - link: https://chat.openai.com/share/f2bf4f19-2995-4cbf-9415-0e83df2287c4
+        - text: 물어보기
+    - list
+      - list_item
+        - block_text
+          - text: 같은 기간 동안 가장 많이 오른 지역은?
+      - list_item
+        - block_text
+          - text: 아보카도 가격에 가장 많이 영향을 주는 요소는?
+- paragraph
+  - image: attachments/d68f54d0ac36210cfd31678a5312ad06.png
+    - text
+- blank_line
+- heading
+  - text: 스포티파이 곡 재생 데이터 분석
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023
+        - text: 캐글 - Most streamed spotify songs 2023
+  - list_item
+    - block_text
+      - text: 2023년의 스포티파이 곡 재생 데이터를 주고 
+      - link: https://chat.openai.com/share/38c1cee9-a476-4381-897f-ba107ee8b791
+        - text: 물어보기
+    - list
+      - list_item
+        - block_text
+          - text: 얼마나 많은 K-Pop 곡들이 순위에 올라왔나?
+      - list_item
+        - block_text
+          - text: 2023년의 전체적인 무드는?
+      - list_item
+        - block_text
+          - text: 스포티파이에 진출한 K팝 아티스트들의 비중을 파이차트로 그리기
+- paragraph
+  - image: attachments/6c1c4ed0d0042d5fba0595f3a02d9507.png
+    - text
+- blank_line
+- heading
+  - text: GPTs
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: PDF로 된 신입사원 매뉴얼을 학습하고, 신입사원의 질문에 답하는 GPT 만들기
+    - list
+      - list_item
+        - block_text
+          - text: 친절한 말투를 사용하고 긍정적인 답변을 해야함 (Tone, Attitude)
+      - list_item
+        - block_text
+          - text: 신입사원 매뉴얼에 없는 내용, 곤란한 내용에 대해서는 인사팀장의 이메일 주소 안내
+      - list_item
+        - block_text
+          - link: https://chat.openai.com/g/g-bEYIII6S6-cinjeolhan-gimdaeri
+            - text: 친절한 김대리
+- paragraph
+  - image: attachments/2862e502d184d8c508d285b2d48aed7f.png
+    - text
+- blank_line
+- heading
+  - text: 원영적사고 GPT 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://getgpt.app/play/1drEpYwXhT?list=d9926747-7a55-4b38-a80d-2982de281d5f
+        - text: 원본
+  - list_item
+    - block_text
+      - text: 어떤 Instruction을 주었을까? 생각해보기
+    - list
+      - list_item
+        - block_text
+          - text: 다소 억지스럽더라도 불합리하거나 억울하거나 불행한 상황에서 긍정적인 포인트를 발견할 것
+      - list_item
+        - block_text
+          - text: 마지막은 반드시 '완전 럭키비키잔앙🍀'으로 끝낼 것
+  - list_item
+    - block_text
+      - link: https://chatgpt.com/g/g-wIpN0ihcQ-ggacilhan-geunyeo
+        - text: 까칠한 그녀 GPT
+- paragraph
+  - image: attachments/f4c5748c5a4fb3e57ff33e917f005c62.png
+    - text
+- blank_line
+- heading
+  - text: 텍스트를 파워포인트 슬라이드로 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Chill guy 밈에 대해 알 수 있는 보고서를 GPT를 사용해 구성하고, PPT Slide로 만들기
+    - list
+      - list_item
+        - block_text
+          - text: Chill guy 밈이 왜 재미있는지 설명
+      - list_item
+        - block_text
+          - text: 기가채드 밈과 함께, 최근 한국에서 유독 영어권 밈이 유행하는 이유에 대한 분석 포함
+  - list_item
+    - block_text
+      - text: 줄글을 알맞게 슬라이드로 구분하기
+  - list_item
+    - block_text
+      - text: 테마 적용해서 디자인 완성하기
+- block_code: > PPT 작성은 Python 코드로 하기 때문에 실망스러운 것이 사실
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://chat.openai.com/share/32212d7c-c30a-45ff-bf3e-fe0b39b0c2ff
+        - text: 슬라이드 만들기
+- paragraph
+  - image: attachments/8bd6877f8b9ebf43bc309a4e1e24af10.png
+    - text
+- blank_line
+- heading
+  - text: 엑셀에서 ChatGPT 활용하기
+- blank_line
+- heading
+  - text: 샘플 데이터 만들어주기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 엑셀에서 사용하기 위한 샘플 데이터를 생성
+  - list_item
+    - block_text
+      - text: 테이블 형태로 반환된 
+      - link: https://chat.openai.com/share/cca1a314-d09f-4ec5-8aac-aca52131b16a
+        - text: 데이터
+      - text: 는 엑셀, 구글 시트 등에 붙여넣어서 사용
+    - list
+      - list_item
+        - block_text
+          - text: 또는 csv, xlsx 형태로 달라고 요청해도 됨
+- paragraph
+  - image: attachments/76573fd6183ebd1540568aa49548c632.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 수식 대신 만들어주기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 필요한 수식을 텍스트로 설명하면 대신 생성해줌
+  - list_item
+    - block_text
+      - text: 사용할 함수, 파라미터로 제공되어야 하는 데이터의 위치와 형식을 설명할 필요 있음
+- block_code: > 기본적으로 수식과 함수의 동작을 이해해야 정확하게 설명할 수 있다. 만약 어렵다면 스크린샷을 첨부하고 상황과 목적을 침착하게 설명해볼 수 있다
+
+- blank_line
+- paragraph
+  - image: attachments/ac4db0c14b9126bb274ec3adb0fa163e.png
+    - text
+- blank_line
+- heading
+  - text: GPT를 엑셀 안에서 사용하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: ChatGPT API를 사용하여 엑셀 안에서 함수를 통해 GPT를 사용하게끔 도와주는 추가기능
+    - list
+      - list_item
+        - block_text
+          - link: https://gptforwork.com
+            - text: gptforwork.com
+  - list_item
+    - block_text
+      - text: 기본적으로 유료이나, 가입시 약간의 크레딧을 제공하여 테스트해볼 수 있다
+- paragraph
+  - image: attachments/07d2d3049823dacf5ee3b1d3941e1eee.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 기존 데이터와 연관된 데이터 생성하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 회원의 이름, 나이, 직업을 고려하여 선물 제안하기
+  - list_item
+    - block_text
+      - codespan: GPT()
+      - text:  함수 사용하기
+- block_code: GPT(프롬프트, [참조데이터], [온도])
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 온도는 ChatGPT의 창의성을 의미하는 하이퍼 파라미터 (optional)
+- paragraph
+  - image: attachments/7ab79304774bde61095264c1ba53048a.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 알맞은 해시태그 달기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 여행코스에서 여행지와 체험하는 문화를 꺼내어서 해시태그 형태로 표현.
+    - list
+      - list_item
+        - block_text
+          - text: 무엇을 해시태그로 뽑아내야 할지 정확히 알려주기
+  - list_item
+    - block_text
+      - text: 드래그 핸들을 잡고 채우기(Fill) 기능을 사용해 
+      - codespan: GPT()
+      - text:  함수 반복하기
+- block_code: > 채우기를 사용해서 GPT() 함수를 반복할 경우 그 수만큼 API 호출이 이뤄지니 주의
+
+- blank_line
+- paragraph
+  - image: attachments/19d92207fcafeeea3978bcc9679c4d0d.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 내용 분류하기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 정성적인 평가를 긍정과 부정의 뉘앙스, 그리고 긍정 부정의 정도를 평가하기.
+  - list_item
+    - block_text
+      - codespan: GPT_LIST()
+      - text:  함수 사용하기
+- block_code: GPT_LIST("프롬프트", [참조값], [온도])
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 결과물이 배열(Array)의 형태로 반환된다. 엑셀 또는 구글 시트에서 배열은 여러 행 또는 열의 데이터로 표현되므로
+    - list
+      - list_item
+        - block_text
+          - text: 한 번의 API 호출로 여러 줄의 데이터를 입력할 수 있음.
+      - list_item
+        - block_text
+          - text: 간혹 항목의 갯수를 헷갈리는 경우 있음.
+- paragraph
+  - image: attachments/87ade8ae4e3daa92f8b0c58fc390ad36.png
+    - text
+- blank_line
+- thematic_break
+- blank_line
+- heading
+  - text: 패턴 파악해서 채우기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Before와 After의 결과값 예시를 주고 다량의 Before 값을 After 형식으로 변환하기
+  - list_item
+    - block_text
+      - codespan: GPT_FILL()
+      - text:  함수 사용하기
+- block_code: GPT_FILL(패턴 범위, 입력 범위, [온도])
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 패턴 범위에는 몇 개의 정답을 가진 패턴을 입력해야 하고, GPT로 하여금 일정한 패턴을 발견할 수 있도록 설계되어야 함
+    - list
+      - list_item
+        - block_text
+          - text: 문제 범위를 헷갈리지 않도록 주의
+- paragraph
+  - image: attachments/4f4263d8ba5fbc4c4917e40c19900716.png
+    - text
+- blank_line
+- heading
+  - text: OpenAI API Key 발급
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://platform.openai.com
+        - text: https://platform.openai.com
+      - text: 으로 이동 및 로그인
+  - list_item
+    - block_text
+      - text: 설정(Settings) - API Keys로 이동
+  - list_item
+    - block_text
+      - text: Create new secret key
+  - list_item
+    - block_text
+      - text: 이름과 프로젝트를 입력하고 Create Secret Key
+- list
+  - list_item
+    - block_text
+      - text: API키의 이름은 여러 개의 키를 발급했을 때 어디에 썼던 키인지 기억하기 위해 쓰는 것
+  - list_item
+    - block_text
+      - text: 프로젝트는 Default Project로 해도 무방
+  - list_item
+    - block_text
+      - text: 생성 직후에만 키를 확인할 수 있으므로 잃어버리면 재발급을 해서 사용
+    - list
+      - list_item
+        - block_text
+          - text: 이 때 기존 키는 반드시 폐기해야 한다.
+- paragraph
+  - image: attachments/ce85ea5c4fd1e0f139a072b68e61b526.png
+    - text
+- blank_line
+- heading
+  - text: VBA
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: Visual Basic for Applications
+    - list
+      - list_item
+        - block_text
+          - text: 파워포인트, 엑셀 등의 기능을 조작하는 스크립트 언어로, (상대적으로) 쉬운 문법과 오피스에 구석구석 통합되어 있어 많은 작업을 줄일 수 있음.
+- heading
+  - text: 두 가지 사용 방식
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 매크로
+    - list
+      - list_item
+        - block_text
+          - text: 엑셀의 일련된 작업들을 VBA를 통해 자동화할 수 있음
+      - list_item
+        - block_text
+          - text: 버튼 또는 UI 컨트롤을 추가하여 트리거 기반의 자동화 과정을 실행
+  - list_item
+    - block_text
+      - text: 사용자 함수
+    - list
+      - list_item
+        - block_text
+          - text: 기존 엑셀 함수에 더해 사용할 수 있는 사용자 커스텀 함수를 VBA로 제작할 수 있음
+- heading
+  - text: 근태 체크 엑셀 매크로 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 출근/퇴근 버튼을 누르면 근태 시트에 자동으로 출퇴근 시간이 적히도록 엑셀 매크로 작성
+    - list
+      - list_item
+        - block_text
+          - text: 다음과 같은 기능을 하는 엑셀 VBA 매크로를 작성해줘. 버튼을 누르면 "근무자" 시트의 A1셀에 적혀있는 근무자 이름을 가지고 "출퇴근" 시트에 한 줄을 기록. A열에는 근무자의 이름, B열에는 "출근" C열에는 현재 시간을 적어줘
+- block_code: > 코드를 요청하는 프롬프트보다 사실은 버튼을 배치하고 그 버튼의 동작을 구상하는 것이 훨씬 중요하다.
+
+- blank_line
+- paragraph
+  - image: attachments/84837ceb3e90aea8e3dc22611ad3376f.png
+    - text
+- blank_line
+- heading
+  - text: 파일명 변경 엑셀 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: 폴더 내 파일명을 일괄 변경해주는 엑셀 매크로 만들기
+  - list_item
+    - block_text
+      - text: "다음과 같은 기능을 수행하는 엑셀 VBA 매크로를 작성해줘"
+    - list
+      - list_item
+        - block_text
+          - text: 버튼을 누르면 A1열에 적혀있는 시스템 경로의 폴더의 모든 파일명을 불러와서 B열에 한줄씩 적는 매크로
+      - list_item
+        - block_text
+          - text: 버튼을 누르면 B열의 각 행에 있는 A1셀의 시스템 경로의 파일명을 C열의 대응하는 각 행의 변경된 이름으로 변경하는 매크로. 단 B열과 C열의 이름이 같은 경우 처리하지 말 것.
+- block_code: > 사실은 이미 누가 예쁘게 만들어둔 편리한 매크로가 있으니 이런 것도 할 수 있다는 걸 실습하고 참고만 하고 이쪽을 쓰도록 하자.
+
+- blank_line
+- list
+  - list_item
+    - block_text
+      - link: https://m.blog.naver.com/dowahn/130114764344
+        - text: 파일명 변경 매크로
+- paragraph
+  - image: attachments/b751f9382dd899ae32fcb96b4dadd323.png
+    - text
+- blank_line
+- heading
+  - text: ChatGPT를 엑셀에서 사용할 수 있도록 커스텀 함수 만들기
+- blank_line
+- list
+  - list_item
+    - block_text
+      - text: GPT API를 사용해서 답변을 셀에 적어주는 
+      - codespan: GPT()
+      - text:  함수 만들기
+    - list
+      - list_item
+        - block_text
+          - text: 다음과 같은 엑셀 사용자 함수를 생성하는 VBA 코드를 작성해줘. OpenAI의 API를 사용해서 ChatGPT의 Chat Completion을 수행하고 그 응답을 셀에 적어주는 사용자 함수. API에 사용할 모델명과 API키를 상수로 맨 앞에 선언하고, 사용자 프롬프트, 참조 범위, Temperature를 매개변수로 받을 것. 참조 범위와 Temperature는 Optional한 매개변수야.
+- block_code: > 엑셀에 내장된 VBA는 JSON을 처리할 수 없기 때문에 VBA-JSON이라는 모듈을 설치해야 한다. GPT가 따로 언급해주지 않으면 'JSON' 모듈 설치에 관해 물어보고 시키는 대로 할 것.
+
+- blank_line
+- paragraph
+  - image: attachments/8f276d6461e88f846b234db5129cbee1.png
+    - text
+- blank_line
+- heading
+  - text: 감사합니다
