@@ -98,6 +98,29 @@ def process_json(data):
         for token in children:
             all_runs.extend(process_token(token, {}))
         return all_runs
+    
+    # def list(children):
+    #     def list_iter()
+    #     for token in children:
+    #         for child in token['children']:
+    #             type = child['type']
+    #             match(type):
+    #                 case 'block_text':
+    #                     add_token(
+    #                         {
+    #                             'type': 'list',
+    #                             'runs': paragraph(child['children'])
+    #                         }
+    #                     )
+# list의 children에는 
+# list_item[]
+
+# 각 list_item에는 
+
+# block_text가 또한 children을 가지고 있거나
+# 다시 list가 있다.
+
+
 
     for token in tokens:
         type = token['type']
@@ -149,6 +172,8 @@ def process_json(data):
                             },
                             consume_type="monopoly"
                         )
+            case 'list':
+                pass
             case _:
                 pass
 
