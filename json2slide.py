@@ -98,9 +98,32 @@ def process_json(data):
         for token in children:
             all_runs.extend(process_token(token, {}))
         return all_runs
-    
-    # def list(children):
-    #     def list_iter()
+    def list(token, current_depth=0):
+        """
+        재귀적으로 토큰 트리를 순회하며, 각 토큰이 속한 리스트의 깊이를 출력합니다.
+
+        인자:
+        token: 토큰을 나타내는 dict 또는 list
+        current_depth: 현재 리스트 깊이 (초기값 0)
+        """
+        if isinstance(token, dict):
+            token_type = token.get("type")
+            # 토큰 타입이 있을 경우 리스트 깊이를 출력합니다.
+            if token_type:
+                print(f"토큰 타입: {token_type} - 리스트 깊이: {current_depth}")
+            # 만약 이 토큰이 'list' 타입이면, 자식 토큰의 리스트 깊이를 1 증가시킵니다.
+            if token_type == "list":
+                new_depth = current_depth + 1
+            else:
+                new_depth = current_depth
+            # 자식 토큰을 재귀적으로 처리합니다.
+            for child in token.get("children", []):
+                list(child, new_depth)
+        elif isinstance(token, list):
+            for item in token:
+                list(item, current_depth)
+    # def list(children, depth=0):
+    #     def list_iter():
     #     for token in children:
     #         for child in token['children']:
     #             type = child['type']
@@ -112,13 +135,14 @@ def process_json(data):
     #                             'runs': paragraph(child['children'])
     #                         }
     #                     )
-# list의 children에는 
-# list_item[]
 
-# 각 list_item에는 
+    # list의 children에는 
+    # list_item[]
 
-# block_text가 또한 children을 가지고 있거나
-# 다시 list가 있다.
+    # 각 list_item에는 
+
+    # block_text가 또한 children을 가지고 있거나
+    # 다시 list가 있다.
 
 
 
@@ -173,7 +197,7 @@ def process_json(data):
                             consume_type="monopoly"
                         )
             case 'list':
-                pass
+                list(token)
             case _:
                 pass
 
