@@ -259,7 +259,7 @@
                     "children": [
                         {
                             "type": "text",
-                            "raw": "함정카드"
+                            "raw": ""
                         }
                     ],
                     "attrs": {
@@ -267,6 +267,45 @@
                     }
                 }
             ]
+        },
+        {
+            "type": "blank_line"
+        },
+        {
+            "type": "comment_block",
+            "key": "layout",
+            "value": "example",
+            "raw": "[layout]: # (example)"
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "raw": ""
+                }
+            ]
+        },
+        {
+            "type": "comment_block",
+            "key": "note",
+            "value": "이것은 노트입니다요.",
+            "raw": "[note]: # (이것은 노트입니다요.)"
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "raw": ""
+                }
+            ]
+        },
+        {
+            "type": "comment_block",
+            "key": "note",
+            "value": "노트를 맘껏 쓰십시오",
+            "raw": "[note]: # (노트를 맘껏 쓰십시오)\n"
         },
         {
             "type": "blank_line"

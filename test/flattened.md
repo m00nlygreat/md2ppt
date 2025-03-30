@@ -23,6 +23,10 @@ type: text
 
 ![](attachments/57460fdf0c00e161901a1359ea5ba690.png)
 
+[layout]: # (example)
+[note]: # (이것은 노트입니다요.)
+[note]: # (노트를 맘껏 쓰십시오)
+
 ## ChatGPT
 
 - OpenAI 가 발표한 *Generative Pre-trained Transformer* 모델의 생성형 AI 언어모델
