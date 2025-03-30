@@ -12,8 +12,9 @@ def load_json(file_path):
 def process_json(data):
     NEW_SLIDE = {
         'title': {},
-        'layout': 'title_and_content', 
-        'placeholders': [[]]
+        'layout': '', 
+        'placeholders': [[]],
+        'notes': [],
         }
 
     processed = {}
@@ -34,39 +35,52 @@ def process_json(data):
         processed['slides'].append(deepcopy(NEW_SLIDE))
 
     def determine_layout(slide):
-        print(slide)
-        return ''  
+        if slide['layout'] != '':
+            return slide['layout']
+        
+        count_placeholders = 0
+        for placeholder in slide['placeholders']:
+            if len(placeholder) > 0:
+                count_placeholders += 1
+
+        layout = ""
+
+        match(count_placeholders):
+            case 0:
+                layout = "section_header"                
+                pass
+            case 1:
+                layout = "title_and_content"
+                pass
+            case 2:
+                first = slide['placeholders'][0][0]['consume'] != "monopoly"
+                second = slide['placeholders'][1][0]['consume'] != "monopoly"
+                if first and second:
+                    layout = "two_content"
+                else:
+                    layout = "content_with_caption"
+                pass
+        
+        return layout
 
     # determine_layout은 빈 슬라이드를 지우는 역할도 하게될 것.
 
-    # def add_token(token, cunsume_type="shared"):
-    #     nonlocal current_placeholder, current_slide, prev_token
-    #     # is current placeholder empty?
-    #     if len(processed['slides'][current_slide]['placeholders'][current_placeholder]) == 0:
-    #         processed['slides'][current_slide]['placeholders'][current_placeholder].append(token)
-    #     elif (prev_token.get('consume_type') == 'shared' and cunsume_type == 'shared'):
-    #         processed['slides'][current_slide]['placeholders'][current_placeholder].append(token)
-    #     else:
-    #         add_placeholder()
-    #         processed["slides"][current_slide]["placeholders"][current_placeholder].append(token)
-    #     prev_token = token.extend({'consume_type': cunsume_type})
-
-    def add_token(token, consume_type="shared"):
+    def add_token(token, consume="shared"):
         nonlocal current_placeholder, current_slide, prev_token
 
-        is_shared = lambda t: t.get("consume_type") == "shared"
+        is_shared = lambda t: t.get("consume") == "shared"
         placeholder = processed["slides"][current_slide]["placeholders"][current_placeholder]
 
-        if not placeholder or (is_shared(prev_token) and consume_type == "shared"):
+        if not placeholder or (is_shared(prev_token) and consume == "shared"):
             pass  # 기존 placeholder 그대로 사용
         else:
             add_placeholder()
 
         # 항상 최신 placeholder로 갱신해서 append
         placeholder = processed["slides"][current_slide]["placeholders"][current_placeholder]
-        placeholder.append(token)
+        placeholder.append({**token, "consume": consume})
 
-        prev_token = {"consume_type": consume_type, **token}
+        prev_token = {"consume": consume, **token}
 
     def add_placeholder():
         nonlocal current_placeholder, current_slide
@@ -98,53 +112,75 @@ def process_json(data):
         for token in children:
             all_runs.extend(process_token(token, {}))
         return all_runs
-    def list(token, current_depth=0):
-        """
-        재귀적으로 토큰 트리를 순회하며, 각 토큰이 속한 리스트의 깊이를 출력합니다.
 
-        인자:
-        token: 토큰을 나타내는 dict 또는 list
-        current_depth: 현재 리스트 깊이 (초기값 0)
-        """
-        if isinstance(token, dict):
+    def process_list(list_token):
+        def iter_token(token, depth=0):
             token_type = token.get("type")
-            # 토큰 타입이 있을 경우 리스트 깊이를 출력합니다.
-            if token_type:
-                print(f"토큰 타입: {token_type} - 리스트 깊이: {current_depth}")
-            # 만약 이 토큰이 'list' 타입이면, 자식 토큰의 리스트 깊이를 1 증가시킵니다.
+
             if token_type == "list":
-                new_depth = current_depth + 1
-            else:
-                new_depth = current_depth
-            # 자식 토큰을 재귀적으로 처리합니다.
-            for child in token.get("children", []):
-                list(child, new_depth)
-        elif isinstance(token, list):
-            for item in token:
-                list(item, current_depth)
-    # def list(children, depth=0):
-    #     def list_iter():
-    #     for token in children:
-    #         for child in token['children']:
-    #             type = child['type']
-    #             match(type):
-    #                 case 'block_text':
-    #                     add_token(
-    #                         {
-    #                             'type': 'list',
-    #                             'runs': paragraph(child['children'])
-    #                         }
-    #                     )
+                # 리스트 토큰을 만나면 depth를 1 증가시키고 자식 항목들을 평탄하게 반환합니다.
+                new_depth = depth + 1
+                items = []
+                for child in token.get("children", []):
+                    result = iter_token(child, new_depth)
+                    if result:
+                        if isinstance(result, list):
+                            items.extend(result)
+                        else:
+                            items.append(result)
+                return items
 
-    # list의 children에는 
-    # list_item[]
+            elif token_type == "list_item":
+                # list_item 내부에서:
+                # - 블록 텍스트는 현재 depth의 list_item으로 변환합니다.
+                # - 자식 중 리스트가 있다면, 현재 depth를 그대로 넘깁니다.
+                runs = None
+                extra_items = []
+                for child in token.get("children", []):
+                    if child.get("type") == "list":
+                        # 중첩 리스트: 여기서는 depth를 증가시키지 않고, iter_token의 list 처리에서 증가됩니다.
+                        nested = iter_token(child, depth)
+                        if nested:
+                            if isinstance(nested, list):
+                                extra_items.extend(nested)
+                            else:
+                                extra_items.append(nested)
+                    elif child.get("type") == "block_text":
+                        runs = paragraph(child.get("children", []))
+                    else:
+                        processed = iter_token(child, depth)
+                        if processed:
+                            if isinstance(processed, list):
+                                extra_items.extend(processed)
+                            else:
+                                extra_items.append(processed)
+                result = []
+                if runs:
+                    result.append({"type": "list_item", "depth": depth, "runs": runs})
+                result.extend(extra_items)
+                return result
 
-    # 각 list_item에는 
+            elif token_type == "block_text":
+                # 단순 block_text는 현재 depth의 list_item으로 변환합니다.
+                return {
+                    "type": "list_item",
+                    "depth": depth,
+                    "runs": paragraph(token.get("children", [])),
+                }
 
-    # block_text가 또한 children을 가지고 있거나
-    # 다시 list가 있다.
+            return None
 
+        result = []
 
+        for child in list_token.get("children", []):
+            processed = iter_token(child, 0)
+            if processed:
+                if isinstance(processed, list):
+                    result.extend(processed)
+                else:
+                    result.append(processed)
+
+        return {"type": "list", "children": result}
 
     for token in tokens:
         type = token['type']
@@ -194,11 +230,29 @@ def process_json(data):
                                 "url": child["attrs"]["url"],
                                 **alt_dict
                             },
-                            consume_type="monopoly"
+                            consume="monopoly"
                         )
             case 'list':
-                list(token)
+                add_token(process_list(token))
+            case 'block_code':
+                add_token(
+                    {
+                        "type": "code",
+                        "lang": token["attrs"]["info"],
+                        "raw": token["raw"],
+                    }
+                )
+            case 'comment_block':
+                match(token['key']):
+                    case 'layout':
+                        processed['slides'][current_slide]['layout'] = token['value']
+                    case 'note':
+                        processed['slides'][current_slide]['notes'].append(token['value'])
+                pass
+            case 'blank_line':
+                pass
             case _:
+                print(token)
                 pass
 
     return processed  # 중간 처리 로직을 여기에 추가 가능

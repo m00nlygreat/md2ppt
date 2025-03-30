@@ -6,12 +6,14 @@ slides:
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: 들어가며
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - hyperlink: https://naver.com
@@ -22,7 +24,7 @@ slides:
     - text: ' '
     - monospace: true
       text: 소개
-  layout: content_with_caption
+  layout: example
   placeholders:
   - - type: list
       children:
@@ -77,8 +79,18 @@ slides:
       consume: shared
   - - type: image
       url: attachments/57460fdf0c00e161901a1359ea5ba690.png
-      alt: 함정카드
       consume: monopoly
+  - - type: paragraph
+      runs:
+      - text: ''
+      consume: shared
+    - type: paragraph
+      runs:
+      - text: ''
+      consume: shared
+  notes:
+  - 이것은 노트입니다요.
+  - 노트를 맘껏 쓰십시오
 - title:
     runs:
     - text: ChatGPT
@@ -130,6 +142,7 @@ slides:
   - - type: image
       url: attachments/a11611eae1484ae28180a6560f8a51d7.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT
@@ -163,6 +176,7 @@ slides:
   - - type: image
       url: attachments/62c1b5d77e55b59b68a78c492e8a12b5.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT
@@ -171,6 +185,7 @@ slides:
   - - type: image
       url: attachments/b0a0da8916cc1ecb76eb3d2771e6b901.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT
@@ -206,6 +221,7 @@ slides:
   - - type: image
       url: attachments/9ce9d4d1d35e73e233aec82e4e1dc236.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 환각 (Hallucination)
@@ -245,6 +261,7 @@ slides:
   - - type: image
       url: attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT와 생성형 AI에 대한 오해
@@ -317,6 +334,7 @@ slides:
         runs:
         - text: 그러므로 FOMO에 시달리며 벼락치기하기 보다는, 당장 안 필요해도 업무에 조금씩 써보면서 꾸준히 화제를 팔로우하기
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 그럼 어떻게 공부할까
@@ -346,12 +364,14 @@ slides:
   - - type: image
       url: attachments/3f5651eb5f7ae2fedd55035c2f16da81.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 그럼 어떻게 공부할까
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: S.T.A.R 프레임워크
@@ -414,6 +434,7 @@ slides:
   - - type: image
       url: attachments/7fa6be53f57fc29acb551fb16ab8df9e.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 왜 내 GPT는 대답을 이상하게 할까?
@@ -461,6 +482,7 @@ slides:
         runs:
         - text: 동문서답, "맛집 알려드릴까요?"
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 왜 내 GPT는 대답을 이상하게 할까?
@@ -519,6 +541,7 @@ slides:
         runs:
         - text: 맥락이 오염된 경우 아예 새로 시작하는 것이 좋음.
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 왜 내 GPT는 대답을 이상하게 할까?
@@ -560,12 +583,14 @@ slides:
   - - type: image
       url: attachments/539be8df4e6616f2abcf257f090141c0.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: AI의 역사
@@ -602,6 +627,7 @@ slides:
           text: GPU와 같이 방대한 양의 작은 연산을 동시에 수행하는 능력
         - text: ' 필요'
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI의 역사
@@ -610,6 +636,7 @@ slides:
   - - type: image
       url: attachments/e7d941a213bbc7f8c53c236aca603edb.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI의 역사
@@ -618,6 +645,7 @@ slides:
   - - type: image
       url: attachments/5a0cd7df2feffc65cba09c9a4783051d.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI의 역사
@@ -659,6 +687,7 @@ slides:
         runs:
         - text: OpenAI와 ChatGPT의 등장
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI의 역사
@@ -667,6 +696,7 @@ slides:
   - - type: image
       url: attachments/ae4a8830da2812646ce602469986d0fe.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: LLM의 종류
@@ -675,6 +705,7 @@ slides:
   - - type: image
       url: attachments/ff3af17b592d95fe5c3754e07c7a9779.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 오픈 AI와 일론 머스크
@@ -722,6 +753,7 @@ slides:
       runs:
       - text: ':::'
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 오픈 AI와 일론 머스크
@@ -787,6 +819,7 @@ slides:
   - - type: image
       url: attachments/9394f65b0b4883f2778a5e8f8711fd84.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI의 미래
@@ -853,6 +886,7 @@ slides:
         runs:
         - text: AMI는 2040년 -> 2030년에 올 것
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI의 미래
@@ -903,6 +937,7 @@ slides:
   - - type: image
       url: attachments/4979ccf3476707c1bee77ec32442cb81.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -948,6 +983,7 @@ slides:
         runs:
         - text: 하드웨어의 병목(bottleneck) 현상을 소프트웨어로 뚫고 나가려는 시도
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -984,6 +1020,7 @@ slides:
         runs:
         - text: 머스크가 트위터를 인수해 X로 바꾼 이유도 여기에 있다는 관측
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -1038,6 +1075,7 @@ slides:
   - - type: image
       url: attachments/484bafff5c4c116c3d834d0b5978b254.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -1099,6 +1137,7 @@ slides:
         runs:
         - text: Apple Inteligence 발표와 ChatGPT 통합에서 예견됨
       consume: shared
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -1127,6 +1166,7 @@ slides:
   - - type: image
       url: attachments/88925e4a754e81f58e2b521089d239ff.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: AI 이모저모
@@ -1180,12 +1220,14 @@ slides:
   - - type: image
       url: attachments/bac59702c005aca8741f935e7f06117f.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT 사용해보기
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: 소개
@@ -1194,6 +1236,7 @@ slides:
   - - type: image
       url: attachments/d062f447b80a0d71c1068bf7c82b6421.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 소개
@@ -1202,6 +1245,7 @@ slides:
   - - type: image
       url: attachments/485210f534c5512fdff06aabda1124b8.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 질문해보기
@@ -1234,6 +1278,7 @@ slides:
   - - type: image
       url: attachments/1191774588bf3a504670c4885f57193b.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 질문해보기
@@ -1271,6 +1316,7 @@ slides:
   - - type: image
       url: attachments/4ea2acad91acff60f5e8e106397509c5.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 질문해보기
@@ -1296,6 +1342,7 @@ slides:
   - - type: image
       url: attachments/9977ca45d920df4e3683764a14a37e47.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 질문해보기
@@ -1322,6 +1369,7 @@ slides:
   - - type: image
       url: attachments/23b54a5218270ca74e58d04fc86469d6.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 질문해보기
@@ -1356,12 +1404,14 @@ slides:
   - - type: image
       url: attachments/23b54a5218270ca74e58d04fc86469d6.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 엔지니어링
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: 프롬프트 엔지니어링
@@ -1405,6 +1455,7 @@ slides:
         - hyperlink: https://www.aitimes.com/news/articleView.html?idxno=158070
           text: 프롬프트 엔지니어 회의론 증가
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1457,6 +1508,7 @@ slides:
   - - type: image
       url: attachments/ba5c83835290b17deb36b9d3a39d6e73.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1509,6 +1561,7 @@ slides:
   - - type: image
       url: attachments/4831dc35ef1641308c5975b40da4979e.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1545,6 +1598,7 @@ slides:
         - hyperlink: https://chat.openai.com/share/ff2be24f-2f7e-4f65-91ad-6a3386de3106
           text: LK-99 보고서
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1580,6 +1634,7 @@ slides:
   - - type: image
       url: attachments/b6b6a80f8b84619a2e08b13ab9570bb7.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1621,6 +1676,7 @@ slides:
   - - type: image
       url: attachments/299b3037996e2d715fd48d898ba51adf.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1650,6 +1706,7 @@ slides:
   - - type: image
       url: attachments/fad19e5573f7519651d3e91305dd427c.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1681,6 +1738,7 @@ slides:
   - - type: image
       url: attachments/ca6f17c3e08cb96a44029d8e76a1c4e0.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1725,6 +1783,7 @@ slides:
         runs:
         - text: '"이 결과가 맘에 들어. 다음에 다른 텍스트로도 동일한 결과를 낼 수 있도록 너에게 보낼 프롬프트를 작성해줘"'
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 프롬프트 잘 쓰기
@@ -1733,6 +1792,7 @@ slides:
   - - type: image
       url: attachments/54669d4bedb283bcebff121a3b9783c3.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 마크다운(Markdown)
@@ -1789,6 +1849,7 @@ slides:
   - - type: image
       url: attachments/7dd1ed901e32a1721fc5ad0b4c554d46.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 마크다운(Markdown)
@@ -1797,6 +1858,7 @@ slides:
   - - type: image
       url: attachments/df5d4daf4b1374162fe083ebea9b58d6.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 마크다운의 문법 소개
@@ -1841,6 +1903,7 @@ slides:
 
         '
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 마크다운의 문법 소개
@@ -1892,6 +1955,7 @@ slides:
 
         '
       consume: shared
+  notes: []
 - title:
     runs:
     - text: Markdown is the new MS Word
@@ -1930,6 +1994,7 @@ slides:
         runs:
         - text: 마크다운은 점차 더 많은 현세대 애플리케이션에 통합되고 있습니다. 곧 더 많은 곳에서 마크다운을 보게 될 것입니다.
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 옵시디언 (Obsidian)
@@ -1957,6 +2022,7 @@ slides:
   - - type: image
       url: attachments/e0ffc0abe0048d055fcb6dfc2e642c4a.gif
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: Mermaid.js
@@ -1987,6 +2053,7 @@ slides:
   - - type: image
       url: attachments/5b6cffdb1fb4a0c81df96f4e917a08ed.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: Obsidian과 GPT를 사용한 개인 지식DB 챗봇 구축
@@ -1995,12 +2062,14 @@ slides:
   - - type: image
       url: attachments/e0ffab185ae6167de1bf60efe892c797.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT 고급 기능 소개
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: Custom Instruction & Memory
@@ -2036,6 +2105,7 @@ slides:
   - - type: image
       url: attachments/88db67d372fadc7a6bc0ac93364f7348.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: Vision & DALL-E
@@ -2072,6 +2142,7 @@ slides:
   - - type: image
       url: attachments/8febf0d19a2b3b70a8a0ffc9259ccfea.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: Browsing
@@ -2115,6 +2186,7 @@ slides:
   - - type: image
       url: attachments/e660357c14c96b918121177e863ac344.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: Data Analysis
@@ -2156,6 +2228,7 @@ slides:
   - - type: image
       url: attachments/d75a495e774c8443c68bb04918a6e770.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPTs
@@ -2185,6 +2258,7 @@ slides:
   - - type: image
       url: attachments/d5fc40e675ee19c9b9aa9df65fa6e1b3.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPTs 만들기
@@ -2237,6 +2311,7 @@ slides:
           text: 만들기
         - text: ' 버튼을 눌러 GPT 저장 완료'
       consume: shared
+  notes: []
 - title:
     runs:
     - text: GPTs 만들기
@@ -2245,6 +2320,7 @@ slides:
   - - type: image
       url: attachments/792507cf98f305413e83724b7b1b13de.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 구성(Instruction)
@@ -2292,6 +2368,7 @@ slides:
   - - type: image
       url: attachments/3af4a529f73de89bc338936199370be9.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 구성(Instruction)
@@ -2345,6 +2422,7 @@ slides:
   - - type: image
       url: attachments/11c7ab323f5c96a6c92b8d8442f9df47.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT App
@@ -2376,12 +2454,14 @@ slides:
   - - type: image
       url: attachments/3f2d7f686248abd90db37984ae24016d.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 실전 ChatGPT
   layout: section_header
   placeholders:
   - []
+  notes: []
 - title:
     runs:
     - text: 이력서를 주고 물어보기
@@ -2418,6 +2498,7 @@ slides:
   - - type: image
       url: attachments/6b41cdacfd2a9953eeee370b79cd7455.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 회사의 재무제표 분석
@@ -2451,6 +2532,7 @@ slides:
   - - type: image
       url: attachments/17b686530c78f88f5a37c753ad54f8ef.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 아보카도 가격 분석
@@ -2481,6 +2563,7 @@ slides:
   - - type: image
       url: attachments/d68f54d0ac36210cfd31678a5312ad06.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 스포티파이 곡 재생 데이터 분석
@@ -2515,6 +2598,7 @@ slides:
   - - type: image
       url: attachments/6c1c4ed0d0042d5fba0595f3a02d9507.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPTs
@@ -2543,6 +2627,7 @@ slides:
   - - type: image
       url: attachments/2862e502d184d8c508d285b2d48aed7f.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 원영적사고 GPT 만들기
@@ -2576,6 +2661,7 @@ slides:
   - - type: image
       url: attachments/f4c5748c5a4fb3e57ff33e917f005c62.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 텍스트를 파워포인트 슬라이드로 만들기
@@ -2621,6 +2707,7 @@ slides:
   - - type: image
       url: attachments/8bd6877f8b9ebf43bc309a4e1e24af10.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 엑셀에서 ChatGPT 활용하기
@@ -2652,6 +2739,7 @@ slides:
   - - type: image
       url: attachments/76573fd6183ebd1540568aa49548c632.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 엑셀에서 ChatGPT 활용하기
@@ -2683,6 +2771,7 @@ slides:
   - - type: image
       url: attachments/ac4db0c14b9126bb274ec3adb0fa163e.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPT를 엑셀 안에서 사용하기
@@ -2707,6 +2796,7 @@ slides:
   - - type: image
       url: attachments/07d2d3049823dacf5ee3b1d3941e1eee.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPT를 엑셀 안에서 사용하기
@@ -2746,6 +2836,7 @@ slides:
   - - type: image
       url: attachments/7ab79304774bde61095264c1ba53048a.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPT를 엑셀 안에서 사용하기
@@ -2783,6 +2874,7 @@ slides:
   - - type: image
       url: attachments/19d92207fcafeeea3978bcc9679c4d0d.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPT를 엑셀 안에서 사용하기
@@ -2830,6 +2922,7 @@ slides:
   - - type: image
       url: attachments/87ade8ae4e3daa92f8b0c58fc390ad36.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: GPT를 엑셀 안에서 사용하기
@@ -2874,6 +2967,7 @@ slides:
   - - type: image
       url: attachments/4f4263d8ba5fbc4c4917e40c19900716.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: OpenAI API Key 발급
@@ -2922,6 +3016,7 @@ slides:
   - - type: image
       url: attachments/ce85ea5c4fd1e0f139a072b68e61b526.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: VBA
@@ -2967,6 +3062,7 @@ slides:
         runs:
         - text: 기존 엑셀 함수에 더해 사용할 수 있는 사용자 커스텀 함수를 VBA로 제작할 수 있음
       consume: shared
+  notes: []
 - title:
     runs:
     - text: 근태 체크 엑셀 매크로 만들기
@@ -2993,6 +3089,7 @@ slides:
   - - type: image
       url: attachments/84837ceb3e90aea8e3dc22611ad3376f.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 파일명 변경 엑셀 만들기
@@ -3036,6 +3133,7 @@ slides:
   - - type: image
       url: attachments/b751f9382dd899ae32fcb96b4dadd323.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: ChatGPT를 엑셀에서 사용할 수 있도록 커스텀 함수 만들기
@@ -3068,9 +3166,11 @@ slides:
   - - type: image
       url: attachments/8f276d6461e88f846b234db5129cbee1.png
       consume: monopoly
+  notes: []
 - title:
     runs:
     - text: 감사합니다
-  layout: title_and_content
+  layout: ''
   placeholders:
   - []
+  notes: []
