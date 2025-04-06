@@ -1,7 +1,8 @@
 import pptx
 
 p = pptx.Presentation("./ref.pptx")
-obj = p.slides[2].shapes[0].text_frame.paragraphs[0].runs[1].font.fill
+# obj = p.slides[2].shapes[0].text_frame.paragraphs[0].runs[0].font.size
+obj = p.slide_masters[0].placeholders[0].text_frame.paragraphs[0].runs[0].font.size
 
 
 def print_obj(obj):
@@ -24,6 +25,7 @@ def print_obj(obj):
             print(f"{key}: {value}")
         except Exception:
             print(f"{key}: <non-printable>")
+            
 print(type(obj))
 print(dir(obj))
 print(obj)

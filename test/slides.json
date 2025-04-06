@@ -16,7 +16,8 @@
             "title": {
                 "runs": [
                     {
-                        "text": "들어가며"
+                        "text": "들어가며",
+                        "monospace": true
                     }
                 ]
             },
@@ -30,7 +31,6 @@
             "title": {
                 "runs": [
                     {
-                        "hyperlink": "https://naver.com",
                         "italic": true,
                         "bold": true,
                         "monospace": true,
@@ -41,11 +41,12 @@
                     },
                     {
                         "monospace": true,
-                        "text": "소개"
+                        "text": "소개",
+                        "hyperlink": "https://naver.com"
                     }
                 ]
             },
-            "layout": "example",
+            "layout": "examples",
             "placeholders": [
                 [
                     {
@@ -6695,7 +6696,7 @@
                     }
                 ]
             },
-            "layout": "",
+            "layout": "section_header",
             "placeholders": [
                 []
             ],

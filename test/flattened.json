@@ -274,8 +274,8 @@
         {
             "type": "comment_block",
             "key": "layout",
-            "value": "example",
-            "raw": "[layout]: # (example)"
+            "value": "examples",
+            "raw": "[layout]: # (examples)"
         },
         {
             "type": "paragraph",
