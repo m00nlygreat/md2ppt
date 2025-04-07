@@ -26,13 +26,13 @@ def process_json(data):
     current_placeholder = 0
     prev_token = {}
 
-    def finalize_slide():
+    def finalize_slide(finalize_doc=False):
         nonlocal current_slide, current_placeholder # This allows us to modify current_slide
         processed['slides'][current_slide]['layout'] = determine_layout(processed['slides'][current_slide])
         current_slide += 1
         current_placeholder = 0
-
-        processed['slides'].append(deepcopy(NEW_SLIDE))
+        if not finalize_doc:
+            processed['slides'].append(deepcopy(NEW_SLIDE))
 
     def determine_layout(slide):
         if slide['layout'] != '':
@@ -62,8 +62,6 @@ def process_json(data):
                 pass
         
         return layout
-
-    # determine_layout은 빈 슬라이드를 지우는 역할도 하게될 것.
 
     def add_token(token, consume="shared"):
         nonlocal current_placeholder, current_slide, prev_token
@@ -254,6 +252,8 @@ def process_json(data):
             case _:
                 print(token)
                 pass
+
+    finalize_slide(True)
 
     return processed  # 중간 처리 로직을 여기에 추가 가능
 
