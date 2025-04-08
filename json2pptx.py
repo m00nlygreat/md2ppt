@@ -80,28 +80,64 @@ def convert_json_to_pptx(prs, data, layouts):
                     break
 
         slide_layout_idx = prs.slide_layouts[layout_index]
-        new_slide = prs.slides.add_slide(slide_layout_idx)
+        print(slide_layout_idx.name)
+        current_slide = prs.slides.add_slide(slide_layout_idx)
 
         # 제목을 설정합니다.
         title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
         runs = title.get("runs", [])
         if title:
-            title_shape = new_slide.shapes.title
+            title_shape = current_slide.shapes.title
             p = title_shape.text_frame.paragraphs[0]
-            for run in runs:
-                r = p.add_run()
-                r.text = run.get("text", "")
-                font = r.font
-                if 'bold' in run:
-                    font.bold = True
-                if 'italic' in run:
-                    font.italic = True
-                if 'monospace' in run:
-                    # print(font.size)
-                    # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
-                    font.name = 'Consolas'
-                if 'hyperlink' in run:
-                    r.hyperlink.address = run.get("hyperlink", "https://google.com")
+            process_runs(runs, p)
+
+        pholder_no = 0
+
+        for pholder_data in slide.get("placeholders", []):
+            pholder_no += 1
+            if len(current_slide.placeholders) > pholder_no:
+                current_placeholder = current_slide.shapes[pholder_no]
+                for token in pholder_data:
+                    process_token(current_placeholder, token)
+
+def process_token(current_placeholder, token):
+    match(token.get("type", "")):
+        case "paragraph":
+            p = define_paragraph(current_placeholder)
+            process_runs(token.get("runs", []), p)
+        case _ :
+            # print(token.get("type", ""))
+            pass
+
+def define_paragraph(placeholder):
+    """
+    Placeholder에서 첫 번째 단락을 가져오고, 텍스트가 비어있으면 새 단락을 추가합니다.
+    """
+    if placeholder.text_frame.paragraphs[0].text != "":
+        paragraph = placeholder.text_frame.add_paragraph()
+    else:
+        paragraph = placeholder.text_frame.paragraphs[0]
+    return paragraph
+
+def process_runs(runs, paragraph):
+    """
+    주어진 runs 리스트를 사용하여 paragraph에 텍스트와 스타일을 설정합니다.
+    각 run은 텍스트와 스타일 정보를 포함하는 딕셔너리입니다.
+    """
+    for run in runs:
+        r = paragraph.add_run()
+        r.text = run.get("text", "")
+        font = r.font
+        if 'bold' in run:
+            font.bold = True
+        if 'italic' in run:
+            font.italic = True
+        if 'monospace' in run:
+            font.name = 'Consolas'
+            # print(font.size)
+            # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
+        if 'hyperlink' in run:
+            r.hyperlink.address = run.get("hyperlink", "https://google.com")
 
 def main(data=None):
     parser = argparse.ArgumentParser(
