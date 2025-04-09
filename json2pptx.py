@@ -105,6 +105,11 @@ def process_token(current_placeholder, token):
         case "paragraph":
             p = define_paragraph(current_placeholder)
             process_runs(token.get("runs", []), p)
+        case "image":
+            try:
+                current_placeholder.insert_picture(token.get("url", ""))
+            except Exception as e:
+                print(f"Error inserting image: {e}")
         case _ :
             # print(token.get("type", ""))
             pass
