@@ -9,6 +9,7 @@ from pptx import Presentation
 from pptx.util import Inches
 from PIL import Image
 from lxml import etree
+from pptx.enum.dml import MSO_THEME_COLOR
 
 # 중복 경고는 무시 (선택 사항)
 warnings.filterwarnings("ignore", message="Duplicate name:")
@@ -195,18 +196,28 @@ def calc_resloc(p, i, align=5):
         }
     return resloc
 
+def unbullet(p):
+    p._pPr.insert(
+        0,
+        etree.Element(
+            "{http://schemas.openxmlformats.org/drawingml/2006/main}buNone"
+        ),
+    )
+    p._element.get_or_add_pPr().set("marL", "0")
+    p._element.get_or_add_pPr().set("indent", "0")
 
 def process_token(current_placeholder, token, current_slide):
     match(token.get("type", "")):
         case "paragraph":
             p = define_paragraph(current_placeholder)
-            p._pPr.insert(
-                0,
-                etree.Element(
-                    "{http://schemas.openxmlformats.org/drawingml/2006/main}buNone"
-                ),
-            )
-            p.space_before = Inches(0)
+            unbullet(p)
+            process_runs(token.get("runs", []), p)
+        case "heading":
+            p = define_paragraph(current_placeholder)
+            unbullet(p)
+            p.level = token.get("depth", 0)
+            p.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
+            p.font.bold = True
             process_runs(token.get("runs", []), p)
         case "image":
             url = token.get("url", "")
