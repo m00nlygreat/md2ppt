@@ -6,6 +6,7 @@ import re
 import tempfile
 import warnings
 from pptx import Presentation
+from pptx.util import Inches
 
 # 중복 경고는 무시 (선택 사항)
 warnings.filterwarnings("ignore", message="Duplicate name:")
@@ -80,8 +81,13 @@ def convert_json_to_pptx(prs, data, layouts):
                     break
 
         slide_layout_idx = prs.slide_layouts[layout_index]
-        print(slide_layout_idx.name)
+        # print(slide_layout_idx.name)
         current_slide = prs.slides.add_slide(slide_layout_idx)
+
+        # placeholder idx와
+        p_map = {}
+        for i, pl in enumerate(current_slide.placeholders):
+            p_map.update({i: pl.placeholder_format.idx})            
 
         # 제목을 설정합니다.
         title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
@@ -92,24 +98,39 @@ def convert_json_to_pptx(prs, data, layouts):
             process_runs(runs, p)
 
         pholder_no = 0
-
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
             if len(current_slide.placeholders) > pholder_no:
-                current_placeholder = current_slide.shapes[pholder_no]
-                for token in pholder_data:
-                    process_token(current_placeholder, token)
+                # print(current_slide.slide_layout.name)
+                # print(token)
+                try:
+                    current_placeholder = current_slide.placeholders[p_map[pholder_no]]
+                except Exception as e:
+                    print(e)
 
-def process_token(current_placeholder, token):
+                for token in pholder_data:
+                    process_token(current_placeholder, token, current_slide)
+
+def process_token(current_placeholder, token, current_slide):
     match(token.get("type", "")):
         case "paragraph":
             p = define_paragraph(current_placeholder)
             process_runs(token.get("runs", []), p)
         case "image":
+            url = token.get("url", "")
             try:
-                current_placeholder.insert_picture(token.get("url", ""))
+                current_placeholder.insert_picture(url)
             except Exception as e:
-                print(f"Error inserting image: {e}")
+                left = current_placeholder.left
+                top = current_placeholder.top
+                width = current_placeholder.width
+                height = current_placeholder.height
+
+                sp = current_placeholder._element
+                sp.getparent().remove(sp)
+
+                current_slide.shapes.add_picture(url, left, top, width=width, height=height)
+
         case _ :
             # print(token.get("type", ""))
             pass
