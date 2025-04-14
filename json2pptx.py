@@ -7,9 +7,13 @@ import tempfile
 import warnings
 from pptx import Presentation
 from pptx.util import Inches
+from PIL import Image
+from lxml import etree
 
 # 중복 경고는 무시 (선택 사항)
 warnings.filterwarnings("ignore", message="Duplicate name:")
+
+pholder = 0
 
 def get_slide_layout_enum(prs):
     """
@@ -97,6 +101,7 @@ def convert_json_to_pptx(prs, data, layouts):
             p = title_shape.text_frame.paragraphs[0]
             process_runs(runs, p)
 
+        global pholder_no
         pholder_no = 0
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
@@ -111,29 +116,129 @@ def convert_json_to_pptx(prs, data, layouts):
                 for token in pholder_data:
                     process_token(current_placeholder, token, current_slide)
 
+
+def calc_resloc(p, i, align=5):
+    """
+    Placeholder와 이미지 객체를 사용하여 이미지의 위치와 크기를 계산합니다.
+    이미지가 placeholder 내에서 align 매개변수에 따라 정렬되도록 위치를 조정합니다.
+
+    인자:
+      p: placeholder 객체로, p.left, p.top, p.width, p.height 속성을 가짐.
+      i: 이미지 객체로, i.size가 (width, height) 튜플을 제공함.
+      align: 이미지 정렬 값 (1~9, numpad 비유). 기본값은 5 (가운데).
+             만약 1-9 범위의 정수가 아니면 기본값 5가 사용됩니다.
+             numpad 정렬 매핑:
+               7: 왼쪽 위,   8: 가운데 위,  9: 오른쪽 위,
+               4: 왼쪽 중간, 5: 가운데,      6: 오른쪽 중간,
+               1: 왼쪽 아래, 2: 가운데 아래, 3: 오른쪽 아래.
+
+    반환:
+      resloc: 이미지의 최종 좌표와 크기를 담은 dict (left, top, width, height)
+    """
+    # align 값을 정수로 변환 시도, 실패하거나 1~9 범위가 아니면 기본값 5 사용
+    
+    try:
+        align_val = int(align)
+    except Exception:
+        align_val = 5
+    if align_val < 1 or align_val > 9:
+        align_val = 5
+
+    # numpad 정렬 값에 따른 가로 정렬 계수: 왼쪽=0, 가운데=0.5, 오른쪽=1
+    if align_val in (1, 4, 7):
+        factor_x = 0
+    elif align_val in (2, 5, 8):
+        factor_x = 0.5
+    else:  # align_val in (3, 6, 9)
+        factor_x = 1
+
+    # numpad 정렬 값에 따른 세로 정렬 계수: 위=0, 가운데=0.5, 아래=1
+    if align_val in (7, 8, 9):
+        factor_y = 0
+    elif align_val in (4, 5, 6):
+        factor_y = 0.5
+    else:  # align_val in (1, 2, 3)
+        factor_y = 1
+
+    # Placeholder의 좌표와 크기
+    p_left = p.left
+    p_top = p.top
+    p_width = p.width
+    p_height = p.height
+    p_ratio = p_width / p_height
+
+    # 이미지의 원본 크기 및 비율
+    i_width, i_height = i.size
+    i_ratio = i_width / i_height
+
+    if i_ratio < p_ratio:
+        # 이미지가 placeholder보다 상대적으로 좁은 경우: 높이를 맞추고 너비를 조절
+        new_width = p_height * i_ratio
+        # 남는 가로 공간을 factor_x에 따라 오프셋 적용
+        new_left = p_left + (p_width - new_width) * factor_x
+        resloc = {
+            "left": new_left,
+            "top": p_top,  # 세로는 꽉 채움
+            "width": new_width,
+            "height": p_height,
+        }
+    else:
+        # 이미지가 placeholder보다 상대적으로 넓은 경우: 너비를 맞추고 높이를 조절
+        new_height = p_width / i_ratio
+        # 남는 세로 공간을 factor_y에 따라 오프셋 적용
+        new_top = p_top + (p_height - new_height) * factor_y
+        resloc = {
+            "left": p_left,  # 가로는 꽉 채움
+            "top": new_top,
+            "width": p_width,
+            "height": new_height,
+        }
+    return resloc
+
+
 def process_token(current_placeholder, token, current_slide):
     match(token.get("type", "")):
         case "paragraph":
             p = define_paragraph(current_placeholder)
+            p._pPr.insert(
+                0,
+                etree.Element(
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}buNone"
+                ),
+            )
+            p.space_before = Inches(0)
             process_runs(token.get("runs", []), p)
         case "image":
             url = token.get("url", "")
+
+            i = Image.open(url)
+            global pholder_no
+
+            # 추가된 슬라이드의 placeholder 이름은 새로 부여되기에 slide layout에서 가져옴
+            align = current_slide.slide_layout.placeholders[pholder_no].name
+            resloc = calc_resloc(current_placeholder, i, align)
+
             try:
                 current_placeholder.insert_picture(url)
             except Exception as e:
-                left = current_placeholder.left
-                top = current_placeholder.top
-                width = current_placeholder.width
-                height = current_placeholder.height
 
                 sp = current_placeholder._element
                 sp.getparent().remove(sp)
 
-                current_slide.shapes.add_picture(url, left, top, width=width, height=height)
+                current_slide.shapes.add_picture(url, **resloc)
+        case "list":
+            children = token.get("children", [])
+            if children:
+                for child in children:
+                    p = define_paragraph(current_placeholder)
+                    # print(child.get("type", ""))
+                    p.level = child.get("depth", 0)
+                    process_runs(child.get("runs", []), p)
 
         case _ :
             # print(token.get("type", ""))
             pass
+
 
 def define_paragraph(placeholder):
     """

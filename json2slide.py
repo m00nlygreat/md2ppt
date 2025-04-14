@@ -158,7 +158,7 @@ def process_json(data):
                 result.extend(extra_items)
                 return result
 
-            elif token_type == "block_text":
+            elif token_type == "block_text" or token_type == "paragraph":
                 # 단순 block_text는 현재 depth의 list_item으로 변환합니다.
                 return {
                     "type": "list_item",

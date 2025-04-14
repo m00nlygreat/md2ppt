@@ -16,8 +16,7 @@
             "title": {
                 "runs": [
                     {
-                        "text": "들어가며",
-                        "monospace": true
+                        "text": "들어가며"
                     }
                 ]
             },
@@ -31,6 +30,7 @@
             "title": {
                 "runs": [
                     {
+                        "hyperlink": "https://naver.com",
                         "italic": true,
                         "bold": true,
                         "monospace": true,
@@ -41,8 +41,7 @@
                     },
                     {
                         "monospace": true,
-                        "text": "소개",
-                        "hyperlink": "https://naver.com"
+                        "text": "소개"
                     }
                 ]
             },
@@ -1276,6 +1275,15 @@
                         "children": [
                             {
                                 "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "알고리즘 기반 (Rule-based Systems)"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
                                 "depth": 1,
                                 "runs": [
                                     {
@@ -1298,6 +1306,15 @@
                                 "runs": [
                                     {
                                         "text": "2010년도 이전까지 인공지능 구현의 대세였음."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "인공신경망 기반 (Machine Learning)"
                                     }
                                 ]
                             },
@@ -3467,6 +3484,15 @@
                         "children": [
                             {
                                 "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "대화 중심으로 프롬프팅을 완성해가는 방법"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
                                 "depth": 1,
                                 "runs": [
                                     {
@@ -3480,6 +3506,15 @@
                                 "runs": [
                                     {
                                         "text": "잘못된 답변 역시 입력으로 다시 들어가기에, 잘못된 답변을 놔두고 계속 맥락을 이어가면 안 됨."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "사내 의사결정을 위한 보고서 작성"
                                     }
                                 ]
                             },
