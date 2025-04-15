@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 from copy import deepcopy
+from urllib import parse
 
 
 def load_json(file_path):
@@ -220,12 +221,14 @@ def process_json(data):
                             {"type": "paragraph", "runs": paragraph(token["children"])}
                         )
                     case 'image':
+                        url_o = child["attrs"]["url"]
+                        url = url_o if parse.unquote(url_o) == url_o else parse.unquote(url_o)
                         alt = child["children"][0]["raw"]
                         alt_dict = {} if alt == "" else {"alt": alt}
                         add_token(
                             {
                                 "type": "image",
-                                "url": child["attrs"]["url"],
+                                "url": url,
                                 **alt_dict
                             },
                             consume="monopoly"

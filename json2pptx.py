@@ -8,8 +8,11 @@ import warnings
 from pptx import Presentation
 from pptx.util import Inches
 from PIL import Image
-from lxml import etree
 from pptx.enum.dml import MSO_THEME_COLOR
+from pptx.enum.lang import MSO_LANGUAGE_ID
+from pptx.dml.color import RGBColor
+from lxml import etree
+from pptx.oxml.xmlchemy import OxmlElement
 
 # 중복 경고는 무시 (선택 사항)
 warnings.filterwarnings("ignore", message="Duplicate name:")
@@ -247,7 +250,7 @@ def process_token(current_placeholder, token, current_slide):
                     process_runs(child.get("runs", []), p)
 
         case _ :
-            # print(token.get("type", ""))
+            print(token.get("type", ""))
             pass
 
 
@@ -260,6 +263,28 @@ def define_paragraph(placeholder):
     else:
         paragraph = placeholder.text_frame.paragraphs[0]
     return paragraph
+
+def set_highlight(run, color):
+    # get run properties
+    rPr = run._r.get_or_add_rPr()
+    # Create highlight element
+    hl = OxmlElement("a:highlight")
+    # Create specify RGB Colour element with color specified
+    srgbClr = OxmlElement("a:srgbClr")
+    setattr(srgbClr, "val", color)
+    # Add colour specification to highlight element
+    hl.append(srgbClr)
+    # Add highlight element to run properties
+    setattr(rPr, "lang", MSO_LANGUAGE_ID.ENGLISH_US)
+    setattr(rPr, "altLang", MSO_LANGUAGE_ID.KOREAN)
+    # lang="en-US" altLang="ko-KR"
+    rPr.append(hl)
+    latin = OxmlElement("a:latin")
+    # <a:latin typeface="Consolas" panose="020B0609020204030204" pitchFamily="49" charset="0"/>
+    setattr(latin, "typeface", "Consolas")
+    setattr(latin, "charset", "0")
+    rPr.append(latin)
+    return run
 
 def process_runs(runs, paragraph):
     """
@@ -275,7 +300,8 @@ def process_runs(runs, paragraph):
         if 'italic' in run:
             font.italic = True
         if 'monospace' in run:
-            font.name = 'Consolas'
+            r = set_highlight(r, 'EEEEEE')
+            r.font.color.rgb = RGBColor(248, 104, 107)
             # print(font.size)
             # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
         if 'hyperlink' in run:
