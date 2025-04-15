@@ -297,6 +297,8 @@ def process_runs(runs, paragraph):
         font = r.font
         if 'bold' in run:
             font.bold = True
+            font.color.theme_color = MSO_THEME_COLOR.ACCENT_3
+
         if 'italic' in run:
             font.italic = True
         if 'monospace' in run:
