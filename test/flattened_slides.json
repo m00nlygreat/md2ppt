@@ -45,7 +45,7 @@
                     }
                 ]
             },
-            "layout": "",
+            "layout": "content_with_caption",
             "placeholders": [
                 [
                     {
@@ -176,17 +176,6 @@
                         "type": "image",
                         "url": "attachments/57460fdf0c00e161901a1359ea5ba690.png",
                         "consume": "monopoly"
-                    }
-                ],
-                [
-                    {
-                        "type": "paragraph",
-                        "runs": [
-                            {
-                                "text": ""
-                            }
-                        ],
-                        "consume": "shared"
                     }
                 ]
             ],
@@ -819,20 +808,6 @@
                         "consume": "monopoly"
                     }
                 ]
-            ],
-            "notes": []
-        },
-        {
-            "title": {
-                "runs": [
-                    {
-                        "text": "그럼 어떻게 공부할까"
-                    }
-                ]
-            },
-            "layout": "section_header",
-            "placeholders": [
-                []
             ],
             "notes": []
         },
@@ -5363,7 +5338,6 @@
                         "level": 4,
                         "runs": [
                             {
-                                "italic": true,
                                 "text": "OpenAPI 스키마"
                             }
                         ],

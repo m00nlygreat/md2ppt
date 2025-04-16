@@ -114,8 +114,6 @@ type: text
 
 ![](attachments/3f5651eb5f7ae2fedd55035c2f16da81.png)
 
----
-
 ## S.T.A.R 프레임워크
 
 - [경희대 김상균 교수의 AI 학습/훈련법](https://www.youtube.com/watch?v=sDBDHF6m578)
@@ -794,7 +792,7 @@ type: text
 	- HTTP 헤더를 1개 밖에 지원하지 않아 복잡한 API 사용은 어려움
 	- 따라서 make.com / Zapier 등의 백엔드 자동화 도구를 이용하는 것이 좋음
 
-#### *OpenAPI 스키마*
+#### OpenAPI 스키마
 
 - API의 사용법을 나타낸 문서. Swagger 3.0이라고도 부름
 - 직접 작성하지 않아도 OpenAI가 마련한 [ActionsGPT](https://chatgpt.com/g/g-TYEliDU6A-actionsgpt)가 생성해줄 수 있다.

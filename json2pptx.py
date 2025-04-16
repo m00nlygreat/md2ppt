@@ -92,12 +92,10 @@ def convert_json_to_pptx(prs, data, layouts):
         # print(slide_layout_idx.name)
         current_slide = prs.slides.add_slide(slide_layout_idx)
 
-        # placeholder idx와
         p_map = {}
         for i, pl in enumerate(current_slide.placeholders):
-            p_map.update({i: pl.placeholder_format.idx})  
-
-        # print(p_map)          
+            p_map.update({i: slide_layout_idx.placeholders[i].placeholder_format.idx})
+        
 
         # 제목을 설정합니다.
         title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
@@ -268,10 +266,6 @@ def process_token(current_placeholder, token, current_slide):
 
             i = Image.open(url)
             global pholder_no
-
-            # 추가된 슬라이드의 placeholder 이름은 새로 부여되기에 slide layout에서 가져옴
-            align = current_slide.slide_layout.placeholders[pholder_no].name
-            # print(align)
             
             dynloc = {"order": pholder_no}
 
@@ -279,7 +273,9 @@ def process_token(current_placeholder, token, current_slide):
                 align_dict = json.loads(current_slide.slide_layout.placeholders[pholder_no].name)
                 dynloc.update(align_dict)
             except:
-                print('error parse json on placeholder')
+                # print('Error: Placeholder name is not JSON format.')
+                pass
+            
             resloc = calc_resloc(current_placeholder, i, dynloc.get("align",5))
 
             try:
@@ -302,7 +298,7 @@ def process_token(current_placeholder, token, current_slide):
                         orderify(p)
 
         case _ :
-            print(token.get("type", ""))
+            # print(token.get("type", ""))
             pass
 
 def orderify(p):

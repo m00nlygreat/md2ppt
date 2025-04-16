@@ -1365,12 +1365,6 @@
             "type": "blank_line"
         },
         {
-            "type": "thematic_break"
-        },
-        {
-            "type": "blank_line"
-        },
-        {
             "type": "heading",
             "attrs": {
                 "level": 2
@@ -8871,13 +8865,8 @@
             "style": "atx",
             "children": [
                 {
-                    "type": "emphasis",
-                    "children": [
-                        {
-                            "type": "text",
-                            "raw": "OpenAPI 스키마"
-                        }
-                    ]
+                    "type": "text",
+                    "raw": "OpenAPI 스키마"
                 }
             ]
         },
