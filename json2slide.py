@@ -113,15 +113,16 @@ def process_json(data):
         return all_runs
 
     def process_list(list_token):
-        def iter_token(token, depth=0):
+        def iter_token(token, depth=0, ordered=False):
             token_type = token.get("type")
 
             if token_type == "list":
                 # 리스트 토큰을 만나면 depth를 1 증가시키고 자식 항목들을 평탄하게 반환합니다.
                 new_depth = depth + 1
                 items = []
+                ordered = token.get("attrs", {}).get("ordered", False)
                 for child in token.get("children", []):
-                    result = iter_token(child, new_depth)
+                    result = iter_token(child, new_depth, ordered)
                     if result:
                         if isinstance(result, list):
                             items.extend(result)
@@ -155,7 +156,7 @@ def process_json(data):
                                 extra_items.append(processed)
                 result = []
                 if runs:
-                    result.append({"type": "list_item", "depth": depth, "runs": runs})
+                    result.append({"type": "list_item", "depth": depth, "runs": runs, "ordered": ordered})
                 result.extend(extra_items)
                 return result
 
@@ -165,6 +166,7 @@ def process_json(data):
                     "type": "list_item",
                     "depth": depth,
                     "runs": paragraph(token.get("children", [])),
+                    "ordered": ordered
                 }
 
             return None

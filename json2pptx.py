@@ -95,7 +95,9 @@ def convert_json_to_pptx(prs, data, layouts):
         # placeholder idx와
         p_map = {}
         for i, pl in enumerate(current_slide.placeholders):
-            p_map.update({i: pl.placeholder_format.idx})            
+            p_map.update({i: pl.placeholder_format.idx})  
+
+        # print(p_map)          
 
         # 제목을 설정합니다.
         title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
@@ -209,7 +211,37 @@ def unbullet(p):
     p._element.get_or_add_pPr().set("marL", "0")
     p._element.get_or_add_pPr().set("indent", "0")
 
+def titlify(p):
+    """
+    주어진 paragraph(p)에 대해 major theme fonts를 명시적으로 설정.
+    - Latin: +mj-lt
+    - East Asian: +mj-ea
+    """
+    # <a:defRPr> 요소 생성 또는 가져오기
+    pPr = p._element.get_or_add_pPr()
+    defRPr = pPr.find("{http://schemas.openxmlformats.org/drawingml/2006/main}defRPr")
+    if defRPr is not None:
+        # 기존 거 있으면 제거 (덮어쓰기 위해)
+        pPr.remove(defRPr)
+
+    defRPr = OxmlElement("a:defRPr")
+
+    # <a:latin typeface="+mj-lt"/>
+    latin = OxmlElement("a:latin")
+    latin.set("typeface", "+mj-lt")
+
+    # <a:ea typeface="+mj-ea"/>
+    ea = OxmlElement("a:ea")
+    ea.set("typeface", "+mj-ea")
+
+    defRPr.append(latin)
+    defRPr.append(ea)
+
+    # defRPr 추가
+    pPr.append(defRPr)
+
 def process_token(current_placeholder, token, current_slide):
+
     match(token.get("type", "")):
         case "paragraph":
             p = define_paragraph(current_placeholder)
@@ -217,10 +249,19 @@ def process_token(current_placeholder, token, current_slide):
             process_runs(token.get("runs", []), p)
         case "heading":
             p = define_paragraph(current_placeholder)
-            unbullet(p)
-            p.level = token.get("depth", 0)
-            p.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
-            p.font.bold = True
+            # unbullet(p)
+            # titlify(p)
+            # p.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
+            # p.level = token.get("depth", 0)
+            match(token.get("level", 3)):
+                case 3:
+                    p.level = 8
+                case _:
+                    p.level = 7
+            process_runs(token.get("runs", []), p)
+        case "block_quote":
+            p = define_paragraph(current_placeholder)
+            p.level = 6
             process_runs(token.get("runs", []), p)
         case "image":
             url = token.get("url", "")
@@ -230,7 +271,16 @@ def process_token(current_placeholder, token, current_slide):
 
             # 추가된 슬라이드의 placeholder 이름은 새로 부여되기에 slide layout에서 가져옴
             align = current_slide.slide_layout.placeholders[pholder_no].name
-            resloc = calc_resloc(current_placeholder, i, align)
+            # print(align)
+            
+            dynloc = {"order": pholder_no}
+
+            try:
+                align_dict = json.loads(current_slide.slide_layout.placeholders[pholder_no].name)
+                dynloc.update(align_dict)
+            except:
+                print('error parse json on placeholder')
+            resloc = calc_resloc(current_placeholder, i, dynloc.get("align",5))
 
             try:
                 current_placeholder.insert_picture(url)
@@ -248,11 +298,43 @@ def process_token(current_placeholder, token, current_slide):
                     # print(child.get("type", ""))
                     p.level = child.get("depth", 0)
                     process_runs(child.get("runs", []), p)
+                    if child.get("ordered", False):
+                        orderify(p)
 
         case _ :
             print(token.get("type", ""))
             pass
 
+def orderify(p):
+    """
+    p.level 값을 기준으로 번호 스타일 설정
+    """
+    level = p.level
+
+    # 원하는 스타일 매핑
+    # 참고: https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.autonumberschemevalues
+    style_map = {
+        0: "romanUcPeriod",  # I.
+        1: "arabicPeriod",   # 1.
+        2: "alphaLcParenR",  # a)
+        3: "alphaUcParenR",  # A)
+        4: "romanLcParenR",  # i)
+    }
+
+    auto_num_type = style_map.get(level, "arabicPeriod")
+
+    pPr = p._element.get_or_add_pPr()
+
+    # 기존 불릿 제거
+    for tag in ["a:buChar", "a:buAutoNum"]:
+        el = pPr.find(f".//{tag}", namespaces={"a": "http://schemas.openxmlformats.org/drawingml/2006/main"})
+        if el is not None:
+            pPr.remove(el)
+
+    # buAutoNum 추가
+    buAutoNum = OxmlElement("a:buAutoNum")
+    buAutoNum.set("type", auto_num_type)
+    pPr.append(buAutoNum)
 
 def define_paragraph(placeholder):
     """
@@ -303,7 +385,8 @@ def process_runs(runs, paragraph):
             font.italic = True
         if 'monospace' in run:
             r = set_highlight(r, 'EEEEEE')
-            r.font.color.rgb = RGBColor(248, 104, 107)
+            r.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
+            # r.font.color.rgb = RGBColor(248, 104, 107)
             # print(font.size)
             # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
         if 'hyperlink' in run:

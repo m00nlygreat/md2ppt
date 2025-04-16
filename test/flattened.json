@@ -273,21 +273,6 @@
         },
         {
             "type": "comment_block",
-            "key": "layout",
-            "value": "examples",
-            "raw": "[layout]: # (examples)"
-        },
-        {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "text",
-                    "raw": ""
-                }
-            ]
-        },
-        {
-            "type": "comment_block",
             "key": "note",
             "value": "이것은 노트입니다요.",
             "raw": "[note]: # (이것은 노트입니다요.)"
@@ -757,13 +742,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 이는 단순히 텍스트, 이미지, 오디오를 따로 처리한다는 의미가 아니며 텍스트를 이미지로, 이미지를 텍스트로, 텍스트를 음악으로 상호 변환하며 서로 어떤 의미와 관계를 갖는지를 아는 것\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "이는 단순히 텍스트, 이미지, 오디오를 따로 처리한다는 의미가 아니며 텍스트를 이미지로, 이미지를 텍스트로, 텍스트를 음악으로 상호 변환하며 서로 어떤 의미와 관계를 갖는지를 아는 것"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -1216,13 +1206,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 90% 이상의 생성형 AI 관련 지식들은 유튜브를 통해 유통되고, 전파됨\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "90% 이상의 생성형 AI 관련 지식들은 유튜브를 통해 유통되고, 전파됨"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -1333,13 +1328,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 왕도(Royal road)가 없다!\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "왕도(Royal road)가 없다!"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -1487,13 +1487,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 현재의 AI란 즉, 사람이 간단히 할 수 있는 일을 사람보다 훨씬 빠르게 할 수 있는 도구이므로, 이를 초점삼아 내 업무에 어떻게 적용할지 고민해볼 것\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "현재의 AI란 즉, 사람이 간단히 할 수 있는 일을 사람보다 훨씬 빠르게 할 수 있는 도구이므로, 이를 초점삼아 내 업무에 어떻게 적용할지 고민해볼 것"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -1715,13 +1720,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 대형언어모델(LLM)은 확률적 정보에 따라 방대한 훈련 데이터에서 관찰한 언어 형식의 시퀀스를 우연히 꿰맞추는 시스템이다. 의미를 되새길 필요없는 확률론적 앵무새(Stochastic Parrots)다.\n- 에밀리 M. 벤더, 언어학자\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "대형언어모델(LLM)은 확률적 정보에 따라 방대한 훈련 데이터에서 관찰한 언어 형식의 시퀀스를 우연히 꿰맞추는 시스템이다. 의미를 되새길 필요없는 확률론적 앵무새(Stochastic Parrots)다. - 에밀리 M. 벤더, 언어학자"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -2648,18 +2658,6 @@
             "type": "blank_line"
         },
         {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "text",
-                    "raw": "::: notes"
-                }
-            ]
-        },
-        {
-            "type": "blank_line"
-        },
-        {
             "type": "list",
             "children": [
                 {
@@ -2777,18 +2775,6 @@
                 "depth": 0,
                 "ordered": false
             }
-        },
-        {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "text",
-                    "raw": ":::"
-                }
-            ]
-        },
-        {
-            "type": "blank_line"
         },
         {
             "type": "thematic_break"
@@ -3323,13 +3309,18 @@
             "type": "blank_line"
         },
         {
-            "type": "block_code",
-            "raw": "> AI를 통해 노동에서 해방된 후 인간은 어떻게 될 것인가\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "AI를 통해 노동에서 해방된 후 인간은 어떻게 될 것인가"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -3520,13 +3511,18 @@
             "type": "blank_line"
         },
         {
-            "type": "block_code",
-            "raw": "> AI 전쟁에서 승리하기 위한 키는 무엇일까?\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "AI 전쟁에서 승리하기 위한 키는 무엇일까?"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -6053,13 +6049,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> GPT는 점보 상품이 바이럴 마케팅용이라는 것을 모를 가능성이 높다.\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "GPT는 점보 상품이 바이럴 마케팅용이라는 것을 모를 가능성이 높다."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -6149,13 +6150,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> '딥시크는 할 수 있던데? ㅋ'\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "'딥시크는 할 수 있던데? ㅋ'"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -7503,13 +7509,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> GPT등의 언어모델은 스스로는 다이어그램을 그리지 못하지만 mermaid.js 문법의 코드를 작성할 수 있다!\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "GPT등의 언어모델은 스스로는 다이어그램을 그리지 못하지만 mermaid.js 문법의 코드를 작성할 수 있다!"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -10066,13 +10077,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> PPT 작성은 Python 코드로 하기 때문에 실망스러운 것이 사실\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "PPT 작성은 Python 코드로 하기 때문에 실망스러운 것이 사실"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -10324,13 +10340,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 기본적으로 수식과 함수의 동작을 이해해야 정확하게 설명할 수 있다. 만약 어렵다면 스크린샷을 첨부하고 상황과 목적을 침착하게 설명해볼 수 있다\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "기본적으로 수식과 함수의 동작을 이해해야 정확하게 설명할 수 있다. 만약 어렵다면 스크린샷을 첨부하고 상황과 목적을 침착하게 설명해볼 수 있다"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -10680,13 +10701,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 채우기를 사용해서 GPT() 함수를 반복할 경우 그 수만큼 API 호출이 이뤄지니 주의\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "채우기를 사용해서 GPT() 함수를 반복할 경우 그 수만큼 API 호출이 이뤄지니 주의"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -11464,13 +11490,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 코드를 요청하는 프롬프트보다 사실은 버튼을 배치하고 그 버튼의 동작을 구상하는 것이 훨씬 중요하다.\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "코드를 요청하는 프롬프트보다 사실은 버튼을 배치하고 그 버튼의 동작을 구상하는 것이 훨씬 중요하다."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -11590,13 +11621,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 사실은 이미 누가 예쁘게 만들어둔 편리한 매크로가 있으니 이런 것도 할 수 있다는 걸 실습하고 참고만 하고 이쪽을 쓰도록 하자.\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "사실은 이미 누가 예쁘게 만들어둔 편리한 매크로가 있으니 이런 것도 할 수 있다는 걸 실습하고 참고만 하고 이쪽을 쓰도록 하자."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
@@ -11729,13 +11765,18 @@
             }
         },
         {
-            "type": "block_code",
-            "raw": "> 엑셀에 내장된 VBA는 JSON을 처리할 수 없기 때문에 VBA-JSON이라는 모듈을 설치해야 한다. GPT가 따로 언급해주지 않으면 'JSON' 모듈 설치에 관해 물어보고 시키는 대로 할 것.\n",
-            "style": "fenced",
-            "marker": "```",
-            "attrs": {
-                "info": "markdown"
-            }
+            "type": "block_quote",
+            "children": [
+                {
+                    "type": "paragraph",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": "엑셀에 내장된 VBA는 JSON을 처리할 수 없기 때문에 VBA-JSON이라는 모듈을 설치해야 한다. GPT가 따로 언급해주지 않으면 'JSON' 모듈 설치에 관해 물어보고 시키는 대로 할 것."
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "blank_line"
