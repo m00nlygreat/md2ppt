@@ -488,7 +488,7 @@
                     }
                 ]
             },
-            "layout": "content_with_caption",
+            "layout": "two_content",
             "placeholders": [
                 [
                     {
@@ -536,7 +536,16 @@
                             }
                         ],
                         "consume": "shared"
-                    },
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg",
+                        "consume": "monopoly"
+                    }
+                ],
+                [
                     {
                         "type": "list",
                         "children": [
@@ -562,13 +571,6 @@
                             }
                         ],
                         "consume": "shared"
-                    }
-                ],
-                [
-                    {
-                        "type": "image",
-                        "url": "attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg",
-                        "consume": "monopoly"
                     }
                 ]
             ],

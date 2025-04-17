@@ -1,10 +1,5 @@
-import argparse
+import json, os, re, tempfile, warnings, argparse
 from enum import Enum
-import json
-import os
-import re
-import tempfile
-import warnings
 from pptx import Presentation
 from pptx.util import Inches
 from PIL import Image

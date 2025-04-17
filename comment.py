@@ -8,7 +8,7 @@ def plugin_comment_block(md):
             'type': 'comment_block',
             'key': m.group('key'),
             'value': m.group('value'),
-            'raw': m.group(0)
+            'raw': m.group(0).replace('\n','')
         }
         state.append_token(token)
         return m.end()

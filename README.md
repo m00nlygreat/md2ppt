@@ -6,6 +6,7 @@
 
 - [ ] 그림 이후에 placeholder를 음. 못 찾는 문제?
 - [ ] 빈 슬라이드 삭제 기능
+- [ ] 제목 슬라이드
 
 ## 향후 수정
 
@@ -13,4 +14,5 @@
 
 ## 향후 추가
 
+- [ ] text placeholder grow rule
 - [ ] code highlight

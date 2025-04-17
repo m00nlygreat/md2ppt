@@ -78,10 +78,12 @@ type: text
 
 ### RAG (Retrieval-Augmented Generation)
 
+![](attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg)
+
 - 범용으로 제작된 LLM에 특정 목적의 데이터를 첨부하여 정확하고 전문성 있는 답변을 생성하는 기술
 - 환각 현상을 줄이는 테크닉 중 하나
 
-![](attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg)
+[layout]: # (two_content)
 
 ## ChatGPT와 생성형 AI에 대한 오해
 

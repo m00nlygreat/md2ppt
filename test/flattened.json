@@ -290,7 +290,7 @@
             "type": "comment_block",
             "key": "note",
             "value": "노트를 맘껏 쓰십시오",
-            "raw": "[note]: # (노트를 맘껏 쓰십시오)\n"
+            "raw": "[note]: # (노트를 맘껏 쓰십시오)"
         },
         {
             "type": "blank_line"
@@ -875,6 +875,26 @@
             "type": "blank_line"
         },
         {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "image",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": ""
+                        }
+                    ],
+                    "attrs": {
+                        "url": "attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "blank_line"
+        },
+        {
             "type": "list",
             "children": [
                 {
@@ -914,21 +934,10 @@
             }
         },
         {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "image",
-                    "children": [
-                        {
-                            "type": "text",
-                            "raw": ""
-                        }
-                    ],
-                    "attrs": {
-                        "url": "attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg"
-                    }
-                }
-            ]
+            "type": "comment_block",
+            "key": "layout",
+            "value": "two_content",
+            "raw": "[layout]: # (two_content)"
         },
         {
             "type": "blank_line"
