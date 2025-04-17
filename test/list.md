@@ -2,7 +2,12 @@
   - text: 들어가며
 - blank_line
 - heading
-  - text: 강사 소개
+  - link: https://naver.com
+    - emphasis
+      - strong
+        - codespan: 강사
+  - text:  
+  - codespan: 소개
 - blank_line
 - list
   - list_item
@@ -44,6 +49,11 @@
   - image: attachments/57460fdf0c00e161901a1359ea5ba690.png
     - text
 - blank_line
+- comment_block: [note]: # (이것은 노트입니다요.)
+- paragraph
+  - text
+- comment_block: [note]: # (노트를 맘껏 쓰십시오)
+- blank_line
 - heading
   - text: ChatGPT
 - blank_line
@@ -69,6 +79,17 @@
       - strong
         - text: 작은 조각으로 나누어서
       - text:  가지고 있는 거대한 레고블럭 박스와 같다.
+- block_quote
+  - paragraph
+    - text: 이것은 
+    - strong
+      - text: 인용
+    - text: 입니다.
+- blank_line
+- block_quote
+  - paragraph
+    - text: 이것은 그 다음줄 인용입니다.
+- blank_line
 - paragraph
   - image: attachments/a11611eae1484ae28180a6560f8a51d7.png
     - text
@@ -109,7 +130,9 @@
   - text: 멀티 모달
 - blank_line
 - paragraph
-  - text: 텍스트만이 아니라, 이미지, 비디오, 오디오 등을 입력받아 동시에 처리하는 AI
+  - strong
+    - text: 텍스트
+  - text: 만이 아니라, 이미지, 비디오, 오디오 등을 입력받아 동시에 처리하는 AI
 - list
   - list_item
     - block_text
@@ -120,14 +143,13 @@
   - list_item
     - block_text
       - text: GPT 4o: 텍스트, 이미지, 오디오
-- block_code: > 이는 단순히 텍스트, 이미지, 오디오를 따로 처리한다는 의미가 아니며 텍스트를 이미지로, 이미지를 텍스트로, 텍스트를 음악으로 상호 변환하며 서로 어떤 의미와 관계를 갖는지를 아는 것
-
+- block_quote
+  - paragraph
+    - text: 이는 단순히 텍스트, 이미지, 오디오를 따로 처리한다는 의미가 아니며 텍스트를 이미지로, 이미지를 텍스트로, 텍스트를 음악으로 상호 변환하며 서로 어떤 의미와 관계를 갖는지를 아는 것
 - blank_line
 - paragraph
   - image: attachments/9ce9d4d1d35e73e233aec82e4e1dc236.png
     - text
-- blank_line
-- thematic_break
 - blank_line
 - heading
   - text: 환각 (Hallucination)
@@ -156,6 +178,8 @@
 - paragraph
   - image: attachments/8aff58ef5af347d8e505a3b7c94325c1.jpg
     - text
+- blank_line
+- comment_block: [layout]: # (two_content)
 - blank_line
 - heading
   - text: ChatGPT와 생성형 AI에 대한 오해
@@ -206,8 +230,9 @@
       - list_item
         - block_text
           - text: AI를 집중적으로 공부해서 끝내겠다
-- block_code: > 90% 이상의 생성형 AI 관련 지식들은 유튜브를 통해 유통되고, 전파됨
-
+- block_quote
+  - paragraph
+    - text: 90% 이상의 생성형 AI 관련 지식들은 유튜브를 통해 유통되고, 전파됨
 - blank_line
 - list
   - list_item
@@ -227,14 +252,13 @@
       - list_item
         - block_text
           - text: AI를 둘러싼 담론을 폭넓게 바라보고 여러 맥락 안에서 AI를 이해하기
-- block_code: > 왕도(Royal road)가 없다!
-
+- block_quote
+  - paragraph
+    - text: 왕도(Royal road)가 없다!
 - blank_line
 - paragraph
   - image: attachments/3f5651eb5f7ae2fedd55035c2f16da81.png
     - text
-- blank_line
-- thematic_break
 - blank_line
 - heading
   - text: S.T.A.R 프레임워크
@@ -257,8 +281,9 @@
       - list_item
         - block_text
           - text: 시간이 더 많이 있으면 해보고 싶은 것
-- block_code: > 현재의 AI란 즉, 사람이 간단히 할 수 있는 일을 사람보다 훨씬 빠르게 할 수 있는 도구이므로, 이를 초점삼아 내 업무에 어떻게 적용할지 고민해볼 것
-
+- block_quote
+  - paragraph
+    - text: 현재의 AI란 즉, 사람이 간단히 할 수 있는 일을 사람보다 훨씬 빠르게 할 수 있는 도구이므로, 이를 초점삼아 내 업무에 어떻게 적용할지 고민해볼 것
 - blank_line
 - list
   - list_item
@@ -297,9 +322,9 @@
       - list_item
         - block_text
           - text: 우리는 LLM과 대화를, 혹은 질문을 하는 것이 아님. LLM이 단지 우리가 만들어놓은 몇 단어를 토대로 글을 완성시키는 것뿐.
-- block_code: > 대형언어모델(LLM)은 확률적 정보에 따라 방대한 훈련 데이터에서 관찰한 언어 형식의 시퀀스를 우연히 꿰맞추는 시스템이다. 의미를 되새길 필요없는 확률론적 앵무새(Stochastic Parrots)다.
-- 에밀리 M. 벤더, 언어학자
-
+- block_quote
+  - paragraph
+    - text: 대형언어모델(LLM)은 확률적 정보에 따라 방대한 훈련 데이터에서 관찰한 언어 형식의 시퀀스를 우연히 꿰맞추는 시스템이다. 의미를 되새길 필요없는 확률론적 앵무새(Stochastic Parrots)다. - 에밀리 M. 벤더, 언어학자
 - blank_line
 - heading
   - text: 질문이 잘못됨
@@ -478,9 +503,6 @@
   - image: attachments/8d03e9f1f945d93dd2fb4a6a5e881458.png
     - text
 - blank_line
-- paragraph
-  - text: ::: notes
-- blank_line
 - list
   - list_item
     - block_text
@@ -502,9 +524,6 @@
   - list_item
     - block_text
       - text: 머스크 반발
-- paragraph
-  - text: :::
-- blank_line
 - thematic_break
 - blank_line
 - heading
@@ -606,8 +625,9 @@
 - heading
   - text: AI와 인간의 가치
 - blank_line
-- block_code: > AI를 통해 노동에서 해방된 후 인간은 어떻게 될 것인가
-
+- block_quote
+  - paragraph
+    - text: AI를 통해 노동에서 해방된 후 인간은 어떻게 될 것인가
 - blank_line
 - list
   - list_item
@@ -642,8 +662,9 @@
 - heading
   - text: AI 이모저모
 - blank_line
-- block_code: > AI 전쟁에서 승리하기 위한 키는 무엇일까?
-
+- block_quote
+  - paragraph
+    - text: AI 전쟁에서 승리하기 위한 키는 무엇일까?
 - blank_line
 - heading
   - text: 하드웨어 vs 소프트웨어?
@@ -1124,8 +1145,9 @@
       - list_item
         - block_text
           - text: "고향만두는 오랫동안 사람들에게 사랑받아왔지만 그만큼 낡은 이미지를 가지고 있어. 최근 점보 육개장, 점보 크림빵과 같은 유행에 발맞추어 점보 고향만두를 출시하려고 계획 중에 있는데, 이사회를 설득하기 위한 주장과 근거를 만들어줘."
-- block_code: > GPT는 점보 상품이 바이럴 마케팅용이라는 것을 모를 가능성이 높다.
-
+- block_quote
+  - paragraph
+    - text: GPT는 점보 상품이 바이럴 마케팅용이라는 것을 모를 가능성이 높다.
 - blank_line
 - paragraph
   - image: attachments/b6b6a80f8b84619a2e08b13ab9570bb7.png
@@ -1144,8 +1166,9 @@
     - block_text
       - emphasis
         - text: 협박하기, 도발하기, 강조하기, 애원하기, 보상하기/벌하기
-- block_code: > '딥시크는 할 수 있던데? ㅋ'
-
+- block_quote
+  - paragraph
+    - text: '딥시크는 할 수 있던데? ㅋ'
 - blank_line
 - list
   - list_item
@@ -1435,8 +1458,9 @@
     - block_text
       - link: https://mermaid.live/edit
         - text: Mermaid.js Live Editor
-- block_code: > GPT등의 언어모델은 스스로는 다이어그램을 그리지 못하지만 mermaid.js 문법의 코드를 작성할 수 있다!
-
+- block_quote
+  - paragraph
+    - text: GPT등의 언어모델은 스스로는 다이어그램을 그리지 못하지만 mermaid.js 문법의 코드를 작성할 수 있다!
 - blank_line
 - paragraph
   - image: attachments/5b6cffdb1fb4a0c81df96f4e917a08ed.png
@@ -1688,8 +1712,7 @@
         - block_text
           - text: 따라서 make.com / Zapier 등의 백엔드 자동화 도구를 이용하는 것이 좋음
 - heading
-  - emphasis
-    - text: OpenAPI 스키마
+  - text: OpenAPI 스키마
 - blank_line
 - list
   - list_item
@@ -1909,8 +1932,9 @@
   - list_item
     - block_text
       - text: 테마 적용해서 디자인 완성하기
-- block_code: > PPT 작성은 Python 코드로 하기 때문에 실망스러운 것이 사실
-
+- block_quote
+  - paragraph
+    - text: PPT 작성은 Python 코드로 하기 때문에 실망스러운 것이 사실
 - blank_line
 - list
   - list_item
@@ -1957,8 +1981,9 @@
   - list_item
     - block_text
       - text: 사용할 함수, 파라미터로 제공되어야 하는 데이터의 위치와 형식을 설명할 필요 있음
-- block_code: > 기본적으로 수식과 함수의 동작을 이해해야 정확하게 설명할 수 있다. 만약 어렵다면 스크린샷을 첨부하고 상황과 목적을 침착하게 설명해볼 수 있다
-
+- block_quote
+  - paragraph
+    - text: 기본적으로 수식과 함수의 동작을 이해해야 정확하게 설명할 수 있다. 만약 어렵다면 스크린샷을 첨부하고 상황과 목적을 침착하게 설명해볼 수 있다
 - blank_line
 - paragraph
   - image: attachments/ac4db0c14b9126bb274ec3adb0fa163e.png
@@ -2025,8 +2050,9 @@
       - text: 드래그 핸들을 잡고 채우기(Fill) 기능을 사용해 
       - codespan: GPT()
       - text:  함수 반복하기
-- block_code: > 채우기를 사용해서 GPT() 함수를 반복할 경우 그 수만큼 API 호출이 이뤄지니 주의
-
+- block_quote
+  - paragraph
+    - text: 채우기를 사용해서 GPT() 함수를 반복할 경우 그 수만큼 API 호출이 이뤄지니 주의
 - blank_line
 - paragraph
   - image: attachments/19d92207fcafeeea3978bcc9679c4d0d.png
@@ -2170,8 +2196,9 @@
       - list_item
         - block_text
           - text: 다음과 같은 기능을 하는 엑셀 VBA 매크로를 작성해줘. 버튼을 누르면 "근무자" 시트의 A1셀에 적혀있는 근무자 이름을 가지고 "출퇴근" 시트에 한 줄을 기록. A열에는 근무자의 이름, B열에는 "출근" C열에는 현재 시간을 적어줘
-- block_code: > 코드를 요청하는 프롬프트보다 사실은 버튼을 배치하고 그 버튼의 동작을 구상하는 것이 훨씬 중요하다.
-
+- block_quote
+  - paragraph
+    - text: 코드를 요청하는 프롬프트보다 사실은 버튼을 배치하고 그 버튼의 동작을 구상하는 것이 훨씬 중요하다.
 - blank_line
 - paragraph
   - image: attachments/84837ceb3e90aea8e3dc22611ad3376f.png
@@ -2194,8 +2221,9 @@
       - list_item
         - block_text
           - text: 버튼을 누르면 B열의 각 행에 있는 A1셀의 시스템 경로의 파일명을 C열의 대응하는 각 행의 변경된 이름으로 변경하는 매크로. 단 B열과 C열의 이름이 같은 경우 처리하지 말 것.
-- block_code: > 사실은 이미 누가 예쁘게 만들어둔 편리한 매크로가 있으니 이런 것도 할 수 있다는 걸 실습하고 참고만 하고 이쪽을 쓰도록 하자.
-
+- block_quote
+  - paragraph
+    - text: 사실은 이미 누가 예쁘게 만들어둔 편리한 매크로가 있으니 이런 것도 할 수 있다는 걸 실습하고 참고만 하고 이쪽을 쓰도록 하자.
 - blank_line
 - list
   - list_item
@@ -2219,8 +2247,9 @@
       - list_item
         - block_text
           - text: 다음과 같은 엑셀 사용자 함수를 생성하는 VBA 코드를 작성해줘. OpenAI의 API를 사용해서 ChatGPT의 Chat Completion을 수행하고 그 응답을 셀에 적어주는 사용자 함수. API에 사용할 모델명과 API키를 상수로 맨 앞에 선언하고, 사용자 프롬프트, 참조 범위, Temperature를 매개변수로 받을 것. 참조 범위와 Temperature는 Optional한 매개변수야.
-- block_code: > 엑셀에 내장된 VBA는 JSON을 처리할 수 없기 때문에 VBA-JSON이라는 모듈을 설치해야 한다. GPT가 따로 언급해주지 않으면 'JSON' 모듈 설치에 관해 물어보고 시키는 대로 할 것.
-
+- block_quote
+  - paragraph
+    - text: 엑셀에 내장된 VBA는 JSON을 처리할 수 없기 때문에 VBA-JSON이라는 모듈을 설치해야 한다. GPT가 따로 언급해주지 않으면 'JSON' 모듈 설치에 관해 물어보고 시키는 대로 할 것.
 - blank_line
 - paragraph
   - image: attachments/8f276d6461e88f846b234db5129cbee1.png

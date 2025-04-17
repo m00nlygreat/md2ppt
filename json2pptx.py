@@ -104,17 +104,18 @@ def convert_json_to_pptx(prs, data, layouts):
         pholder_no = 0
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
-            if len(current_slide.placeholders) > pholder_no:
+            if len(current_slide.placeholders) >= pholder_no:
                 # print(current_slide.slide_layout.name)
                 # print(token)
                 try:
                     current_placeholder = current_slide.placeholders[p_map[pholder_no]]
                 except Exception as e:
-                    print(e)
+                    pass
 
                 for token in pholder_data:
                     process_token(current_placeholder, token, current_slide)
-
+            else:
+                print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
 
 def calc_resloc(p, i, align=5):
     """
@@ -231,7 +232,7 @@ def titlify(p):
     defRPr.append(ea)
 
     # defRPr 추가
-    pPr.append(defRPr)
+    pPr.append(dfRPr)
 
 def process_token(current_placeholder, token, current_slide):
 
@@ -256,31 +257,40 @@ def process_token(current_placeholder, token, current_slide):
             p = define_paragraph(current_placeholder)
             p.level = 6
             process_runs(token.get("runs", []), p)
+        case "code":
+            p = define_paragraph(current_placeholder)
+            p.level = 5
+            p.text = token.get("lang","code")+'\n\n'+ token.get("raw", "")
         case "image":
             url = token.get("url", "")
-
-            i = Image.open(url)
-            global pholder_no
             
-            dynloc = {"order": pholder_no}
-
             try:
-                align_dict = json.loads(current_slide.slide_layout.placeholders[pholder_no].name)
-                dynloc.update(align_dict)
+                i = Image.open(url)
+                            
+                global pholder_no
+                
+                dynloc = {"order": pholder_no}
+
+                try:
+                    align_dict = json.loads(current_slide.slide_layout.placeholders[pholder_no].name)
+                    dynloc.update(align_dict)
+                except:
+                    # print('Error: Placeholder name is not JSON format.')
+                    pass
+                
+                resloc = calc_resloc(current_placeholder, i, dynloc.get("align",5))
+
+                try:
+                    current_placeholder.insert_picture(url)
+                except Exception as e:
+
+                    sp = current_placeholder._element
+                    sp.getparent().remove(sp)
+
+                    current_slide.shapes.add_picture(url, **resloc)
             except:
-                # print('Error: Placeholder name is not JSON format.')
-                pass
-            
-            resloc = calc_resloc(current_placeholder, i, dynloc.get("align",5))
+                print(f"Error: Image '{url}' not found or invalid.")
 
-            try:
-                current_placeholder.insert_picture(url)
-            except Exception as e:
-
-                sp = current_placeholder._element
-                sp.getparent().remove(sp)
-
-                current_slide.shapes.add_picture(url, **resloc)
         case "list":
             children = token.get("children", [])
             if children:
@@ -371,9 +381,9 @@ def process_runs(runs, paragraph):
         if 'bold' in run:
             font.bold = True
             font.color.theme_color = MSO_THEME_COLOR.ACCENT_3
-
         if 'italic' in run:
             font.italic = True
+            font.underline = True
         if 'monospace' in run:
             r = set_highlight(r, 'EEEEEE')
             r.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
@@ -382,6 +392,22 @@ def process_runs(runs, paragraph):
             # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
         if 'hyperlink' in run:
             r.hyperlink.address = run.get("hyperlink", "https://google.com")
+
+def add_title_slide(prs, frontmatter):
+    """
+    주어진 Presentation 객체(prs)에 제목 슬라이드를 추가합니다.
+    frontmatter는 제목 슬라이드에 표시할 정보를 포함하는 딕셔너리입니다.
+    """
+    title_slide_layout = prs.slide_layouts[0]  # 제목 슬라이드 레이아웃
+    slide = prs.slides.add_slide(title_slide_layout)
+
+    title = slide.shapes.title
+    title.text = frontmatter.get("title", "제목없음")
+    try:
+        subtitle = slide.placeholders[1]
+        subtitle.text = frontmatter.get("subtitle", "부제목없음")
+    except:
+        pass
 
 def main(data=None):
     parser = argparse.ArgumentParser(
@@ -429,6 +455,8 @@ def main(data=None):
     else:
         # 참조 파일이 없으면 새 프레젠테이션 생성
         prs = Presentation()
+        
+    add_title_slide(prs, data['frontmatter'])
 
     layouts = get_slide_layout_enum(prs)
     # for layout in layouts:

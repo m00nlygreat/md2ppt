@@ -260,9 +260,14 @@ def process_json(data):
                 pass
 
     finalize_slide(True)
+    
+    for slide in processed['slides']:
+        title_empty = not slide['title']
+        placeholder_empty = not slide['placeholders'][0]
+        if title_empty and placeholder_empty:
+            processed['slides'].remove(slide)            
 
     return processed  # 중간 처리 로직을 여기에 추가 가능
-
 
 def save_json(data, export_filename):
     """딕셔너리를 JSON 파일로 저장"""
