@@ -35,47 +35,64 @@ def analyze_markdown(markdown_text: str):
     print("✅ Registered Plugins:", md.block.rules)
     return tokens
 
-def main():
-    parser = argparse.ArgumentParser(description="Convert Markdown to JSON dictionary using mistune.")
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("-f", "--file", help="Path to the Markdown file")
-    group.add_argument("markdown", nargs="?", help="Markdown string input")
-    parser.add_argument("-e", "--export", action="store_true", help="Export output to a JSON file")
-    args = parser.parse_args()
-
-    # 파일 또는 인자로부터 마크다운 내용 읽기
-    if args.file:
-        if not os.path.exists(args.file):
-            print(f"Error: file '{args.file}' does not exist.")
-            return
-        with open(args.file, "r", encoding="utf-8") as md_file:
-            md_content = md_file.read()
-    else:
-        md_content = args.markdown
-
+def process_markdown(markdown_text: str):
+    """
+    마크다운 텍스트를 처리하여 딕셔너리 형태로 반환합니다.
+    파일 입출력 없이 직접 딕셔너리를 반환합니다.
+    """
     # YAML frontmatter 추출 및 제거
-    frontmatter, remaining_text = extract_frontmatter(md_content)
+    frontmatter, remaining_text = extract_frontmatter(markdown_text)
     
     # 나머지 마크다운 내용 토큰화
     tokens = analyze_markdown(remaining_text)
 
     # 최종 출력 딕셔너리에 frontmatter와 토큰들을 추가
-    output = {
+    return {
         "frontmatter": frontmatter,
         "tokens": tokens
     }
 
-    if args.export:
-        if args.file:
-            base_name = os.path.splitext(args.file)[0]
+def main():
+    parser = argparse.ArgumentParser(description="Convert Markdown to JSON dictionary using mistune.")
+    parser.add_argument("-i", "--input", help="Path to the Markdown file or Markdown string input")
+    parser.add_argument("-o", "--output", help="Output JSON file path (default: {input_filename}.json)")
+    parser.add_argument("--return-dict", action="store_true", help="Return dictionary instead of saving to file")
+    args = parser.parse_args()
+
+    if not args.input:
+        print("Error: input is required. Use -i or --input to specify input.")
+        return
+
+    # 파일 경로인지 마크다운 문자열인지 확인
+    if os.path.exists(args.input):
+        # 파일로부터 마크다운 내용 읽기
+        with open(args.input, "r", encoding="utf-8") as md_file:
+            md_content = md_file.read()
+    else:
+        # 마크다운 문자열로 처리
+        md_content = args.input
+
+    # 마크다운 처리
+    output = process_markdown(md_content)
+
+    # 딕셔너리 반환 모드
+    if args.return_dict:
+        return output
+
+    # 출력 파일 경로 결정
+    if args.output:
+        out_filename = args.output
+    else:
+        if os.path.exists(args.input):
+            base_name = os.path.splitext(args.input)[0]
             out_filename = base_name + ".json"
         else:
             out_filename = "output.json"
-        with open(out_filename, "w", encoding="utf-8") as json_file:
-            json.dump(output, json_file, indent=4, ensure_ascii=False)
-        print(f"Exported JSON to {out_filename}")
-    else:
-        print(json.dumps(output, indent=4, ensure_ascii=False))
+    
+    # JSON 파일로 저장
+    with open(out_filename, "w", encoding="utf-8") as json_file:
+        json.dump(output, json_file, indent=4, ensure_ascii=False)
+    print(f"Exported JSON to {out_filename}")
 
 if __name__ == "__main__":
     main()

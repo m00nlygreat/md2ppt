@@ -4,17 +4,18 @@
 
 ## in progress
 
-- [ ] 파이프라인의 argument 표준화
+- [ ] placeholder grow rule
 
 ## to be done
 
-- [ ] placeholder grow rule
 - [ ] code least styling
 - [ ] code highlight
 - [ ] settings
 
 ## done
 
-- [x] 그림 이후에 placeholder를 음. 못 찾는 문제?
+- [x] 파이프라인의 argument 표준화
+- [x] main.py 작성
+- [x] 그림 삽입 이후에 placeholder를 음. 못 찾는 문제?
 - [x] 빈 슬라이드 삭제 기능
 - [x] 제목 슬라이드

@@ -276,28 +276,47 @@ def save_json(data, export_filename):
 
 def main():
     parser = argparse.ArgumentParser(description="Convert JSON to another JSON format without modification.")
-    parser.add_argument("-f", "--file", required=True, help="Input JSON file path")
-    parser.add_argument("-e", "--export", nargs="?", const=True, help="Export JSON to file (optional: specify output path)")
+    parser.add_argument("-i", "--input", help="Input JSON file path or JSON string")
+    parser.add_argument("-o", "--output", help="Output JSON file path (default: {input_filename}.slides.json)")
+    parser.add_argument("--return-dict", action="store_true", help="Return dictionary instead of saving to file")
     args = parser.parse_args()
 
-    # JSON 파일 로드
-    data = load_json(args.file)
+    # 입력 데이터 처리
+    if args.input:
+        if os.path.exists(args.input):
+            # 파일에서 JSON 로드
+            data = load_json(args.input)
+        else:
+            # JSON 문자열로 처리
+            try:
+                data = json.loads(args.input)
+            except json.JSONDecodeError:
+                print("Error: Invalid JSON string provided")
+                return
+    else:
+        print("Error: input is required. Use -i or --input to specify input.")
+        return
 
     # 중간 처리
     processed_data = process_json(data)
 
+    # 딕셔너리 반환 모드
+    if args.return_dict:
+        return processed_data
+
     # 출력 파일명 결정
-    if args.export:
-        if isinstance(args.export, str):  # -e 옵션에 경로가 주어진 경우
-            export_filename = args.export
-        else:  # -e 옵션만 사용한 경우, 기본 파일명 사용
-            base_name = os.path.splitext(args.file)[0]
-            export_filename = f"{base_name}.json"
-        
-        save_json(processed_data, export_filename)
-        print(f"Exported JSON to {export_filename}")
+    if args.output:
+        export_filename = args.output
     else:
-        print(json.dumps(processed_data, ensure_ascii=False, indent=4))
+        if os.path.exists(args.input):
+            base_name = os.path.splitext(args.input)[0]
+            export_filename = f"{base_name}.slides.json"
+        else:
+            export_filename = "output.slides.json"
+    
+    # JSON 파일로 저장
+    save_json(processed_data, export_filename)
+    print(f"Exported JSON to {export_filename}")
 
 if __name__ == "__main__":
     main()

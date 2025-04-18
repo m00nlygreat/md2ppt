@@ -400,14 +400,23 @@ def add_title_slide(prs, frontmatter):
     """
     title_slide_layout = prs.slide_layouts[0]  # 제목 슬라이드 레이아웃
     slide = prs.slides.add_slide(title_slide_layout)
+    pp = prs.core_properties
 
-    title = slide.shapes.title
-    title.text = frontmatter.get("title", "제목없음")
-    try:
-        subtitle = slide.placeholders[1]
-        subtitle.text = frontmatter.get("subtitle", "부제목없음")
-    except:
-        pass
+    # 이후 placeholder 이름과 md-frontmatter key를 매치할 것
+    title = frontmatter.get("title", False)
+    subtitle = frontmatter.get("subtitle", False)
+    author = frontmatter.get("author", False)   
+    
+    slide.shapes.title.text = title if title else "제목없음"
+    pp.title = title if title else "Powerpoint 프레젠테이션"
+    
+    if subtitle:
+        first_slide_subtitle = slide.placeholders[1]
+        first_slide_subtitle = subtitle
+        pp.subtitle = subtitle
+    if author:
+        pp.author = author
+        
 
 def main(data=None):
     parser = argparse.ArgumentParser(
@@ -430,7 +439,23 @@ def main(data=None):
     parser.add_argument(
         "-i", "--input", type=str, default=None, help="Input JSON file path"
     )
+    parser.add_argument(
+        "--return-pptx", action="store_true", help="Return Presentation object instead of saving to file"
+    )
     args = parser.parse_args()
+
+    # 환경 변수에서 매개변수 가져오기
+    ref_from_env = os.environ.get("JSON2PPTX_REF", "")
+    output_from_env = os.environ.get("JSON2PPTX_OUTPUT", "")
+    return_pptx_from_env = os.environ.get("JSON2PPTX_RETURN_PPTX", "")
+
+    # 환경 변수에서 가져온 값으로 args 업데이트
+    if ref_from_env and not args.ref:
+        args.ref = ref_from_env
+    if output_from_env and not args.output:
+        args.output = output_from_env
+    if return_pptx_from_env and not args.return_pptx:
+        args.return_pptx = True
 
     # JSON 데이터 로딩: 딕셔너리를 직접 전달받은 경우 우선 사용
     if data is None:
@@ -464,6 +489,10 @@ def main(data=None):
 
     # JSON 데이터를 기반으로 PPTX 변환 로직 실행 (개발자가 직접 구현)
     convert_json_to_pptx(prs, data, layouts=layouts)
+
+    # Presentation 객체 반환 모드
+    if args.return_pptx:
+        return prs
 
     # 출력 PPTX 파일 저장
     prs.save(args.output)
