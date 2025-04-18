@@ -14,6 +14,7 @@
 
 ## done
 
+- [x] 메타데이터 처리
 - [x] 파이프라인의 argument 표준화
 - [x] main.py 작성
 - [x] 그림 삽입 이후에 placeholder를 음. 못 찾는 문제?
