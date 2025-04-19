@@ -4,17 +4,18 @@
 
 ## in progress
 
-- [ ] placeholder grow rule
+- [ ] code least styling
 
 ## to be done
 
-- [ ] code least styling
 - [ ] code highlight
 - [ ] settings
 - [ ] flexbox like group object
+- [ ] font-size-ratio for placeholder
 
 ## done
 
+- [x] placeholder grow rule
 - [x] 메타데이터 처리
 - [x] 파이프라인의 argument 표준화
 - [x] main.py 작성

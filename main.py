@@ -8,6 +8,7 @@ import sys
 from md2json import process_markdown
 from json2slide import process_json
 from json2pptx import main as json2pptx_main
+from flatten import flatten_markdown
 
 def save_debug_data(data, filename):
     """디버그 데이터를 JSON 파일로 저장합니다."""
@@ -41,14 +42,17 @@ def main():
         output_file = f"{base_name}.pptx"
 
     try:
-        # 1. 마크다운 파일 읽기
-        print(f"Reading Markdown file: {args.input}")
-        with open(args.input, "r", encoding="utf-8") as f:
-            md_content = f.read()
+        # 1. flatten 파이프라인 적용
+        print(f"Flattening Markdown file: {args.input}")
+        flattened_md = flatten_markdown(args.input, is_root=True)
+        if args.debug:
+            debug_flatten_file = os.path.join(args.debug_dir, "0_flattened.md")
+            with open(debug_flatten_file, "w", encoding="utf-8") as f:
+                f.write(flattened_md)
 
         # 2. 마크다운을 JSON 딕셔너리로 변환
         print("Converting Markdown to JSON...")
-        json_data = process_markdown(md_content)
+        json_data = process_markdown(flattened_md)
         
         # 디버그 모드에서 중간 결과 저장
         if args.debug:
