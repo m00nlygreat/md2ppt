@@ -8,10 +8,12 @@
 
 ## to be done
 
-- [ ] code highlight
 - [ ] settings
+- [ ] font-scale for placeholder
+- [ ] togglable object?
+- [ ] code highlight
 - [ ] flexbox like group object
-- [ ] font-size-ratio for placeholder
+- [ ] more templates
 
 ## done
 

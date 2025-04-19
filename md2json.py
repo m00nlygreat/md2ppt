@@ -32,7 +32,7 @@ def analyze_markdown(markdown_text: str):
     """
     md = mistune.create_markdown(renderer=None, plugins=[plugin_comment_block, wildcard_break_plugin])
     tokens = md(markdown_text)
-    print("✅ Registered Plugins:", md.block.rules)
+    # print("✅ Registered Plugins:", md.block.rules)
     return tokens
 
 def process_markdown(markdown_text: str):
