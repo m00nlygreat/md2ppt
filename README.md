@@ -11,6 +11,7 @@
 - [ ] code least styling
 - [ ] code highlight
 - [ ] settings
+- [ ] flexbox like group object
 
 ## done
 

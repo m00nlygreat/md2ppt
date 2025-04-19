@@ -42,7 +42,6 @@ def get_slide_layout_enum(prs):
     SlideLayoutEnum = Enum("SlideLayoutEnum", layout_members)
     return SlideLayoutEnum
 
-
 def clear_slides(prs):
     """
     while 루프를 사용하여 프레젠테이션의 모든 슬라이드를 삭제합니다.
@@ -63,7 +62,6 @@ def clear_slides(prs):
     new_prs = Presentation(temp_filename)
     os.remove(temp_filename)
     return new_prs
-
 
 def convert_json_to_pptx(prs, data, layouts):
     """
@@ -116,6 +114,44 @@ def convert_json_to_pptx(prs, data, layouts):
                     process_token(current_placeholder, token, current_slide)
             else:
                 print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
+            
+        # Title placeholder는 무적권 0번이어야 해
+        shapes_no_title = [sh for i, sh in enumerate(current_slide.shapes) if i != 0]
+        
+        shapes = []
+        
+        for i, shape in enumerate(shapes_no_title):
+            if current_slide.shapes.title == shape:
+                print(current_slide.shapes.title.text_frame.text)
+                continue
+            placeholder = current_slide.slide_layout.placeholders[i+1]
+            shapes.append(dict_shape(shape, placeholder))
+
+        # Shape의 size는 한 번에 대입해줘야 한다. 하나씩 변경하면 0으로 초기화됨
+        for i,shape in enumerate(shapes_no_title):
+            grow = shapes[i].get("grow", False)
+            if grow:
+                foo_shp = dict_shape(shape)
+                l, r, a, b = expand(shapes, i, prs).values()
+                if grow in [1,2,3]:
+                    foo_shp['height'] += b
+                if grow in [1,4,7]:
+                    foo_shp['left'] -= l
+                    foo_shp['width'] += l + r
+                if grow in [3,6,9]:
+                    foo_shp['width'] += r
+                if grow in [7,8,9]:
+                    foo_shp['top'] -= a
+                    foo_shp['height'] += a + b
+                if grow == 5:
+                    foo_shp['left'] -= l
+                    foo_shp['top'] -= a
+                    foo_shp['width'] += l + r
+                    foo_shp['height'] += a + b
+                shape.left = foo_shp['left']
+                shape.top = foo_shp['top']
+                shape.width = foo_shp['width']
+                shape.height = foo_shp['height']
 
 def calc_resloc(p, i, align=5):
     """
@@ -416,7 +452,108 @@ def add_title_slide(prs, frontmatter):
         pp.subtitle = subtitle
     if author:
         pp.author = author
-        
+
+def expand(shapes, idx, p):
+
+    def coordinatify(shape):
+        return {
+            **shape,
+            "right": shape["left"] + shape["width"],
+            "bottom": shape["top"] + shape["height"],
+            "tl": (shape["top"], shape["left"]),
+            "tr": (shape["top"], shape["left"] + shape["width"]),
+            "bl": (shape["top"] + shape["height"], shape["left"]),
+            "br": (shape["top"] + shape["height"], shape["left"] + shape["width"]),
+        }
+
+    def are_related(foo, bar, direction):
+        if direction == "left":
+            # bar가 foo의 왼쪽에 있고, 세로(y축) 범위가 겹치는지
+            return bar["left"] + bar["width"] <= foo["left"] and \
+                max(foo["top"], bar["top"]) <= min(foo["top"] + foo["height"], bar["top"] + bar["height"])
+
+        elif direction == "right":
+            # bar가 foo의 오른쪽에 있고, 세로(y축) 범위가 겹치는지
+            return bar["left"] >= foo["left"] + foo["width"] and \
+                max(foo["top"], bar["top"]) <= min(foo["top"] + foo["height"], bar["top"] + bar["height"])
+
+        elif direction == "above":
+            # bar가 foo의 위에 있고, 가로(x축) 범위가 겹치는지
+            return bar["top"] + bar["height"] <= foo["top"] and \
+                max(foo["left"], bar["left"]) <= min(foo["left"] + foo["width"], bar["left"] + bar["width"])
+
+        elif direction == "below":
+            # bar가 foo의 아래에 있고, 가로(x축) 범위가 겹치는지
+            return bar["top"] >= foo["top"] + foo["height"] and \
+                max(foo["left"], bar["left"]) <= min(foo["left"] + foo["width"], bar["left"] + bar["width"])
+
+    def find_canvas(shapes):
+        top = min([shape["top"] for shape in shapes])
+        left = min([shape["left"] for shape in shapes])
+        width = max([shape["left"] + shape["width"] for shape in shapes]) - left
+        height = max([shape["top"] + shape["height"] for shape in shapes]) - top
+        s = {
+            "top": top,
+            "left": left,
+            "width": width,
+            "height": height,
+        }
+        return coordinatify(s)
+    
+    def greater_margin(foo, bar):
+        def emu(val):
+            return int(val * 914400)
+        f = foo.get("margin",0)
+        b = bar.get("margin",0)
+        return emu(f) if  f > b else emu(b)
+    
+    canvas = find_canvas(shapes)
+    sphs = [coordinatify(shape) for shape in shapes]
+    dir = {
+        "d" : ("left", "right", "above", "below"),
+        "left": ("left", "right"),
+        "right": ("right", "left"),
+        "above": ("top", "bottom"),
+        "below": ("bottom", "top")
+    }
+    
+    foo = sphs.pop(idx)
+    bars = sphs
+    
+    deltas = {
+        'left' : 0,
+        'right' : 0,
+        'above' : 0,
+        'below' : 0,
+    }
+    
+    for d in dir['d']:
+        related = [s for s in bars if are_related(foo, s, d)]
+        if bool(related):
+            most_close = min(abs(foo[dir[d][0]]-bar[dir[d][1]]) - greater_margin(foo,bar) for bar in related)
+            deltas.update({d: most_close})
+        else:
+            reaching_canvas = abs(foo[dir[d][0]]-canvas[dir[d][0]])
+            deltas.update({d: reaching_canvas})
+
+    return deltas
+
+def dict_shape(shape, placeholder=None):
+    """
+    주어진 shape 객체의 속성을 딕셔너리 형태로 반환합니다.
+    """
+    try: 
+        from_pl = json.loads(placeholder.name)
+    except:
+        from_pl = {}
+    return {
+        "name": shape.name,
+        "top": shape.top,
+        "left": shape.left,
+        "width": shape.width,
+        "height": shape.height,
+        **from_pl,
+    }
 
 def main(data=None):
     parser = argparse.ArgumentParser(
@@ -497,7 +634,6 @@ def main(data=None):
     # 출력 PPTX 파일 저장
     prs.save(args.output)
     print(f"PPTX file saved as {args.output}")
-
 
 if __name__ == "__main__":
     main()
