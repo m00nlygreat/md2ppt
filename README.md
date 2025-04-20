@@ -12,8 +12,9 @@
 - [ ] font-scale for placeholder
 - [ ] togglable object?
 - [ ] code highlight
-- [ ] flexbox like group object
+- [ ] flexbox-like group object
 - [ ] more templates
+- [ ] embedding youtube videos
 
 ## done
 
