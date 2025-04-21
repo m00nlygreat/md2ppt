@@ -8,11 +8,12 @@
 
 ## to be done
 
+- [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder
 - [ ] togglable object?
 - [ ] code highlight
-- [ ] flexbox-like group object
+- [ ] flex-like group object
 - [ ] more templates
 - [ ] embedding youtube videos
 
