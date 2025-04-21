@@ -148,6 +148,7 @@ def convert_json_to_pptx(prs, data, layouts):
                     foo_shp['top'] -= a
                     foo_shp['width'] += l + r
                     foo_shp['height'] += a + b
+                # 한꺼번에 지정해야한다. 지정할 때 나머지가 0으로 초기화되기 때문. left/top이 width/height와 세트인 것으로 보임.
                 shape.left = foo_shp['left']
                 shape.top = foo_shp['top']
                 shape.width = foo_shp['width']
