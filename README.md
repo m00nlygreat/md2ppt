@@ -8,6 +8,8 @@
 
 ## to be done
 
+- [ ] code to gist
+- [ ] list fix
 - [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder
