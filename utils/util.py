@@ -1,5 +1,6 @@
-import json
+import json, os, tempfile
 from lxml import etree
+from pptx import Presentation
 from pptx.enum.lang import MSO_LANGUAGE_ID
 from pptx.oxml.xmlchemy import OxmlElement
 
@@ -116,3 +117,25 @@ def dict_shape(shape, placeholder=None):
         "bottom": shape.top + shape.height,
         **from_pl,
     }
+
+
+def clear_slides(prs):
+    """
+    while 루프를 사용하여 프레젠테이션의 모든 슬라이드를 삭제합니다.
+    각 슬라이드에 대해 rId 관계를 삭제한 후, 슬라이드 ID 요소를 제거합니다.
+    마지막에 임시 파일로 저장 후 재로드하여 내부 구조를 정리합니다.
+    """
+    # _sldIdLst는 슬라이드 ID들의 리스트입니다.
+    while len(prs.slides._sldIdLst) > 0:
+        slide_id = prs.slides._sldIdLst[0]
+        # 슬라이드의 관계(rId)를 삭제합니다.
+        prs.part.drop_rel(slide_id.rId)
+        # 첫 번째 슬라이드를 삭제합니다.
+        prs.slides._sldIdLst.remove(slide_id)
+    # 내부 구조 정리를 위해 임시 파일에 저장 후 재로드
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pptx") as tmp_file:
+        temp_filename = tmp_file.name
+    prs.save(temp_filename)
+    new_prs = Presentation(temp_filename)
+    os.remove(temp_filename)
+    return new_prs

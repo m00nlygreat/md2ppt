@@ -1,13 +1,10 @@
-import json, os, re, tempfile, warnings, argparse
+import json, os, re, warnings, argparse
 from enum import Enum
 from pptx import Presentation
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
-from utils.util import unbullet, orderify, set_highlight, dict_shape
+from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides
 from utils.expand import expand
-
-# 중복 경고는 무시 (선택 사항)
-warnings.filterwarnings("ignore", message="Duplicate name:")
 
 pholder = 0
 
@@ -38,27 +35,6 @@ def get_slide_layout_enum(prs):
         layout_members[member_name] = idx
     SlideLayoutEnum = Enum("SlideLayoutEnum", layout_members)
     return SlideLayoutEnum
-
-def clear_slides(prs):
-    """
-    while 루프를 사용하여 프레젠테이션의 모든 슬라이드를 삭제합니다.
-    각 슬라이드에 대해 rId 관계를 삭제한 후, 슬라이드 ID 요소를 제거합니다.
-    마지막에 임시 파일로 저장 후 재로드하여 내부 구조를 정리합니다.
-    """
-    # _sldIdLst는 슬라이드 ID들의 리스트입니다.
-    while len(prs.slides._sldIdLst) > 0:
-        slide_id = prs.slides._sldIdLst[0]
-        # 슬라이드의 관계(rId)를 삭제합니다.
-        prs.part.drop_rel(slide_id.rId)
-        # 첫 번째 슬라이드를 삭제합니다.
-        prs.slides._sldIdLst.remove(slide_id)
-    # 내부 구조 정리를 위해 임시 파일에 저장 후 재로드
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pptx") as tmp_file:
-        temp_filename = tmp_file.name
-    prs.save(temp_filename)
-    new_prs = Presentation(temp_filename)
-    os.remove(temp_filename)
-    return new_prs
 
 def convert_json_to_pptx(prs, data, layouts):
     """
@@ -95,6 +71,7 @@ def convert_json_to_pptx(prs, data, layouts):
             p = title_shape.text_frame.paragraphs[0]
             process_runs(runs, p)
 
+        # Placeholder에 토큰을 처리합니다.
         global pholder_no
         pholder_no = 0
         placeholder_count = len(current_slide.placeholders)
@@ -112,9 +89,11 @@ def convert_json_to_pptx(prs, data, layouts):
                     process_token(current_placeholder, token, current_slide)
             else:
                 print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
-            
+        
+        # 남는 공간을 차지하도록 채웁니다.
         # Title placeholder는 무적권 0번이어야 해
         shapes_no_title = [sh for i, sh in enumerate(current_slide.shapes) if i != 0]
+        shapes_dict_no_title = [dict_shape(sh) for sh in shapes_no_title]
         
         shapes = []
         
@@ -129,7 +108,7 @@ def convert_json_to_pptx(prs, data, layouts):
         for i,shape in enumerate(shapes_no_title):
             grow = shapes[i].get("grow", False)
             if grow:
-                foo_shp = dict_shape(shape)
+                foo_shp = shapes_dict_no_title[i]
                 l, r, a, b = expand(shapes, i, prs).values()
                 if grow in [1,2,3]:
                     foo_shp['height'] += b
