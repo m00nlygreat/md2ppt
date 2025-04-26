@@ -9,8 +9,8 @@
 ## to be done
 
 - [ ] code highlight
-- [ ] code least styling
-- [ ] code to gist
+    - [ ] code least styling
+    - [ ] code to gist
 - [ ] settings
 - [ ] font-scale for placeholder
 - [ ] togglable object?
