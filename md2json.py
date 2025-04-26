@@ -4,8 +4,8 @@ import os
 import re
 import yaml
 import mistune
-from comment import plugin_comment_block
-from wildcard_break import wildcard_break_plugin
+from utils.comment import plugin_comment_block
+from utils.wildcard_break import wildcard_break_plugin
 
 def extract_frontmatter(markdown_text: str):
     """

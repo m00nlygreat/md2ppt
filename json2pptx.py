@@ -1,13 +1,10 @@
 import json, os, re, tempfile, warnings, argparse
 from enum import Enum
 from pptx import Presentation
-from pptx.util import Inches
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
-from pptx.enum.lang import MSO_LANGUAGE_ID
-from pptx.dml.color import RGBColor
-from lxml import etree
-from pptx.oxml.xmlchemy import OxmlElement
+from utils.util import unbullet, orderify, set_highlight, dict_shape
+from utils.expand import expand
 
 # 중복 경고는 무시 (선택 사항)
 warnings.filterwarnings("ignore", message="Duplicate name:")
@@ -233,45 +230,6 @@ def calc_resloc(p, i, align=5):
         }
     return resloc
 
-def unbullet(p):
-    p._pPr.insert(
-        0,
-        etree.Element(
-            "{http://schemas.openxmlformats.org/drawingml/2006/main}buNone"
-        ),
-    )
-    p._element.get_or_add_pPr().set("marL", "0")
-    p._element.get_or_add_pPr().set("indent", "0")
-
-def titlify(p):
-    """
-    주어진 paragraph(p)에 대해 major theme fonts를 명시적으로 설정.
-    - Latin: +mj-lt
-    - East Asian: +mj-ea
-    """
-    # <a:defRPr> 요소 생성 또는 가져오기
-    pPr = p._element.get_or_add_pPr()
-    defRPr = pPr.find("{http://schemas.openxmlformats.org/drawingml/2006/main}defRPr")
-    if defRPr is not None:
-        # 기존 거 있으면 제거 (덮어쓰기 위해)
-        pPr.remove(defRPr)
-
-    defRPr = OxmlElement("a:defRPr")
-
-    # <a:latin typeface="+mj-lt"/>
-    latin = OxmlElement("a:latin")
-    latin.set("typeface", "+mj-lt")
-
-    # <a:ea typeface="+mj-ea"/>
-    ea = OxmlElement("a:ea")
-    ea.set("typeface", "+mj-ea")
-
-    defRPr.append(latin)
-    defRPr.append(ea)
-
-    # defRPr 추가
-    pPr.append(defRPr)
-
 def process_token(current_placeholder, token, current_slide):
 
     match(token.get("type", "")):
@@ -344,37 +302,6 @@ def process_token(current_placeholder, token, current_slide):
             # print(token.get("type", ""))
             pass
 
-def orderify(p):
-    """
-    p.level 값을 기준으로 번호 스타일 설정
-    """
-    level = p.level
-
-    # 원하는 스타일 매핑
-    # 참고: https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.autonumberschemevalues
-    style_map = {
-        0: "romanUcPeriod",  # I.
-        1: "arabicPeriod",   # 1.
-        2: "alphaLcParenR",  # a)
-        3: "alphaUcParenR",  # A)
-        4: "romanLcParenR",  # i)
-    }
-
-    auto_num_type = style_map.get(level, "arabicPeriod")
-
-    pPr = p._element.get_or_add_pPr()
-
-    # 기존 불릿 제거
-    for tag in ["a:buChar", "a:buAutoNum"]:
-        el = pPr.find(f".//{tag}", namespaces={"a": "http://schemas.openxmlformats.org/drawingml/2006/main"})
-        if el is not None:
-            pPr.remove(el)
-
-    # buAutoNum 추가
-    buAutoNum = OxmlElement("a:buAutoNum")
-    buAutoNum.set("type", auto_num_type)
-    pPr.append(buAutoNum)
-
 def define_paragraph(placeholder):
     """
     Placeholder에서 첫 번째 단락을 가져오고, 텍스트가 비어있으면 새 단락을 추가합니다.
@@ -384,28 +311,6 @@ def define_paragraph(placeholder):
     else:
         paragraph = placeholder.text_frame.paragraphs[0]
     return paragraph
-
-def set_highlight(run, color):
-    # get run properties
-    rPr = run._r.get_or_add_rPr()
-    # Create highlight element
-    hl = OxmlElement("a:highlight")
-    # Create specify RGB Colour element with color specified
-    srgbClr = OxmlElement("a:srgbClr")
-    setattr(srgbClr, "val", color)
-    # Add colour specification to highlight element
-    hl.append(srgbClr)
-    # Add highlight element to run properties
-    setattr(rPr, "lang", MSO_LANGUAGE_ID.ENGLISH_US)
-    setattr(rPr, "altLang", MSO_LANGUAGE_ID.KOREAN)
-    # lang="en-US" altLang="ko-KR"
-    rPr.append(hl)
-    latin = OxmlElement("a:latin")
-    # <a:latin typeface="Consolas" panose="020B0609020204030204" pitchFamily="49" charset="0"/>
-    setattr(latin, "typeface", "Consolas")
-    setattr(latin, "charset", "0")
-    rPr.append(latin)
-    return run
 
 def process_runs(runs, paragraph):
     """
@@ -454,108 +359,6 @@ def add_title_slide(prs, frontmatter):
         pp.subtitle = subtitle
     if author:
         pp.author = author
-
-def expand(shapes, idx, p):
-
-    def coordinatify(shape):
-        return {
-            **shape,
-            "right": shape["left"] + shape["width"],
-            "bottom": shape["top"] + shape["height"],
-            "tl": (shape["top"], shape["left"]),
-            "tr": (shape["top"], shape["left"] + shape["width"]),
-            "bl": (shape["top"] + shape["height"], shape["left"]),
-            "br": (shape["top"] + shape["height"], shape["left"] + shape["width"]),
-        }
-
-    def are_related(foo, bar, direction):
-        if direction == "left":
-            # bar가 foo의 왼쪽에 있고, 세로(y축) 범위가 겹치는지
-            return bar["left"] + bar["width"] <= foo["left"] and \
-                max(foo["top"], bar["top"]) <= min(foo["top"] + foo["height"], bar["top"] + bar["height"])
-
-        elif direction == "right":
-            # bar가 foo의 오른쪽에 있고, 세로(y축) 범위가 겹치는지
-            return bar["left"] >= foo["left"] + foo["width"] and \
-                max(foo["top"], bar["top"]) <= min(foo["top"] + foo["height"], bar["top"] + bar["height"])
-
-        elif direction == "above":
-            # bar가 foo의 위에 있고, 가로(x축) 범위가 겹치는지
-            return bar["top"] + bar["height"] <= foo["top"] and \
-                max(foo["left"], bar["left"]) <= min(foo["left"] + foo["width"], bar["left"] + bar["width"])
-
-        elif direction == "below":
-            # bar가 foo의 아래에 있고, 가로(x축) 범위가 겹치는지
-            return bar["top"] >= foo["top"] + foo["height"] and \
-                max(foo["left"], bar["left"]) <= min(foo["left"] + foo["width"], bar["left"] + bar["width"])
-
-    def find_canvas(shapes):
-        top = min([shape["top"] for shape in shapes])
-        left = min([shape["left"] for shape in shapes])
-        width = max([shape["left"] + shape["width"] for shape in shapes]) - left
-        height = max([shape["top"] + shape["height"] for shape in shapes]) - top
-        s = {
-            "top": top,
-            "left": left,
-            "width": width,
-            "height": height,
-        }
-        return coordinatify(s)
-    
-    def greater_margin(foo, bar):
-        def emu(val):
-            return int(val * 914400)
-        f = foo.get("margin",0)
-        b = bar.get("margin",0)
-        return emu(f) if  f > b else emu(b)
-    
-    canvas = find_canvas(shapes)
-    sphs = [coordinatify(shape) for shape in shapes]
-    dir = {
-        "d" : ("left", "right", "above", "below"),
-        "left": ("left", "right"),
-        "right": ("right", "left"),
-        "above": ("top", "bottom"),
-        "below": ("bottom", "top")
-    }
-    
-    foo = sphs.pop(idx)
-    bars = sphs
-    
-    deltas = {
-        'left' : 0,
-        'right' : 0,
-        'above' : 0,
-        'below' : 0,
-    }
-    
-    for d in dir['d']:
-        related = [s for s in bars if are_related(foo, s, d)]
-        if bool(related):
-            most_close = min(abs(foo[dir[d][0]]-bar[dir[d][1]]) - greater_margin(foo,bar) for bar in related)
-            deltas.update({d: most_close})
-        else:
-            reaching_canvas = abs(foo[dir[d][0]]-canvas[dir[d][0]])
-            deltas.update({d: reaching_canvas})
-
-    return deltas
-
-def dict_shape(shape, placeholder=None):
-    """
-    주어진 shape 객체의 속성을 딕셔너리 형태로 반환합니다.
-    """
-    try: 
-        from_pl = json.loads(placeholder.name)
-    except:
-        from_pl = {}
-    return {
-        "name": shape.name,
-        "top": shape.top,
-        "left": shape.left,
-        "width": shape.width,
-        "height": shape.height,
-        **from_pl,
-    }
 
 def main(data=None):
     parser = argparse.ArgumentParser(

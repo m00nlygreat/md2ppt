@@ -4,23 +4,24 @@
 
 ## in progress
 
-- [ ] code least styling
+- [ ] expand() fix
 
 ## to be done
 
+- [ ] code highlight
+- [ ] code least styling
 - [ ] code to gist
-- [ ] list fix
-- [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder
 - [ ] togglable object?
-- [ ] code highlight
 - [ ] flex-like group object
 - [ ] more templates
 - [ ] embedding youtube videos
+- [ ] excalidraw
 
 ## done
 
+- [x] list fix
 - [x] placeholder grow rule
 - [x] 메타데이터 처리
 - [x] 파이프라인의 argument 표준화
