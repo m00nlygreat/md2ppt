@@ -100,9 +100,10 @@ def convert_json_to_pptx(prs, data, layouts):
 
         global pholder_no
         pholder_no = 0
+        placeholder_count = len(current_slide.placeholders)
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
-            if len(current_slide.placeholders) >= pholder_no:
+            if placeholder_count >= pholder_no:
                 # print(current_slide.slide_layout.name)
                 # print(token)
                 try:
@@ -269,7 +270,7 @@ def titlify(p):
     defRPr.append(ea)
 
     # defRPr 추가
-    pPr.append(dfRPr)
+    pPr.append(defRPr)
 
 def process_token(current_placeholder, token, current_slide):
 

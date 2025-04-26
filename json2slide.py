@@ -112,8 +112,8 @@ def process_json(data):
             all_runs.extend(process_token(token, {}))
         return all_runs
 
-    def process_list(list_token):
-        def iter_token(token, depth=0, ordered=False):
+    def process_list(list_token, ordered=False):
+        def iter_token(token, depth=0, ordered=ordered):
             token_type = token.get("type")
 
             if token_type == "list":
@@ -237,7 +237,7 @@ def process_json(data):
                             consume="monopoly"
                         )
             case 'list':
-                add_token(process_list(token))
+                add_token(process_list(token,token.get("attrs", {}).get("ordered", False)))
             case 'block_code':
                 add_token(
                     {
