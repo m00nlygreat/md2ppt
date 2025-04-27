@@ -72,6 +72,10 @@ def convert_json_to_pptx(prs, data, layouts):
             process_runs(runs, p)
 
         # Placeholder에 토큰을 처리합니다.
+        # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된)를 모아둠
+        
+        shapes_no_title = []
+        pl_after = False
         global pholder_no
         pholder_no = 0
         placeholder_count = len(current_slide.placeholders)
@@ -84,18 +88,18 @@ def convert_json_to_pptx(prs, data, layouts):
                     pass
 
                 for token in pholder_data:
-                    process_token(current_placeholder, token, current_slide)
+                    pl_after = process_token(current_placeholder, token, current_slide)
+                    # image이면 picture shape, 텍스트이면 placeholder가 들어있게 될 것.
             else:
                 print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
+            if pl_after:
+                shapes_no_title.append(pl_after)
         
         # 남는 공간을 차지하도록 채웁니다.
         # Title placeholder는 무적권 0번이어야 해
-        shapes_no_title = [sh for i, sh in enumerate(current_slide.shapes) if i != 0]
+        # shapes_no_title = [sh for i, sh in enumerate(current_slide.shapes) if i != 0]
         
         shapes = []
-
-        print([shape.name for shape in current_slide.shapes])
-        print([pl.name for pl in current_slide.slide_layout.placeholders])
         
         for i, shape in enumerate(shapes_no_title):
             if current_slide.shapes.title == shape:
@@ -262,7 +266,8 @@ def process_token(current_placeholder, token, current_slide):
                     sp = current_placeholder._element
                     sp.getparent().remove(sp)
 
-                    current_slide.shapes.add_picture(url, **resloc)
+                    current_placeholder = current_slide.shapes.add_picture(url, **resloc)
+                    
             except:
                 print(f"Error: Image '{url}' not found or invalid.")
 
@@ -280,6 +285,7 @@ def process_token(current_placeholder, token, current_slide):
         case _ :
             # print(token.get("type", ""))
             pass
+    return current_placeholder
 
 def define_paragraph(placeholder):
     """

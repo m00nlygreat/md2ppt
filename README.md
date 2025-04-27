@@ -4,13 +4,13 @@
 
 ## in progress
 
-- [ ] expand() fix
-
-## to be done
-
 - [ ] code highlight
     - [ ] code least styling
     - [ ] code to gist
+
+## to be done
+
+- [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder
 - [ ] togglable object?
@@ -18,9 +18,11 @@
 - [ ] more templates
 - [ ] embedding youtube videos
 - [ ] excalidraw
+- [ ] [table style](https://stackoverflow.com/questions/61982333/how-to-change-default-table-style-using-pptx-python)
 
 ## done
 
+- [x] jsonify placeholder name fix
 - [x] list fix
 - [x] placeholder grow rule
 - [x] 메타데이터 처리

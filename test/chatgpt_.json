@@ -1,0 +1,161 @@
+{
+    "frontmatter": {
+        "title": "아는 만큼 쓰는 ChatGPT",
+        "type": "text",
+        "author": "배문형"
+    },
+    "tokens": [
+        {
+            "type": "heading",
+            "attrs": {
+                "level": 1
+            },
+            "style": "atx",
+            "children": [
+                {
+                    "type": "text",
+                    "raw": "들어가며"
+                }
+            ]
+        },
+        {
+            "type": "blank_line"
+        },
+        {
+            "type": "heading",
+            "attrs": {
+                "level": 2
+            },
+            "style": "atx",
+            "children": [
+                {
+                    "type": "text",
+                    "raw": "맥락을 유지한 채 계속 질문하기"
+                }
+            ]
+        },
+        {
+            "type": "blank_line"
+        },
+        {
+            "type": "list",
+            "children": [
+                {
+                    "type": "list_item",
+                    "children": [
+                        {
+                            "type": "block_text",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "raw": "하나의 스레드(Thread)에서 계속 질문하면, 이전 대화의 맥락을 모두 가진 채 대답을 계속함"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "list",
+                            "children": [
+                                {
+                                    "type": "list_item",
+                                    "children": [
+                                        {
+                                            "type": "block_text",
+                                            "children": [
+                                                {
+                                                    "type": "text",
+                                                    "raw": "이 하나의 스레드는 일종의 샌드박스라고 볼 수 있다"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "tight": true,
+                            "bullet": "-",
+                            "attrs": {
+                                "depth": 1,
+                                "ordered": false
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "list_item",
+                    "children": [
+                        {
+                            "type": "block_text",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "raw": "계속해서 질문"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "tight": true,
+            "bullet": "-",
+            "attrs": {
+                "depth": 0,
+                "ordered": false
+            }
+        },
+        {
+            "type": "list",
+            "children": [
+                {
+                    "type": "list_item",
+                    "children": [
+                        {
+                            "type": "block_text",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "raw": "\"그게 당시의 과학계에 어떻게 받아들여졌고 어떤 시사점을 가져왔어?\""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "list_item",
+                    "children": [
+                        {
+                            "type": "block_text",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "raw": "\"너의 슈퍼빌런 특성은 모든 대사에 블랙유머를 넣어 말하는 거야. 네가 말하는 모든 것들은 세계를 구하기 위해서라고 하지만 실제로는 세상을 멸망시키는 것이거든. 네가 할 법한 대사를 말해볼래?\""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "tight": true,
+            "bullet": ".",
+            "attrs": {
+                "depth": 0,
+                "ordered": true
+            }
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "image",
+                    "children": [
+                        {
+                            "type": "text",
+                            "raw": ""
+                        }
+                    ],
+                    "attrs": {
+                        "url": "attachments/4ea2acad91acff60f5e8e106397509c5.png"
+                    }
+                }
+            ]
+        }
+    ]
+}
