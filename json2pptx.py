@@ -78,11 +78,9 @@ def convert_json_to_pptx(prs, data, layouts):
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
             if placeholder_count >= pholder_no:
-                # print(current_slide.slide_layout.name)
-                # print(token)
                 try:
                     current_placeholder = current_slide.placeholders[p_map[pholder_no]]
-                except Exception as e:
+                except:
                     pass
 
                 for token in pholder_data:
@@ -93,9 +91,11 @@ def convert_json_to_pptx(prs, data, layouts):
         # 남는 공간을 차지하도록 채웁니다.
         # Title placeholder는 무적권 0번이어야 해
         shapes_no_title = [sh for i, sh in enumerate(current_slide.shapes) if i != 0]
-        shapes_dict_no_title = [dict_shape(sh) for sh in shapes_no_title]
         
         shapes = []
+
+        print([shape.name for shape in current_slide.shapes])
+        print([pl.name for pl in current_slide.slide_layout.placeholders])
         
         for i, shape in enumerate(shapes_no_title):
             if current_slide.shapes.title == shape:
@@ -108,7 +108,7 @@ def convert_json_to_pptx(prs, data, layouts):
         for i,shape in enumerate(shapes_no_title):
             grow = shapes[i].get("grow", False)
             if grow:
-                foo_shp = shapes_dict_no_title[i]
+                foo_shp = shapes[i]
                 l, r, a, b = expand(shapes, i, prs).values()
                 if grow in [1,2,3]:
                     foo_shp['height'] += b
