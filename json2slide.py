@@ -61,6 +61,8 @@ def process_json(data):
                 else:
                     layout = "content_with_caption"
                 pass
+            case _:
+                layout = ""
         
         return layout
 
@@ -219,10 +221,15 @@ def process_json(data):
                 child = token['children'][0]
                 match(child['type']):
                     case "text":
+                        # 이 IF문 왜 있는지 나중에 확인
                         if child['raw'] != "":
                             add_token(
                                 {"type": "paragraph", "runs": paragraph(token["children"])}
                             )
+                    case "link":
+                        add_token(
+                            {"type": "paragraph", "runs": paragraph(token["children"])}
+                        )
                     case 'image':
                         url_o = child["attrs"]["url"]
                         url = url_o if parse.unquote(url_o) == url_o else parse.unquote(url_o)

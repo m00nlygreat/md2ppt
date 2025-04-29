@@ -5,6 +5,7 @@ from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
 from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides
 from utils.expand import expand
+from utils.code_highlight import highlight_code, process_codes
 
 pholder = 0
 
@@ -105,7 +106,7 @@ def convert_json_to_pptx(prs, data, layouts):
             if current_slide.shapes.title == shape:
                 print(current_slide.shapes.title.text_frame.text)
                 continue
-            placeholder = current_slide.slide_layout.placeholders[i+1]
+            placeholder = current_slide.slide_layout.placeholders[i+1] # 추후 고쳐줘야 한다. 에러나서 안되기 때문에.
             shapes.append(dict_shape(shape, placeholder))
 
         # Shape의 size는 한 번에 대입해줘야 한다. 하나씩 변경하면 0으로 초기화됨
@@ -239,7 +240,13 @@ def process_token(current_placeholder, token, current_slide):
         case "code":
             p = define_paragraph(current_placeholder)
             p.level = 5
-            p.text = token.get("lang","code")+'\n\n'+ token.get("raw", "")
+            lang = token.get("lang", False)
+            if lang:
+                code = token.get("raw", False)
+                highlighted = highlight_code(code, lang)
+                process_codes(highlighted, p)
+            else:
+                p.text = token.get("lang","plaintext")+'\n'+ token.get("raw", "")
         case "image":
             url = token.get("url", "")
             

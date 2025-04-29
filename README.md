@@ -4,9 +4,9 @@
 
 ## in progress
 
-- [ ] code highlight
-    - [ ] code least styling
-    - [ ] code to gist
+- [x] code highlight
+  - [ ] code least styling
+  - [ ] code to gist
 
 ## to be done
 
@@ -19,9 +19,11 @@
 - [ ] embedding youtube videos
 - [ ] excalidraw
 - [ ] [table style](https://stackoverflow.com/questions/61982333/how-to-change-default-table-style-using-pptx-python)
+- [ ] appendable placeholder
 
 ## done
 
+- [x] link in paragraph (ai_actions example)
 - [x] jsonify placeholder name fix
 - [x] list fix
 - [x] placeholder grow rule
