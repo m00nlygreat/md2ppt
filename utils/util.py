@@ -53,8 +53,8 @@ def orderify(p):
     # 원하는 스타일 매핑
     # 참고: https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.autonumberschemevalues
     style_map = {
-        0: "romanUcPeriod",  # I.
-        1: "arabicPeriod",   # 1.
+        0: "arabicPeriod",   # 1.
+        1: "arabicParenR",   # 1)
         2: "alphaLcParenR",  # a)
         3: "alphaUcParenR",  # A)
         4: "romanLcParenR",  # i)
