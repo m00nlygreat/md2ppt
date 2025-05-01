@@ -30,7 +30,7 @@ def analyze_markdown(markdown_text: str):
     mistune을 사용해 renderer 없이 마크다운 텍스트를 토큰화합니다.
     이 함수는 마크다운 구조를 반영하는 딕셔너리 형태의 토큰들을 반환합니다.
     """
-    md = mistune.create_markdown(renderer=None, plugins=[plugin_comment_block, wildcard_break_plugin])
+    md = mistune.create_markdown(renderer=None, plugins=[plugin_comment_block, wildcard_break_plugin, 'table'])
     tokens = md(markdown_text)
     # print("✅ Registered Plugins:", md.block.rules)
     return tokens

@@ -184,6 +184,33 @@ def process_json(data):
                     result.append(processed)
 
         return {"type": "list", "children": result}
+    
+    def process_table(table):
+        def process_cell(cell):
+            return {
+                'type': 'cell',
+                'runs': paragraph(cell.get('children', [])),
+                'align': cell.get('attrs', {}).get('align', '')
+            }
+        head_data = table.get('children',[[]])[0].get('children',False)
+        body_data = table.get('children',[[],[]])[1].get('children',False)
+        
+        result = {
+            'type': 'table',
+            'head': [],
+            'body': [],
+        }
+        
+        if head_data:
+            for cell in head_data:
+                result['head'].append(process_cell(cell))
+        if body_data:
+            for row in body_data:
+                row_data = []
+                for cell in row.get('children', []):
+                    row_data.append(process_cell(cell))
+                result['body'].append(row_data)
+        return result
 
     for token in tokens:
         type = token['type']
@@ -249,7 +276,7 @@ def process_json(data):
                 add_token(
                     {
                         "type": "code",
-                        "lang": token["attrs"]["info"],
+                        "lang": token.get("attrs", {}).get("info", ""),
                         "raw": token["raw"],
                     }
                 )
@@ -259,9 +286,13 @@ def process_json(data):
                         processed['slides'][current_slide]['layout'] = token['value']
                     case 'note':
                         processed['slides'][current_slide]['notes'].append(token['value'])
-                pass
             case 'blank_line':
                 pass
+            case 'table':
+                add_token(
+                    process_table(token),
+                    consume="monopoly"
+                )
             case _:
                 print(token)
                 pass
@@ -274,7 +305,7 @@ def process_json(data):
         if title_empty and placeholder_empty:
             processed['slides'].remove(slide)            
 
-    return processed  # 중간 처리 로직을 여기에 추가 가능
+    return processed 
 
 def save_json(data, export_filename):
     """딕셔너리를 JSON 파일로 저장"""

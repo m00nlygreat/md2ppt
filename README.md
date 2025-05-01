@@ -10,6 +10,9 @@
 
 ## to be done
 
+- [x] insert table
+  - [ ] auto column width
+- [ ] Head repeat fix
 - [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder

@@ -62,7 +62,6 @@ def convert_json_to_pptx(prs, data, layouts):
         p_map = {}
         for i, pl in enumerate(current_slide.placeholders):
             p_map.update({i: slide_layout_idx.placeholders[i].placeholder_format.idx})
-        
 
         # 제목을 설정합니다.
         title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
@@ -73,7 +72,7 @@ def convert_json_to_pptx(prs, data, layouts):
             process_runs(runs, p)
 
         # Placeholder에 토큰을 처리합니다.
-        # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된)를 모아둠
+        # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된 순서로)를 모아둠
         
         shapes_no_title = []
         pl_after = False
@@ -288,9 +287,48 @@ def process_token(current_placeholder, token, current_slide):
                     process_runs(child.get("runs", []), p)
                     if child.get("ordered", False):
                         orderify(p)
-
+        case "table":
+            sizloc = {
+                "left": current_placeholder.left,
+                "top": current_placeholder.top,
+                "width": current_placeholder.width,
+                "height": 1000,
+                # "height": current_placeholder.height,
+            }
+            sp = current_placeholder._element
+            sp.getparent().remove(sp)
+            
+            head_data = token.get("head", [])
+            body_data = token.get("body", [])
+            
+            rows_count = len(body_data) + 1
+            cols_count = len(head_data)
+            
+            shape = current_slide.shapes.add_table(
+                rows_count,
+                cols_count,
+                **sizloc
+            )
+            
+            # 테이블의 스타일을 설정
+            shape._element.graphic.graphicData.tbl[0][-1].text = '{72833802-FEF1-4C79-8D5D-14CF1EAF98D9}'
+            
+            table = shape.table
+            
+            for index, cell_data in enumerate(head_data):
+                cell = table.cell(0, index)
+                p = define_paragraph(cell)
+                process_runs(cell_data.get("runs", []), p)
+            
+            for row_index, row in enumerate(body_data):
+                for col_index, cell_data in enumerate(row):
+                    cell = table.cell(row_index+1, col_index)
+                    p = define_paragraph(cell)
+                    process_runs(cell_data.get("runs", []), p)
+                
+            
         case _ :
-            # print(token.get("type", ""))
+            print(token.get("type", ""))
             pass
     return current_placeholder
 

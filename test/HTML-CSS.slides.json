@@ -1,0 +1,4711 @@
+{
+    "frontmatter": {},
+    "slides": [
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "HTML"
+                    }
+                ]
+            },
+            "layout": "section_header",
+            "placeholders": [
+                []
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "태그의 구성"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Opening Tag (여는 태그)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "Tag name"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "Attiributes"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 2,
+                                "runs": [
+                                    {
+                                        "text": "key / value"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 2,
+                                "runs": [
+                                    {
+                                        "text": "값이 없는 attribute도 있음."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Content (내용)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Closing Tag"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "Closing Tag가 없고 Opening Tag만 있는 경우, 끝에 슬래시("
+                            },
+                            {
+                                "monospace": true,
+                                "text": "/"
+                            },
+                            {
+                                "text": ")를 붙여 표시해주기도 한다."
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "HTML의 구성"
+                    }
+                ]
+            },
+            "layout": "section_header",
+            "placeholders": [
+                []
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<head>"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "<meta>"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "메타 데이터를 표현하는 태그"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 4,
+                        "runs": [
+                            {
+                                "text": "오픈 그래프(Open Graph)"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "code",
+                        "lang": "html",
+                        "raw": "<head>\n  <meta property=\"og:title\" content=\"웹페이지 제목\" />\n  <meta property=\"og:description\" content=\"웹페이지 설명\" />\n  <meta property=\"og:image\" content=\"웹페이지 이미지 URL\" />\n  <meta property=\"og:url\" content=\"웹페이지 URL\" />\n</head>\n",
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "웹사이트의 정보를 요약하고 대표하는 이미지를 표현하는 메타 태그"
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<head>"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "<title>"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "웹사이트의 제목을 표시한다."
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "<link>"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "사이트에 사용될 CSS 스타일시트, 자바스크립트 파일 등을 불러온다."
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "<style>"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "문서 한정으로 정의된 CSS 스타일을 담을 수 있는 엘리먼트"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "<script>"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "문서 한정으로 정의된 자바스크립트를 담아 불러올 수 있는 엘리먼트"
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<body>"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "문서의 실질적인 내용을 담고 있는 파트"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "제목"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<h1>"
+                                    },
+                                    {
+                                        "text": " ~ "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<h6>"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "본문"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<p>"
+                                    },
+                                    {
+                                        "text": " 태그: Paragraph"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<br/>"
+                                    },
+                                    {
+                                        "text": " 태그: line-break"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<hr/>"
+                                    },
+                                    {
+                                        "text": " 태그: horizontal line"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<a>"
+                                    },
+                                    {
+                                        "text": " 태그: 하이퍼 링크"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<ul>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<ol>"
+                                    },
+                                    {
+                                        "text": " Unordered, Ordered List 태그"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<li>"
+                                    },
+                                    {
+                                        "text": " 태그"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<pre>"
+                                    },
+                                    {
+                                        "text": ": pre-format"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<body>"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "특수문자"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "HTML의 예약어로 사용되는 문자를 표시하는 방법"
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "table",
+                        "head": [
+                            {
+                                "type": "cell",
+                                "runs": [
+                                    {
+                                        "text": "특수문자"
+                                    }
+                                ],
+                                "align": "center"
+                            },
+                            {
+                                "type": "cell",
+                                "runs": [
+                                    {
+                                        "text": "설명"
+                                    }
+                                ],
+                                "align": null
+                            }
+                        ],
+                        "body": [
+                            [
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "monospace": true,
+                                            "text": "&nbsp;"
+                                        }
+                                    ],
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "text": "non-breaking space, "
+                                        },
+                                        {
+                                            "bold": true,
+                                            "text": "공백"
+                                        }
+                                    ],
+                                    "align": null
+                                }
+                            ],
+                            [
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "monospace": true,
+                                            "text": "&lt;"
+                                        }
+                                    ],
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "text": "less than >"
+                                        }
+                                    ],
+                                    "align": null
+                                }
+                            ],
+                            [
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "monospace": true,
+                                            "text": "&gt;"
+                                        }
+                                    ],
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "text": "greater than <"
+                                        }
+                                    ],
+                                    "align": null
+                                }
+                            ],
+                            [
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "monospace": true,
+                                            "text": "&quot;"
+                                        }
+                                    ],
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "text": "quotation mark \""
+                                        }
+                                    ],
+                                    "align": null
+                                }
+                            ],
+                            [
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "monospace": true,
+                                            "text": "&amp;"
+                                        }
+                                    ],
+                                    "align": "center"
+                                },
+                                {
+                                    "type": "cell",
+                                    "runs": [
+                                        {
+                                            "text": "ampersand &"
+                                        }
+                                    ],
+                                    "align": null
+                                }
+                            ]
+                        ],
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "텍스트 서식"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "텍스트 안에서 사용되는 강조 등의 서식"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<b>"
+                                    },
+                                    {
+                                        "text": " 태그: bold"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<strong>"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<i>"
+                                    },
+                                    {
+                                        "text": " 태그: italic"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<u>"
+                                    },
+                                    {
+                                        "text": " 태그: underline"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<s>"
+                                    },
+                                    {
+                                        "text": " 태그: strike-through"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<sub>"
+                                    },
+                                    {
+                                        "text": " 아래 첨자"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<sup>"
+                                    },
+                                    {
+                                        "text": " 윗첨자"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "텍스트 서식"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "기타 텍스트 서식"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<ins>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<del>"
+                                    },
+                                    {
+                                        "text": ": 문서에서 추가되거나 삭제된 등의 버전 관리를 하기 위해 표시"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<em>"
+                                    },
+                                    {
+                                        "text": ": emphasize 강조할 부분을 가리킴."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "테이블 태그"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "테이블 관련 태그는 표 형식의 데이터를 표시할 때만 쓴다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "rowspan"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "colspan"
+                                    },
+                                    {
+                                        "text": " attribute를 사용해 셀 병합"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "code",
+                        "lang": "html",
+                        "raw": "<table>\n\t<thead> \n\t\t<tr>\n\t\t\t<th>열 제목</th>\n\t\t\t<th>열2 제목</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr> <!-- 행 태그 -->\n\t\t\t<th>내용 셀</th>\n\t\t\t<td>내용 셀2</td>\n\t\t</tr>\n\t</tbody>\n</table>\n",
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "정의 리스트"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dl>"
+                                    },
+                                    {
+                                        "text": " description-list"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>"
+                                    },
+                                    {
+                                        "text": " description-term"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dd>"
+                                    },
+                                    {
+                                        "text": " description-description"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "주의사항"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dl>"
+                                    },
+                                    {
+                                        "text": "은 반드시 하나 이상의 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>-<dd>"
+                                    },
+                                    {
+                                        "text": " 짝을 담고 있어야 합니다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>,<dd>"
+                                    },
+                                    {
+                                        "text": " 는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dl>"
+                                    },
+                                    {
+                                        "text": " 밖에서 독립적으로 사용할 수 없습니다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "bold": true,
+                                        "text": "단, "
+                                    },
+                                    {
+                                        "bold": true,
+                                        "monospace": true,
+                                        "text": "<dt>-<dd>"
+                                    },
+                                    {
+                                        "bold": true,
+                                        "text": "가 반드시 하나의 짝으로 지어져야 되는 것은 아닙니다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "그래서 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>"
+                                    },
+                                    {
+                                        "text": "는 하나 이상의 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dd>"
+                                    },
+                                    {
+                                        "text": "를 형제 요소로 가질 수 있습니다. (예: "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "dt-dd-dd"
+                                    },
+                                    {
+                                        "text": ")"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "그래서 하나 이상의 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>"
+                                    },
+                                    {
+                                        "text": "가 연속으로 나올 수 있습니다. (예: "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "dt-dt-dd"
+                                    },
+                                    {
+                                        "text": ")"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<div>"
+                                    },
+                                    {
+                                        "text": "는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>-<dd>"
+                                    },
+                                    {
+                                        "text": " 쌍을 감쌀 때 쓸 수 있지만, "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<dt>-<dd>"
+                                    },
+                                    {
+                                        "text": "의 형제 요소여서는 안 됩니다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<dl>"
+                                    },
+                                    {
+                                        "text": "은 공백이 아닌 텍스트 노드와 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<div>,<dt>,<dd>"
+                                    },
+                                    {
+                                        "text": "가 아닌 요소를 포함해서는 안 됩니다."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<a>"
+                    },
+                    {
+                        "text": " 태그"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "자식 요소 또는 텍스트에 링크를 걸 때 사용 (anchor)"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "attributes"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "href=\"{url}\""
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "target=\"_blank\""
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "download=\"{filename}\""
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "절대 / 상대 경로"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "절대경로: 최상위 경로 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "/"
+                                    },
+                                    {
+                                        "text": "에서부터 모든 경로를 입력"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "상대경로: 현재 경로 기준으로 상대적으로 경로를 찾아가기"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "."
+                                    },
+                                    {
+                                        "text": " : 현재 디렉토리"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": ".."
+                                    },
+                                    {
+                                        "text": " : 상위 디렉토리"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<img>"
+                    },
+                    {
+                        "text": " 태그"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "웹 상에서 이미지를 표시하기 위한 태그"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "attributes"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "src"
+                                    },
+                                    {
+                                        "text": " : 이미지의 URI"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "width"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "height"
+                                    },
+                                    {
+                                        "text": ": 너비, 높이 (생략 시 원본 크기)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "alt"
+                                    },
+                                    {
+                                        "text": ": 대체 텍스트"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<form>"
+                    },
+                    {
+                        "text": " 태그"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://inpa.tistory.com/entry/HTML-%F0%9F%93%9A-%ED%8F%BCForm-%ED%83%9C%EA%B7%B8-%EC%A0%95%EB%A6%AC#%3Cform%3E_%ED%83%9C%EA%B7%B8",
+                                        "text": "폼&인풋 한방정리"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "웹 서버와 통신하기 위한 유저 입력값을 받아 보관하고 전송처를 밝히는 요소"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "실제 화면상에 표시되는 것은 없으며, 오로지 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "input"
+                                    },
+                                    {
+                                        "text": " 요소의 값들을 취합하여 보내는 역할"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "attributes"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "method"
+                                    },
+                                    {
+                                        "text": ": "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "GET"
+                                    },
+                                    {
+                                        "text": " 또는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "POST"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "action"
+                                    },
+                                    {
+                                        "text": ": 폼을 전송할 서버의 script 파일 지정 = URL"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "name"
+                                    },
+                                    {
+                                        "text": ": 스크립트에서 다루기 위한 이름, 식별자."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "monospace": true,
+                        "text": "<input>"
+                    },
+                    {
+                        "text": " 태그"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "사용자의 입력을 받기위한 UI 엘리먼트"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "attributes"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "type"
+                                    },
+                                    {
+                                        "text": " : 인풋 요소의 형태를 결정"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "text"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "tel"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "url"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "email"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "password"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "number"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "search"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "range"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "color"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "checkbox"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "radio"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "datetime"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "datetime-local"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "date"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "month"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "week"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "time"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "button"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "file"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "submit"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "image"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "reset"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "URL"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "Uniform Resource Locator. 어떠한 정보 또는 자원의 위치를 표현하기 위한 규격"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "code",
+                        "lang": "",
+                        "raw": "프로토콜://사용자정보@호스트:포트/경로?쿼리#프래그먼트\n",
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "컨테이너"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "별다른 기능이 없지만 다른 요소들을 감싸서 그루핑하고 사각형의 영역을 형성하는 태그"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<div>"
+                                    },
+                                    {
+                                        "text": " 태그: 블록 레벨 요소"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<span>"
+                                    },
+                                    {
+                                        "text": " 태그: 인라인 레벨 요소"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "시맨틱 태그 (Semantic Tags)"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "레이아웃에서 어떤 역할인지 밝히는 컨테이너 요소"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<header>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<section>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<article>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<nav>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<aside>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<footer>"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/183f392e581d9f227c1bb4a992eb8991.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS"
+                    }
+                ]
+            },
+            "layout": "section_header",
+            "placeholders": [
+                []
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Cascading Style Sheet"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "HTML 요소들을 꾸미는 방법을 정의하는 규칙"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "Cascading (캐스케이딩, 계단식)"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "구체적으로 어떻게 계단식인가"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "스타일 우선순위(Priority)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "스타일 상속(Inheritance)"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "스타일의 우선순위"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "중요도"
+                                    }
+                                ],
+                                "ordered": true
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "작성자 > 사용자 > 사용자 도구"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "명시도 (Specificity)"
+                                    }
+                                ],
+                                "ordered": true
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "in-line > id > class > type"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "코드 순서 (최신순)"
+                                    }
+                                ],
+                                "ordered": true
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS 문법 구성"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "code",
+                        "lang": "",
+                        "raw": "셀렉터 {프로퍼티 : 밸류; 프로퍼티2: 밸류 ... }\n",
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "선택자(selector)와 선언부(declarations)로 구성"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "각 프로퍼티의 사이는 반드시 세미콜론("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ";"
+                                    },
+                                    {
+                                        "text": ")으로 구분"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "monospace": true,
+                                "text": "!important"
+                            },
+                            {
+                                "text": " Rule"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "value의 뒤에 넣게 되면 즉시 최우선순위로 해당 스타일이 적용됨."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS의 위치"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "외부 스타일(.css) 사용: 별도로 작성된 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "css"
+                                    },
+                                    {
+                                        "text": " 파일을 HTML에 연결하여 사용하는 방법. 비슷한 스타일을 여러 HTML 문서에 적용하고자 할 때 유리"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "내부 스타일: "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<style>"
+                                    },
+                                    {
+                                        "text": " 태그 안에 정의된 스타일 사용"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "인라인 스타일: 각 HTML 요소 안에 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "style"
+                                    },
+                                    {
+                                        "text": " attribute에 기술된 스타일"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "선택자 (Selectors)"
+                    }
+                ]
+            },
+            "layout": "section_header",
+            "placeholders": [
+                []
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS Selector (선택자)"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "선택자는 문서 내의 특정 HTML 요소를 '선택'하는 일을 한다. 대놓고 특정 엘리먼트를 가리키기도 하지만 추상적으로 여러 개의 엘리먼트를 선택할 수 있다. 선택한 뒤에는 선언을 사용해 스타일을 지정한다."
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "타입 셀렉터: "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "h1"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "img"
+                                    },
+                                    {
+                                        "text": " 등의 HTML 요소의 종류를 전부 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "클래스 셀렉터: HTML 요소에 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "class"
+                                    },
+                                    {
+                                        "text": " attribute를 사용해 부여한 클래스 이름을 가진 모든 요소를 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "ID 셀렉터: HTML 요소에 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "id"
+                                    },
+                                    {
+                                        "text": " attribute를 사용해 부여한 ID를 가진 요소를 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "속성 셀렉터: 특정 attribute를 가지고 있거나 특정 attribute의 값이 특정되는 HTML 요소를 모두 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "전체 셀렉터: 모든 요소를 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "가상 클래스 셀렉터: 요소의 특정 상태 또는 해당 요소의 조건에 따른 다른 요소를 선택함"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "Selector list"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "콤마("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ","
+                                    },
+                                    {
+                                        "text": ")를 사용해 여러 선택자를 한꺼번에 스타일링"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Combinator (결합자, 조합 선택자)"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "선택자끼리 조합하거나 하는 연산을 통해 좀 더 세부적으로 요소를 선택하거나 차별화할 수 있다."
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "A"
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": " "
+                                    },
+                                    {
+                                        "text": "B: 자손 결합. 공백을 사용해 A의 자손인 B를 선택."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "A"
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ">"
+                                    },
+                                    {
+                                        "text": "B: 직계자손 결합. A의 직계 자손(바로 밑에 있는) B"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "A"
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "+"
+                                    },
+                                    {
+                                        "text": "B: 직후 형제 결합. A의 바로 다음에 오는 형제 B"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "A"
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "~"
+                                    },
+                                    {
+                                        "text": "B: 형제 결합. A의 뒤에 오는 모든 형제 B를 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "타입, 클래스, ID, 전체"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "타입 셀렉터: 단순히 HTML 태그 이름을 입력 ("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "h1"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "img"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "p"
+                                    },
+                                    {
+                                        "text": " ... )"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "클래스 셀렉터: 마침표("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "."
+                                    },
+                                    {
+                                        "text": ")뒤에 클래스 이름을 입력 ("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ".first"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ".box"
+                                    },
+                                    {
+                                        "text": " ...)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "ID 셀렉터: 샵("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "#"
+                                    },
+                                    {
+                                        "text": ") 뒤에 ID명을 입력 ("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "#sumbit"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "#nav"
+                                    },
+                                    {
+                                        "text": " ...)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "ID는 문서 내에 한 번만 써야 한다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Universal Selector: 와일드 카드("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "*"
+                                    },
+                                    {
+                                        "text": ") 사용."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "문서 전체의 패딩, 마진 등을 초기화할 때 유용"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "속성 셀렉터"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "code",
+                        "lang": "",
+                        "raw": "태그명[속성명=\"속성값\"]\n",
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "태그명은 생략 가능"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "값을 생략하면 해당 attribute를 가지고 있는 요소를 선택한다."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "가상 클래스(pseudo-class) 셀렉터"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "콜론("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":"
+                                    },
+                                    {
+                                        "text": ")을 사용해 정의."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "특정 요소를 기준으로 요소를 찾거나, 특정 상태에 있는 요소를 선택"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": ":hover"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":active"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":focus"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":link"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":visited"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": ":nth-child(n)"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":first-child"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": ":first-of-type"
+                                    },
+                                    {
+                                        "text": ","
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "가상 요소 (pseudo-element)"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "특정 선택자에 의해 선택된 요소를 기준으로 콘텐츠를 생성하여 채워넣는다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "두 개의 콜론("
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "::"
+                                    },
+                                    {
+                                        "text": ")을 사용"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "::after"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "::before"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://developer.mozilla.org/en-US/docs/Web/CSS/::after",
+                                        "text": "예시"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Emmet"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "여러 HTML 태그 구조를 입력하는 단축 표현 확장"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "본래 Extension이었으나 현재는 VS Code에 통합됨"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "html:5"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "html>body>ul>li*5"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "div.classname>span.lable+input[type=\"submit\"]"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS 선언부(declaration)"
+                    }
+                ]
+            },
+            "layout": "section_header",
+            "placeholders": [
+                []
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "타입 (Types)"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "텍스트, 숫자, 컬러"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "url()"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Types",
+                                        "text": "CSS Data types"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "단위 (Units)"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "1차원 크기(distant)를 결정짓는 여러가지 단위가 있으며, 단위의 이해도에 따른 결과물의 차이가 크다."
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "px"
+                                    },
+                                    {
+                                        "text": " 픽셀."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "%"
+                                    },
+                                    {
+                                        "text": " 부모 크기에 대한 상대적 크기"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "부모가 크기가 없으면 자식도 없게 된다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "vw"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "vh"
+                                    },
+                                    {
+                                        "text": ": Viewport width, height. 디바이스의 한 화면에 보이는 크기"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "em"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "rem"
+                                    },
+                                    {
+                                        "text": ": 부모 또는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "html"
+                                    },
+                                    {
+                                        "text": " 요소의 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "font-size"
+                                    },
+                                    {
+                                        "text": "에 비례한 단위"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "lh"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "rlh"
+                                    },
+                                    {
+                                        "text": ": 엘리먼트의 line-height 속성을 따라가는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "lh"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "html"
+                                    },
+                                    {
+                                        "text": " 요소의 line-height를 따라가는 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "rlh"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "CSS-wide keywords"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "inherit, unset, initial, revert"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "박스모델"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "paragraph",
+                        "runs": [
+                            {
+                                "text": "모든 HTML 요소는 박스로 되어 있으며, 각각 패딩과 마진을 가지고 레이아웃을 차지하게 된다는 CSS의 원리"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Margin: 박스의 바깥 여백"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Border: 외곽선의 굵기"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Padding: 박스의 안쪽 여백"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "box-sizing"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "box-sizing: border-box"
+                                    },
+                                    {
+                                        "text": ": width의 기준을 border 굵기 포함하여 계산"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "box-sizing: content-box"
+                                    },
+                                    {
+                                        "text": ": width의 기준을 content에 한정"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/9a5ab51dbbb3505e1d402fc4ea8fbb0d.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Margin, Padding"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "code",
+                        "lang": "CSS",
+                        "raw": "div {\n\tmargin: 10px 0 10px 10px;\n\tmargin: 10px 10px;\n\tmargin 10px;\n}\n \n",
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "top"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "right"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "bottom"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "left"
+                                    },
+                                    {
+                                        "text": "의 순서"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "margin-top"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "padding-bottom"
+                                    },
+                                    {
+                                        "text": " 의 형태로 따로 작성하는 것도 가능"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "마진 상쇄, 마진 겹침 (Margin Collapse)"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "HTML이 문서도구였던 시절의 유산"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "MS Word 등의 문서도구도 이러한 규칙을 가진다(고 함)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "붙어있는 두 블록 요소의 위 아래 마진이 겹치는 경우, 더 큰 쪽의 마진으로 통합하는 규칙"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://velog.io/@raram2/CSS-%EB%A7%88%EC%A7%84-%EC%83%81%EC%87%84Margin-collapsing-%EC%9B%90%EB%A6%AC-%EC%99%84%EB%B2%BD-%EC%9D%B4%ED%95%B4",
+                                        "text": "마진 상쇄 완벽 정리"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/fe8ae6d465f20fdcca9a3fc31b158f88.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Border"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Border의 굵기만큼 Box의 영역을 차지함"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "code",
+                        "lang": "css",
+                        "raw": "div {\n\tborder: 10px solid blue;\n}\n",
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "border-with"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "border-style"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "border-color"
+                                    },
+                                    {
+                                        "text": "의 형태로 분리해서 작성 가능"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Block & In-line level"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "모든 HTML 요소는 기본적으로 block 또는 in-line의 속성을 가지고 있다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Block: 문서의 가로폭을 모두 차지하고 줄바꿈을 일으키는 요소"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<a>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<b>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<input>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<span>"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "In-line: 정해진 만큼만 가로폭을 차지하고 줄바꿈을 일으키지 않는 요소"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "<p>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<h1>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<ul>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<li>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<div>"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "<audio>"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "CSS의 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "display"
+                                    },
+                                    {
+                                        "text": " 속성을 통해 이를 변경할 수 있다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "block"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "inline"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "inline-block"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "none"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Visibiliy, Overflow"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "visibility"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "visibility: visible"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "보임"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "visibility: hidden"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "안보이지만 자리는 차지함"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "넘치는 경우"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "overflow: hidden;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "넘칠 시 자르고 감춤"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "overflow: scroll;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "넘칠 시 스크롤 바"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "overflow: visible;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "넘칠 시 그냥 보여줌"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "overflow: auto"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "넘칠 시 알아서 스크롤 바 보여줌"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "그림자"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "박스 그림자"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "box-shadow: 10px 10px 20px gray;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "각각 h-offset, v-offset, blur, spread, color를 의미"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "텍스트 그림자"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "text-shadow: 상동;"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "position"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "static"
+                                    },
+                                    {
+                                        "text": ": 기본값 (브라우저가 배치하는 방식, inline, block을 따름)"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "relative"
+                                    },
+                                    {
+                                        "text": ": 본연의 위치에서 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "top"
+                                    },
+                                    {
+                                        "text": ", "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "left"
+                                    },
+                                    {
+                                        "text": " 적용"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "absolute"
+                                    },
+                                    {
+                                        "text": ": 본연의 위치를 벗어나서 문서 내에 절대적 위치"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "fixed"
+                                    },
+                                    {
+                                        "text": ": 본연의 위치를 벗어나 viewport에 고정"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "sticky"
+                                    },
+                                    {
+                                        "text": ": 본연의 위치에서 viewport에 고정"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "float & z-index"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "float"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "요소를 어디에 띄울 것인가를 결정하는 속성"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "text": "float 처리된 요소는 위치값을 갖지 않음"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flex"
+                                    },
+                                    {
+                                        "text": "의 등장으로 잘 안쓰게 됨."
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "z-index"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "요소가 2차원 캔버스에서 겹치는 경우 그 우선순위를 정하는 속성"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "설정되지 않으면 HTML 상에서 나중에 나오는 요소가 전에 나온 요소를 덮음"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "z-index"
+                                    },
+                                    {
+                                        "text": "가 높은 속성이 위로 올라가게 됨"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "flexbox"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "1차원 레이아웃을 다루기 위한 속성"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "컨테이너 속성"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "display: flex;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flex-flow: row wrap;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flex-direction: row | row-reverse | column | column-reverse;"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 1,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flex-wrap: nowrap | wrap | wrap-reverse"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "justify-content: flex-start | flex-end | center | space-around | space-evenly | space-between"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "align-item: center | baseline"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "align-content"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "flexbox"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "heading",
+                        "level": 3,
+                        "runs": [
+                            {
+                                "text": "아이템 속성"
+                            }
+                        ],
+                        "consume": "shared"
+                    },
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "order"
+                                    },
+                                    {
+                                        "text": ": 디폴트 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "0"
+                                    },
+                                    {
+                                        "text": ", HTML 상의 순서를 임의로 덮어씌울 수 있다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flow-grow"
+                                    },
+                                    {
+                                        "text": ": 늘어날 때 늘어나는 공간을 차지하는 비율"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "flow-shrink"
+                                    },
+                                    {
+                                        "text": ": 줄어들 때 줄어드는 공간 만큼 스스로를 줄일 비율"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "align-self"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/102421f13f091c9edc0feaf04dfceda3.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "flexbox"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/25dc3a761290a9ca84e6935795db8af7.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "미디어쿼리"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "더 이상 HTML/CSS는 웹 문서만을 위한 것이 아니며, 다양한 문서 형태와 플랫폼을 위한 것"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "각각의 미디어에서 어떻게 보일지를 조건과 CSS Rule을 사용해 정의함"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "monospace": true,
+                                        "text": "@media screen and (min-width: 800px)"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/d75a122372ca2684e513db9b661fcc1f.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Feather Icons"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "공짜로 간편하게 쓸 수 있는 여러 아이콘들"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "CSS로 스타일링 가능"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://feathericons.com/",
+                                        "text": "Feather Icons"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "CSS 전처리기"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "CSS의 확장 문법을 사용하여 더욱 간편하고 강력한 스타일링을 할 수 있는 도구"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "브라우저가 자체적으로 해석할 수 없으나 컴파일을 통해 css로 변환된다."
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "Sass, SCSS, Less"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/5cfb24eec3f09eb596998a77b4dc320d.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Reset CSS"
+                    }
+                ]
+            },
+            "layout": "title_and_content",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "브라우저가 지정해둔 스타일들로 인해 여러 플랫폼/브라우저에서 CSS 렌더링 결과가 상이할 경우, CSS 기본값들을 해제하여 동일한 조건에 놓고 스타일링을 시작하기도 함"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "그 외 "
+                                    },
+                                    {
+                                        "monospace": true,
+                                        "text": "box-sizing: border-box;"
+                                    },
+                                    {
+                                        "text": " 등 적용"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "hyperlink": "https://meyerweb.com/eric/tools/css/reset/",
+                                        "text": "Reset CSS"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ]
+            ],
+            "notes": []
+        },
+        {
+            "title": {
+                "runs": [
+                    {
+                        "text": "Tailwind CSS"
+                    }
+                ]
+            },
+            "layout": "content_with_caption",
+            "placeholders": [
+                [
+                    {
+                        "type": "list",
+                        "children": [
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "유틸리티 클래스를 기반으로 하는 CSS 프레임워크"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "인라인 CSS로 동적 클래스를 사용하여 CSS를 작성할 수 있어 간편"
+                                    }
+                                ],
+                                "ordered": false
+                            },
+                            {
+                                "type": "list_item",
+                                "depth": 0,
+                                "runs": [
+                                    {
+                                        "text": "빠른 프로토타이핑과 확장성으로 인기"
+                                    }
+                                ],
+                                "ordered": false
+                            }
+                        ],
+                        "consume": "shared"
+                    }
+                ],
+                [
+                    {
+                        "type": "image",
+                        "url": "attachments/841fca62614f456528ac3223e8d4e95d.png",
+                        "consume": "monopoly"
+                    }
+                ]
+            ],
+            "notes": []
+        }
+    ]
+}
