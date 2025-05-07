@@ -92,8 +92,8 @@ HTML 문서의 루트
 HTML의 예약어로 사용되는 문자를 표시하는 방법
 
 | 특수문자 | 설명                     |
-| :------: | ------------------------ |
-| `&nbsp;` | non-breaking space, **공백** |
+| -------- | -----------------------|
+| `&nbsp;` | non-breaking space, 공백 |
 | `&lt;`   | less than >              |
 | `&gt;`   | greater than <           |
 | `&quot;` | quotation mark "         |
@@ -377,7 +377,6 @@ div {
 	margin: 10px 10px;
 	margin 10px;
 }
- 
 ```
 
 - `top`, `right`, `bottom`, `left`의 순서
