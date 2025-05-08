@@ -20,6 +20,7 @@ def process_json(data):
 
     processed = {}
     processed['frontmatter'] = data['frontmatter']
+    processed['toc'] = {'chapters': []}
     processed['slides'] = []
     processed['slides'].append(deepcopy(NEW_SLIDE))
     tokens = data['tokens']
@@ -108,11 +109,15 @@ def process_json(data):
                 for child in token['children']:
                     runs.extend(process_token(child, new_style))
             return runs
-
+        
         all_runs = []
         for token in children:
             all_runs.extend(process_token(token, {}))
         return all_runs
+
+    def runs_to_text(runs):
+        text = ''.join([run['text'] for run in runs])
+        return text
 
     def process_list(list_token, ordered=False):
         def iter_token(token, depth=0, ordered=ordered):
@@ -221,22 +226,42 @@ def process_json(data):
                 match (level):
                     case 1 | 2:
                         finalize_slide()
+                        runs = paragraph(token["children"])
                         processed["slides"][current_slide]["title"] = {
-                            "runs": paragraph(token["children"])
+                            "runs": runs,
                         }
+                        if level == 1:
+                            processed['toc']['chapters'].append({
+                                "title": runs_to_text(runs),
+                                "index": current_slide,
+                                "modules": [],
+                            })
+                        elif level == 2:                      
+                            if len(processed['toc']['chapters']) == 0:
+                                processed['toc']['chapters'].append({
+                                    "title": "제목없음",
+                                    "index": current_slide,
+                                    "modules": [],
+                                })
+                            current_chapter = processed['toc']['chapters'][-1]
+                            current_chapter['modules'].append({
+                                "title": runs_to_text(runs),
+                                "index": current_slide,
+                            })
                     case 3 | 4 | 5 | 6:
+                        runs = paragraph(token["children"])
                         add_token(
                             {
                                 "type": "heading",
                                 "level": level,
-                                "runs": paragraph(token["children"]),
+                                "runs": runs,
                             }
                         )
                     case _:
                         pass
             case 'thematic_break':
                 finalize_slide()
-                processed['slides'][current_slide]['title'] = processed['slides'][current_slide-1]['title']
+                # processed['slides'][current_slide]['title'] = processed['slides'][current_slide-1]['title']
             case 'wildcard_break':
                 add_placeholder()
             case 'block_quote':

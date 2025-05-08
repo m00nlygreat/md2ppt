@@ -3,25 +3,21 @@ from enum import Enum
 from pptx import Presentation
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
-from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides
+from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides, link_to_slide
 from utils.expand import expand
 from utils.code_highlight import highlight_code, process_codes
 
 pholder = 0
 
+TEXT_ALIGN = {
+    "left": PP_ALIGN.LEFT,
+    "center": PP_ALIGN.CENTER,
+    "right": PP_ALIGN.RIGHT,
+}
+
 def get_slide_layout_enum(prs):
-    """
-    주어진 Presentation(prs) 객체에서 slide_layouts의 모든 레이아웃 이름을 순서대로 추출하여,
-    각 레이아웃의 인덱스를 값으로 갖는 Python Enum을 생성합니다.
 
-    레이아웃 이름이 유효한 식별자가 아닐 경우, 공백 및 특수문자는 언더바(_)로 변환합니다.
-
-    Args:
-        prs (Presentation): python-pptx의 Presentation 객체.
-
-    Returns:
-        Enum: 슬라이드 레이아웃 이름과 인덱스를 멤버로 갖는 Enum 클래스.
-    """
     layout_members = {}
     for idx, layout in enumerate(prs.slide_layouts):
         # layout.name 속성이 없을 경우에는 기본 이름 사용
@@ -37,12 +33,21 @@ def get_slide_layout_enum(prs):
     SlideLayoutEnum = Enum("SlideLayoutEnum", layout_members)
     return SlideLayoutEnum
 
-def convert_json_to_pptx(prs, data, layouts):
-    """
-    TODO: JSON 데이터를 python-pptx를 사용하여 PPTX로 변환하는 로직을 작성하세요.
-    아래는 예시로 frontmatter의 title 값을 슬라이드 제목으로 설정하는 간단한 구현입니다.
-    """
-    for slide in data.get("slides", []):
+def convert_json_to_pptx(prs, data, layouts, toc=1):
+    
+    def add_toc_item(paragraph, item):
+        title_run = paragraph.add_run()
+        title_run.text = item.get("title", "") + '\t'
+        index_run = paragraph.add_run()
+        slide_no = item.get("index", 0)+1
+        index_run.text = str(slide_no)
+        link_to_slide(index_run, prs.slides[slide_no-1])
+        
+        # index_run.hyperlink.address = f'#slide=id.p{slide_no}'
+    
+    slides_data = data.get("slides", [])
+    prev_title = None
+    for current_slide_no, slide in enumerate(slides_data):
         layout_name_from_json = slide.get("layout", "title_and_content").upper()
         try:
             layout_index = layouts[layout_name_from_json].value
@@ -64,12 +69,16 @@ def convert_json_to_pptx(prs, data, layouts):
             p_map.update({i: slide_layout_idx.placeholders[i].placeholder_format.idx})
 
         # 제목을 설정합니다.
-        title = slide.get("title", {"title": { "runs": [{"text": "제목없음."}]}})
-        runs = title.get("runs", [])
+        title = slide.get("title", False)
+        title_shape = current_slide.shapes.title
+        p = title_shape.text_frame.paragraphs[0]
         if title:
-            title_shape = current_slide.shapes.title
-            p = title_shape.text_frame.paragraphs[0]
+            runs = title.get("runs", [])
             process_runs(runs, p)
+            prev_title = runs
+        else: 
+            if isinstance(prev_title, list):
+                process_runs(prev_title, p)            
 
         # Placeholder에 토큰을 처리합니다.
         # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된 순서로)를 모아둠
@@ -107,6 +116,18 @@ def convert_json_to_pptx(prs, data, layouts):
                 continue
             placeholder = current_slide.slide_layout.placeholders[i+1] # 추후 고쳐줘야 한다. 에러나서 안되기 때문에.
             shapes.append(dict_shape(shape, placeholder))
+        
+        # align 적용
+        for i, shape in enumerate(shapes):
+            align = shape.get("align", False)
+            if align:
+                width, height = shape['width'], shape['height']
+                new_sizloc = calc_align(current_placeholder, width, height, align)
+                foo = shapes_no_title[i]
+                foo.left = new_sizloc['left']
+                foo.top = new_sizloc['top']
+                foo.width = new_sizloc['width']
+                foo.height = new_sizloc['height']
 
         # Shape의 size는 한 번에 대입해줘야 한다. 하나씩 변경하면 0으로 초기화됨
         for i,shape in enumerate(shapes_no_title):
@@ -134,25 +155,37 @@ def convert_json_to_pptx(prs, data, layouts):
                 shape.top = foo_shp['top']
                 shape.width = foo_shp['width']
                 shape.height = foo_shp['height']
+    
+    # TOC 슬라이드 추가
+    if toc:
+        try:
+            layout_name = 'toc'.upper()
+            layout_idx = layouts[layout_name].value
+        except:
+            # 레이아웃 이름이 Enum에 없을 경우 기본 레이아웃 사용
+            print(f'Layout "TOC" not found. Using default layout.')
+            layout_name = 'two_content'.upper()
+            layout_idx = layouts[layout_name].value
+        
+        toc_slide = prs.slides.add_slide(prs.slide_layouts[layout_idx])
+        toc_slide.shapes.title.text = "Table of Contents"
+        toc_placeholder = toc_slide.placeholders[1]
+        toc_data = data.get("toc", []).get("chapters", False)
+        if toc_data and toc>=1:
+            for item in toc_data:
+                p = define_paragraph(toc_placeholder)
+                p.level = 0
+                add_toc_item(p, item)
+                modules = item.get("modules", False)
+                if modules and toc >=2:
+                    for item in modules:
+                        p = define_paragraph(toc_placeholder)
+                        p.level = 1
+                        add_toc_item(p, item)
+            
+    
+def calc_align(p, width, height, align=5):
 
-def calc_resloc(p, i, align=5):
-    """
-    Placeholder와 이미지 객체를 사용하여 이미지의 위치와 크기를 계산합니다.
-    이미지가 placeholder 내에서 align 매개변수에 따라 정렬되도록 위치를 조정합니다.
-
-    인자:
-      p: placeholder 객체로, p.left, p.top, p.width, p.height 속성을 가짐.
-      i: 이미지 객체로, i.size가 (width, height) 튜플을 제공함.
-      align: 이미지 정렬 값 (1~9, numpad 비유). 기본값은 5 (가운데).
-             만약 1-9 범위의 정수가 아니면 기본값 5가 사용됩니다.
-             numpad 정렬 매핑:
-               7: 왼쪽 위,   8: 가운데 위,  9: 오른쪽 위,
-               4: 왼쪽 중간, 5: 가운데,      6: 오른쪽 중간,
-               1: 왼쪽 아래, 2: 가운데 아래, 3: 오른쪽 아래.
-
-    반환:
-      resloc: 이미지의 최종 좌표와 크기를 담은 dict (left, top, width, height)
-    """
     # align 값을 정수로 변환 시도, 실패하거나 1~9 범위가 아니면 기본값 5 사용
     
     try:
@@ -186,7 +219,7 @@ def calc_resloc(p, i, align=5):
     p_ratio = p_width / p_height
 
     # 이미지의 원본 크기 및 비율
-    i_width, i_height = i.size
+    i_width, i_height = width, height
     i_ratio = i_width / i_height
 
     if i_ratio < p_ratio:
@@ -194,24 +227,24 @@ def calc_resloc(p, i, align=5):
         new_width = p_height * i_ratio
         # 남는 가로 공간을 factor_x에 따라 오프셋 적용
         new_left = p_left + (p_width - new_width) * factor_x
-        resloc = {
-            "left": new_left,
-            "top": p_top,  # 세로는 꽉 채움
-            "width": new_width,
-            "height": p_height,
+        align_to = {
+            "left": int(new_left),
+            "top": int(p_top),  # 세로는 꽉 채움
+            "width": int(new_width),
+            "height": int(p_height),
         }
     else:
         # 이미지가 placeholder보다 상대적으로 넓은 경우: 너비를 맞추고 높이를 조절
         new_height = p_width / i_ratio
         # 남는 세로 공간을 factor_y에 따라 오프셋 적용
         new_top = p_top + (p_height - new_height) * factor_y
-        resloc = {
-            "left": p_left,  # 가로는 꽉 채움
-            "top": new_top,
-            "width": p_width,
-            "height": new_height,
+        align_to = {
+            "left": int(p_left),  # 가로는 꽉 채움
+            "top": int(new_top),
+            "width": int(p_width),
+            "height": int(new_height),
         }
-    return resloc
+    return align_to
 
 def process_token(current_placeholder, token, current_slide):
 
@@ -237,15 +270,16 @@ def process_token(current_placeholder, token, current_slide):
             p.level = 6
             process_runs(token.get("runs", []), p)
         case "code":
+            a = current_placeholder.text_frame.add_paragraph()
+            a.level = 5
+            unbullet(a)
             p = define_paragraph(current_placeholder)
             p.level = 5
-            lang = token.get("lang", False)
-            if lang:
-                code = token.get("raw", False)
-                highlighted = highlight_code(code, lang)
-                process_codes(highlighted, p)
-            else:
-                p.text = token.get("lang","plaintext")+'\n'+ token.get("raw", "")
+            lang = token.get("lang", None)
+            code = token.get("raw", False)
+            highlighted = highlight_code(code, lang)
+            process_codes(highlighted, p)
+                # p.text = token.get("lang","plaintext")+'\n'+ token.get("raw", "")
         case "image":
             url = token.get("url", "")
             
@@ -263,7 +297,7 @@ def process_token(current_placeholder, token, current_slide):
                     # print('Error: Placeholder name is not JSON format.')
                     pass
                 
-                resloc = calc_resloc(current_placeholder, i, dynloc.get("align",5))
+                align_to = calc_align(current_placeholder, i.width, i.height , dynloc.get("align",5))
 
                 try:
                     current_placeholder.insert_picture(url)
@@ -272,7 +306,7 @@ def process_token(current_placeholder, token, current_slide):
                     sp = current_placeholder._element
                     sp.getparent().remove(sp)
 
-                    current_placeholder = current_slide.shapes.add_picture(url, **resloc)
+                    current_placeholder = current_slide.shapes.add_picture(url, **align_to)
                     
             except:
                 print(f"Error: Image '{url}' not found or invalid.")
@@ -288,49 +322,104 @@ def process_token(current_placeholder, token, current_slide):
                     if child.get("ordered", False):
                         orderify(p)
         case "table":
-            sizloc = {
-                "left": current_placeholder.left,
-                "top": current_placeholder.top,
-                "width": current_placeholder.width,
-                "height": 1000,
-                # "height": current_placeholder.height,
-            }
-            sp = current_placeholder._element
-            sp.getparent().remove(sp)
-            
-            head_data = token.get("head", [])
-            body_data = token.get("body", [])
-            
-            rows_count = len(body_data) + 1
-            cols_count = len(head_data)
-            
-            shape = current_slide.shapes.add_table(
-                rows_count,
-                cols_count,
-                **sizloc
-            )
-            
-            # 테이블의 스타일을 설정
-            shape._element.graphic.graphicData.tbl[0][-1].text = '{72833802-FEF1-4C79-8D5D-14CF1EAF98D9}'
-            
-            table = shape.table
-            
-            for index, cell_data in enumerate(head_data):
-                cell = table.cell(0, index)
-                p = define_paragraph(cell)
-                process_runs(cell_data.get("runs", []), p)
-            
-            for row_index, row in enumerate(body_data):
-                for col_index, cell_data in enumerate(row):
-                    cell = table.cell(row_index+1, col_index)
-                    p = define_paragraph(cell)
-                    process_runs(cell_data.get("runs", []), p)
-                
-            
+            process_table(current_placeholder, token, current_slide)
+            # current_placeholder = process_table(current_placeholder, token, current_slide)
+            # align, grow에 포함시켜야 하기 때문에 이렇게 돼야 하지만, table 자체의 height를 1000 기본값으로 하기 때문에 제대로 작동 안함.
         case _ :
             print(token.get("type", ""))
             pass
     return current_placeholder
+
+def process_table(current_placeholder, token, current_slide):
+    import unicodedata
+
+    def visual_length(s):
+        return sum(2 if unicodedata.east_asian_width(c) in 'WF' else 1 for c in str(s))
+
+    def get_column_weights(head_data, body_data):
+        num_cols = len(head_data)
+        weights = [0] * num_cols
+        for i, cell in enumerate(head_data):
+            text = "".join(run.get("text", "") for run in cell.get("runs", []))
+            weights[i] = max(weights[i], visual_length(text))
+        for row in body_data:
+            for i, cell in enumerate(row):
+                text = "".join(run.get("text", "") for run in cell.get("runs", []))
+                weights[i] = max(weights[i], visual_length(text))
+        return weights
+
+    def dynamic_cap(num_cols, base=0.4):
+        if num_cols <= 2:
+            return 0.9
+        elif num_cols == 3:
+            return 0.6
+        elif num_cols == 4:
+            return 0.5
+        return base
+
+    def normalize_with_cap(weights, cap):
+        total = sum(weights)
+        raw_ratios = [w / total for w in weights] if total > 0 else [1/len(weights)] * len(weights)
+        capped = [min(r, cap) for r in raw_ratios]
+        remainder = 1.0 - sum(capped)
+        flexible_indices = [i for i, r in enumerate(raw_ratios) if r <= cap]
+        flexible_sum = sum(raw_ratios[i] for i in flexible_indices) or 1
+        for i in flexible_indices:
+            capped[i] += remainder * (raw_ratios[i] / flexible_sum)
+        return capped
+
+    def write_cell(cell_data, cell):
+        p = define_paragraph(cell)
+        process_runs(cell_data.get("runs", []), p)
+        align = cell_data.get("align", "left")
+        if align:
+            p.alignment = TEXT_ALIGN[align]
+
+    sizloc = {
+        "left": current_placeholder.left,
+        "top": current_placeholder.top,
+        "width": current_placeholder.width,
+        "height": 1000,
+    }
+    sp = current_placeholder._element
+    sp.getparent().remove(sp)
+
+    head_data = token.get("head", [])
+    body_data = token.get("body", [])
+
+    rows_count = len(body_data) + 1
+    cols_count = len(head_data)
+
+    shape = current_slide.shapes.add_table(
+        rows_count,
+        cols_count,
+        **sizloc
+    )
+
+    # 테이블의 스타일을 설정
+    shape._element.graphic.graphicData.tbl[0][-1].text = '{72833802-FEF1-4C79-8D5D-14CF1EAF98D9}'
+
+    table = shape.table
+
+    for index, cell_data in enumerate(head_data):
+        cell = table.cell(0, index)
+        write_cell(cell_data, cell)
+        cell.vertical_anchor = MSO_ANCHOR.MIDDLE
+
+    for row_index, row in enumerate(body_data):
+        for col_index, cell_data in enumerate(row):
+            cell = table.cell(row_index+1, col_index)
+            write_cell(cell_data, cell)
+            cell.vertical_anchor = MSO_ANCHOR.TOP
+
+    # 열 너비 자동 계산 적용
+    weights = get_column_weights(head_data, body_data)
+    ratios = normalize_with_cap(weights, cap=dynamic_cap(len(weights)))
+    total_width = sizloc["width"]
+    for i, ratio in enumerate(ratios):
+        table.columns[i].width = int(total_width * ratio)
+    
+    return shape
 
 def define_paragraph(placeholder):
     """
@@ -457,9 +546,9 @@ def main(data=None):
 
     layouts = get_slide_layout_enum(prs)
     # for layout in layouts:
-    #     print(f"{layout.name} = {layout.value}")
+        # print(f"{layout.name} = {layout.value}")
 
-    # JSON 데이터를 기반으로 PPTX 변환 로직 실행 (개발자가 직접 구현)
+    # JSON 데이터를 기반으로 PPTX 변환 로직 실행
     convert_json_to_pptx(prs, data, layouts=layouts)
 
     # Presentation 객체 반환 모드

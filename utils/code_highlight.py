@@ -1,7 +1,8 @@
 from pptx import Presentation
 from pygments import lex
-from pygments.lexers import get_lexer_by_name
+from pygments.lexers import get_lexer_by_name, guess_lexer
 from pptx.enum.dml import MSO_THEME_COLOR
+from pptx.util import Inches
 
 color_map = { 
     "Keyword" : MSO_THEME_COLOR.ACCENT_2,
@@ -16,11 +17,24 @@ color_map = {
     }
 
 def highlight_code(code, lang):
-    lexer = get_lexer_by_name(lang)
+    if lang:
+        lexer = get_lexer_by_name(lang)
+    else:
+        lexer = guess_lexer(code)
     highlighted = lex(code,lexer)
     return [{'type' : str(ttype).split('.')[1:], 'value': value} for ttype,value in highlighted]
 
 def process_codes(tokens, paragraph):
+    def needs_rstrip(text):
+        return text != text.rstrip(" \n")
+    while tokens[-1].get('value', '') == '\n':
+        tokens.pop(-1)
+    while tokens[0].get('value', '') == '\n':
+        tokens.pop(0)
+    while needs_rstrip(tokens[-1].get('value', '')):
+        tokens[-1]['value'] = tokens[-1]['value'].rstrip(" \n")
+
+    paragraph.space_before = Inches(0.1)
     for token in tokens:
         r = paragraph.add_run()
         r.text = token.get('value', '')
@@ -33,3 +47,4 @@ def process_codes(tokens, paragraph):
                 case _:
                     r.font.color.theme_color = color_map.get(type[0],MSO_THEME_COLOR.TEXT_1)
                     pass
+            paragraph.space_before = Inches(0)

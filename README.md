@@ -4,15 +4,17 @@
 
 ## in progress
 
+- [ ] TOC and current place in the hierarchy
+  - [x] TOC
+    - [x] [link in the toc item](https://github.com/scanny/python-pptx/issues/414)
+    - [ ] treating placeholders in toc slide
+  - [ ] current place in the hierarchy
 - [x] code highlight
   - [ ] code least styling
   - [ ] code to gist
 
 ## to be done
 
-- [x] insert table
-  - [ ] auto column width
-- [ ] Head repeat fix
 - [ ] expand() fix
 - [ ] settings
 - [ ] font-scale for placeholder
@@ -26,6 +28,10 @@
 
 ## done
 
+- [x] Head repeat fix
+- [x] align before grow
+- [x] insert table
+  - [x] auto column width
 - [x] link in paragraph (ai_actions example)
 - [x] jsonify placeholder name fix
 - [x] list fix

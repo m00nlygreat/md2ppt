@@ -3,6 +3,20 @@ from lxml import etree
 from pptx import Presentation
 from pptx.enum.lang import MSO_LANGUAGE_ID
 from pptx.oxml.xmlchemy import OxmlElement
+from pptx.oxml.ns import qn
+from pptx.opc.constants import RELATIONSHIP_TYPE as RT
+
+def link_to_slide(run, target_slide):
+    
+    r_id = run.part.relate_to(
+        target_slide.part,
+        RT.SLIDE,
+    )
+    
+    rPr = run._r.get_or_add_rPr()
+    
+    hlinkClick = rPr.add_hlinkClick(r_id)
+    hlinkClick.set('action', 'ppaction://hlinksldjump')
 
 def unbullet(p):
     p._pPr.insert(
@@ -108,13 +122,13 @@ def dict_shape(shape, placeholder=None):
     except:
         from_pl = {}
     return {
-        "name": shape.name,
-        "top": shape.top,
-        "left": shape.left,
-        "width": shape.width,
-        "height": shape.height,
-        "right": shape.left + shape.width,
-        "bottom": shape.top + shape.height,
+        "name": shape.name or "",
+        "top": shape.top or 0,
+        "left": shape.left or 0,
+        "width": shape.width or 0,
+        "height": shape.height or 0,
+        "right": shape.left + shape.width or 0,
+        "bottom": shape.top + shape.height or 0,
         **from_pl,
     }
 
