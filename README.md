@@ -23,6 +23,7 @@
 - [ ] more templates
 - [ ] embedding youtube videos
 - [ ] excalidraw
+  - [ ] new flatten / img convert
 - [ ] [table style](https://stackoverflow.com/questions/61982333/how-to-change-default-table-style-using-pptx-python)
 - [ ] appendable placeholder
 
