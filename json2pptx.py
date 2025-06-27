@@ -41,7 +41,10 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         index_run = paragraph.add_run()
         slide_no = item.get("index", 0)+1
         index_run.text = str(slide_no)
-        link_to_slide(index_run, prs.slides[slide_no-1])
+        try:
+            link_to_slide(index_run, prs.slides[slide_no-1])
+        except:
+            pass
         
         # index_run.hyperlink.address = f'#slide=id.p{slide_no}'
     

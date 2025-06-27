@@ -7,6 +7,7 @@
 - [ ] TOC and current place in the hierarchy
   - [x] TOC
     - [x] [link in the toc item](https://github.com/scanny/python-pptx/issues/414)
+    - [ ] link to slide not working
     - [ ] treating placeholders in toc slide
   - [ ] current place in the hierarchy
 - [x] code highlight
