@@ -4,6 +4,8 @@
 
 ## in progress
 
+- [ ] remove TOC item when deleting empty pages
+- [ ] horizontal image
 - [ ] TOC and current place in the hierarchy
   - [x] TOC
     - [x] [link in the toc item](https://github.com/scanny/python-pptx/issues/414)

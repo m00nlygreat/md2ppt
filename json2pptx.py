@@ -1,4 +1,7 @@
-import json, os, re, warnings, argparse
+import json
+import os
+import re
+import argparse
 from enum import Enum
 from pptx import Presentation
 from PIL import Image
@@ -166,7 +169,7 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
             layout_idx = layouts[layout_name].value
         except:
             # 레이아웃 이름이 Enum에 없을 경우 기본 레이아웃 사용
-            print(f'Layout "TOC" not found. Using default layout.')
+            print('Layout "TOC" not found. Using default layout.')
             layout_name = 'two_content'.upper()
             layout_idx = layouts[layout_name].value
         
@@ -304,7 +307,7 @@ def process_token(current_placeholder, token, current_slide):
 
                 try:
                     current_placeholder.insert_picture(url)
-                except Exception as e:
+                except Exception:
 
                     sp = current_placeholder._element
                     sp.getparent().remove(sp)
