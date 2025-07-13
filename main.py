@@ -22,7 +22,9 @@ def main():
     parser.add_argument("-o", "--output", help="Output PPTX file path (default: {input_filename}.pptx)")
     parser.add_argument("-d", "--debug", action="store_true", help="Save intermediate processing results to files")
     parser.add_argument("--debug-dir", default="debug", help="Directory to save debug files (default: 'debug')")
-    parser.add_argument("-r","--ref", help="Reference PPTX file path for styling")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    default_ref = os.path.join(script_dir, "refs", "default.pptx")
+    parser.add_argument("-r","--ref", help="Reference PPTX file path for styling", default=default_ref)
     args = parser.parse_args()
 
     # 입력 파일 확인
