@@ -7,7 +7,7 @@ from pptx import Presentation
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
-from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides, link_to_slide
+from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides, link_to_slide, boldify
 from utils.expand import expand
 from utils.code_highlight import highlight_code, process_codes
 
@@ -42,10 +42,10 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         title_run = paragraph.add_run()
         title_run.text = item.get("title", "") + '\t'
         index_run = paragraph.add_run()
-        slide_no = item.get("index", 0)+1
+        slide_no = item.get("index", 0)
         index_run.text = str(slide_no)
         try:
-            link_to_slide(index_run, prs.slides[slide_no-1])
+            link_to_slide(index_run, prs.slides[slide_no])
         except:
             pass
         
@@ -447,8 +447,9 @@ def process_runs(runs, paragraph):
         r.text = run.get("text", "")
         font = r.font
         if 'bold' in run:
-            font.bold = True
             font.color.theme_color = MSO_THEME_COLOR.ACCENT_3
+            boldify(r)
+            font.bold = True
         if 'italic' in run:
             font.italic = True
             font.underline = True

@@ -1,9 +1,10 @@
-import json, os, tempfile
+import json
+import os
+import tempfile
 from lxml import etree
 from pptx import Presentation
 from pptx.enum.lang import MSO_LANGUAGE_ID
 from pptx.oxml.xmlchemy import OxmlElement
-from pptx.oxml.ns import qn
 from pptx.opc.constants import RELATIONSHIP_TYPE as RT
 
 def link_to_slide(run, target_slide):
@@ -153,3 +154,26 @@ def clear_slides(prs):
     new_prs = Presentation(temp_filename)
     os.remove(temp_filename)
     return new_prs
+def boldify(run, width=12700, theme_color="accent3", alpha=0):
+    rPr = run._r.get_or_add_rPr()
+
+    # 기존 <a:ln> 제거
+    for child in rPr.findall("./a:ln", namespaces=rPr.nsmap):
+        rPr.remove(child)
+
+    ln = OxmlElement("a:ln")
+    ln.set("w", str(width))
+
+    solidFill = OxmlElement("a:solidFill")
+    schemeClr = OxmlElement("a:schemeClr")
+    schemeClr.set("val", theme_color)
+
+    # alpha 설정
+    alpha_elem = OxmlElement("a:alpha")
+    alpha_elem.set("val", str(alpha))
+    schemeClr.append(alpha_elem)
+
+    solidFill.append(schemeClr)
+    ln.append(solidFill)
+
+    rPr.insert(0, ln)

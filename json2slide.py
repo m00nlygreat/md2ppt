@@ -324,11 +324,22 @@ def process_json(data):
 
     finalize_slide(True)
     
-    for slide in processed['slides']:
+    for i, slide in enumerate(processed['slides']):
+        def decrease_slide_count(target_idx, dictionary):
+            if dictionary['index'] == target_idx:
+                dictionary['index'] -= 1
+
         title_empty = not slide['title']
         placeholder_empty = not slide['placeholders'][0]
+
         if title_empty and placeholder_empty:
-            processed['slides'].remove(slide)            
+            processed['slides'].remove(slide)
+            if i != 0:
+                to_find = i + 1
+                for dict in processed['toc']['chapters']:
+                    for dic in dict['modules']:
+                        decrease_slide_count(to_find, dic)
+                    decrease_slide_count(to_find, dict)   
 
     return processed 
 
