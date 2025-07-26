@@ -451,15 +451,18 @@ def process_runs(runs, paragraph):
             boldify(r)
             font.bold = True
         if 'italic' in run:
+            boldify(r)
             font.italic = True
             font.underline = True
         if 'monospace' in run:
+            boldify(r)
             r = set_highlight(r, 'EEEEEE')
             r.font.color.theme_color = MSO_THEME_COLOR.ACCENT_2
             # r.font.color.rgb = RGBColor(248, 104, 107)
             # print(font.size)
             # 현재 폰트 사이즈를 알아내는 게 쉽지 않다.
         if 'hyperlink' in run:
+            boldify(r)
             r.hyperlink.address = run.get("hyperlink", "https://google.com")
 
 def add_title_slide(prs, frontmatter):
