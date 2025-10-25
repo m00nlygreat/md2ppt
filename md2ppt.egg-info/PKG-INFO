@@ -1,0 +1,60 @@
+Metadata-Version: 2.4
+Name: md2ppt
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+Requires-Dist: mistune>=3.1.3
+Requires-Dist: pillow>=11.3.0
+Requires-Dist: pygments>=2.19.2
+Requires-Dist: python-pptx>=1.0.2
+Requires-Dist: pyyaml>=6.0.2
+
+# md2ppt
+
+옵시디언 기반의 마크다운을 ppt 프레젠테이션으로 변환하는 파이썬 프로그램입니다. 기회가 되면 나중에 자세히 씀. 얍
+
+## in progress
+
+- [ ] remove TOC item when deleting empty pages
+- [ ] horizontal image
+- [ ] TOC and current place in the hierarchy
+  - [x] TOC
+    - [x] [link in the toc item](https://github.com/scanny/python-pptx/issues/414)
+    - [ ] link to slide not working
+    - [ ] treating placeholders in toc slide
+  - [ ] current place in the hierarchy
+- [x] code highlight
+  - [ ] code least styling
+  - [ ] code to gist
+
+## to be done
+
+- [ ] expand() fix
+- [ ] settings
+- [ ] font-scale for placeholder
+- [ ] togglable object?
+- [ ] flex-like group object
+- [ ] more templates
+- [ ] embedding youtube videos
+- [ ] excalidraw
+  - [ ] new flatten / img convert
+- [ ] [table style](https://stackoverflow.com/questions/61982333/how-to-change-default-table-style-using-pptx-python)
+- [ ] appendable placeholder
+
+## done
+
+- [x] Head repeat fix
+- [x] align before grow
+- [x] insert table
+  - [x] auto column width
+- [x] link in paragraph (ai_actions example)
+- [x] jsonify placeholder name fix
+- [x] list fix
+- [x] placeholder grow rule
+- [x] 메타데이터 처리
+- [x] 파이프라인의 argument 표준화
+- [x] main.py 작성
+- [x] 그림 삽입 이후에 placeholder를 음. 못 찾는 문제?
+- [x] 빈 슬라이드 삭제 기능
+- [x] 제목 슬라이드
