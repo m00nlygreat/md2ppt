@@ -1,1 +1,7 @@
-refs
+absolute_paths
+flatten
+json2pptx
+json2slide
+main
+md2json
+utils

@@ -1,7 +1,7 @@
 Metadata-Version: 2.4
 Name: md2ppt
 Version: 0.1.0
-Summary: Add your description here
+Summary: A tool to convert Markdown files to PowerPoint presentations.
 Requires-Python: >=3.13
 Description-Content-Type: text/markdown
 Requires-Dist: mistune>=3.1.3

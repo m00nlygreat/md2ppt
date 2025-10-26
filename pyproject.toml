@@ -1,7 +1,7 @@
 [project]
 name = "md2ppt"
 version = "0.1.0"
-description = "Add your description here"
+description = "A tool to convert Markdown files to PowerPoint presentations."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -11,6 +11,20 @@ dependencies = [
     "python-pptx>=1.0.2",
     "pyyaml>=6.0.2",
 ]
+
+[tool.setuptools]
+py-modules = [
+    "main",
+    "md2json",
+    "json2slide",
+    "json2pptx",
+    "flatten",
+    "absolute_paths",
+]
+
+[tool.setuptools.packages.find]
+include = ["utils*"]
+
 
 [project.scripts]
 md2ppt = "main:main"

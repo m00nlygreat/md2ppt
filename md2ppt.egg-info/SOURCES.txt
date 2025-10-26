@@ -1,4 +1,10 @@
 README.md
+absolute_paths.py
+flatten.py
+json2pptx.py
+json2slide.py
+main.py
+md2json.py
 pyproject.toml
 md2ppt.egg-info/PKG-INFO
 md2ppt.egg-info/SOURCES.txt
@@ -6,3 +12,8 @@ md2ppt.egg-info/dependency_links.txt
 md2ppt.egg-info/entry_points.txt
 md2ppt.egg-info/requires.txt
 md2ppt.egg-info/top_level.txt
+utils/code_highlight.py
+utils/comment.py
+utils/expand.py
+utils/util.py
+utils/wildcard_break.py
