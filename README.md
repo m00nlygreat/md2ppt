@@ -15,6 +15,7 @@
 - [x] code highlight
   - [ ] code least styling
   - [ ] code to gist
+- [ ] TOC idx is fixed to 1
 
 ## to be done
 
