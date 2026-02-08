@@ -27,6 +27,10 @@ def highlight_code(code, lang):
 def process_codes(tokens, paragraph):
     def needs_rstrip(text):
         return text != text.rstrip(" \n")
+    def normalize_blank_line(text):
+        if text == "\n" or text == "\r\n":
+            return " \n"
+        return text
     while tokens[-1].get('value', '') == '\n':
         tokens.pop(-1)
     while tokens[0].get('value', '') == '\n':
@@ -37,7 +41,7 @@ def process_codes(tokens, paragraph):
     paragraph.space_before = Inches(0.1)
     for token in tokens:
         r = paragraph.add_run()
-        r.text = token.get('value', '')
+        r.text = normalize_blank_line(token.get('value', ''))
         type = token.get('type', False)
         if type:
             match(type[0]):
