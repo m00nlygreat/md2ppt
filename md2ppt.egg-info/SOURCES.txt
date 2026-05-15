@@ -1,3 +1,4 @@
+LICENSE
 README.md
 absolute_paths.py
 flatten.py
@@ -6,12 +7,18 @@ json2slide.py
 main.py
 md2json.py
 pyproject.toml
+md2ppt/__init__.py
+md2ppt/templates.py
 md2ppt.egg-info/PKG-INFO
 md2ppt.egg-info/SOURCES.txt
 md2ppt.egg-info/dependency_links.txt
 md2ppt.egg-info/entry_points.txt
 md2ppt.egg-info/requires.txt
 md2ppt.egg-info/top_level.txt
+md2ppt/refs/default.pptx
+md2ppt/refs/hanaro.pptx
+md2ppt/refs/hanyang.pptx
+md2ppt/refs/inno.pptx
 utils/code_highlight.py
 utils/comment.py
 utils/expand.py

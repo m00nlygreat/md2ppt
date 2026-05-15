@@ -23,8 +23,10 @@ py-modules = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["utils*"]
+include = ["md2ppt*", "utils*"]
 
+[tool.setuptools.package-data]
+md2ppt = ["refs/*.pptx"]
 
 [project.scripts]
 md2ppt = "main:main"

@@ -489,7 +489,7 @@ def add_title_slide(prs, frontmatter):
     if author:
         pp.author = author
 
-def main(data=None):
+def main(data=None, argv=None):
     parser = argparse.ArgumentParser(
         description="Convert JSON to PPTX using python-pptx"
     )
@@ -513,7 +513,9 @@ def main(data=None):
     parser.add_argument(
         "--return-pptx", action="store_true", help="Return Presentation object instead of saving to file"
     )
-    args = parser.parse_args()
+    if argv is None and data is not None:
+        argv = []
+    args = parser.parse_args(argv)
 
     # 환경 변수에서 매개변수 가져오기
     ref_from_env = os.environ.get("JSON2PPTX_REF", "")

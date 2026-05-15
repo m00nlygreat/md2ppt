@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+from contextlib import nullcontext
 import json
 import os
 import sys
@@ -9,6 +10,7 @@ from md2json import process_markdown
 from json2slide import process_json
 from json2pptx import main as json2pptx_main
 from flatten import flatten_markdown
+from md2ppt.templates import list_templates, template_path
 
 def save_debug_data(data, filename):
     """디버그 데이터를 JSON 파일로 저장합니다."""
@@ -18,14 +20,22 @@ def save_debug_data(data, filename):
 
 def main():
     parser = argparse.ArgumentParser(description="Convert Markdown to PPTX using a pipeline of processors.")
-    parser.add_argument("-i", "--input", required=True, help="Input Markdown file path")
+    parser.add_argument("-i", "--input", help="Input Markdown file path")
     parser.add_argument("-o", "--output", help="Output PPTX file path (default: {input_filename}.pptx)")
     parser.add_argument("-d", "--debug", action="store_true", help="Save intermediate processing results to files")
     parser.add_argument("--debug-dir", default="debug", help="Directory to save debug files (default: 'debug')")
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    default_ref = os.path.join(script_dir, "refs", "default.pptx")
-    parser.add_argument("-r","--ref", help="Reference PPTX file path for styling", default=default_ref)
+    parser.add_argument("-t", "--template", default="default", help="Built-in template name (default: default)")
+    parser.add_argument("--list-templates", action="store_true", help="List built-in templates and exit")
+    parser.add_argument("-r", "--ref", help="Reference PPTX file path for styling. Overrides --template.")
     args = parser.parse_args()
+
+    if args.list_templates:
+        for template in list_templates():
+            print(template)
+        return 0
+
+    if not args.input:
+        parser.error("the following arguments are required: -i/--input")
 
     # 입력 파일 확인
     if not os.path.exists(args.input):
@@ -74,16 +84,18 @@ def main():
         print("Converting slide format to PPTX...")
         # json2pptx_main 함수에 필요한 매개변수를 직접 전달
         # 참조 PPTX 파일 경로와 출력 파일 경로는 환경 변수로 설정
-        os.environ["JSON2PPTX_REF"] = args.ref if args.ref else ""
-        os.environ["JSON2PPTX_OUTPUT"] = output_file
-        os.environ["JSON2PPTX_RETURN_PPTX"] = "1"
+        ref_context = nullcontext(args.ref) if args.ref else template_path(args.template)
+        with ref_context as ref_path:
+            os.environ["JSON2PPTX_REF"] = str(ref_path) if ref_path else ""
+            os.environ["JSON2PPTX_OUTPUT"] = output_file
+            os.environ["JSON2PPTX_RETURN_PPTX"] = "1"
         
         # json2pptx_main 함수 호출
-        pptx_obj = json2pptx_main(data=slide_data)
+            pptx_obj = json2pptx_main(data=slide_data)
 
         # 5. PPTX 파일 저장
-        print(f"Saving PPTX file: {output_file}")
-        pptx_obj.save(output_file)
+            print(f"Saving PPTX file: {output_file}")
+            pptx_obj.save(output_file)
         print(f"Successfully converted {args.input} to {output_file}")
 
         return 0
