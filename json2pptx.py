@@ -37,6 +37,15 @@ def get_slide_layout_enum(prs):
     return SlideLayoutEnum
 
 def convert_json_to_pptx(prs, data, layouts, toc=1):
+    def add_slide_notes(slide_obj, notes):
+        if not notes:
+            return
+
+        notes_text = "\n".join(str(note) for note in notes if note is not None)
+        if not notes_text:
+            return
+
+        slide_obj.notes_slide.notes_text_frame.text = notes_text
     
     def add_toc_item(paragraph, item):
         title_run = paragraph.add_run()
@@ -69,6 +78,7 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         slide_layout_idx = prs.slide_layouts[layout_index]
         # print(slide_layout_idx.name)
         current_slide = prs.slides.add_slide(slide_layout_idx)
+        add_slide_notes(current_slide, slide.get("notes", []))
 
         p_map = {}
         for i, pl in enumerate(current_slide.placeholders):
