@@ -1,0 +1,10 @@
+name: md2ppt
+version: 1.0.0
+description: APM project for md2ppt
+author: m00nlygreat
+dependencies:
+  apm:
+  - m00nlygreat/picky-skills
+  mcp: []
+includes: auto
+scripts: {}

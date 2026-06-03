@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interact"
+  short_description: "Use a local GUI for progress updates and human-in-the-loop turns"
+  default_prompt: "Use $interact to keep the GUI updated during the task, and pause for my input only when my answer changes the next step."

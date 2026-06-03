@@ -1,0 +1,32 @@
+{
+  "id": "ongoing-demo",
+  "title": "Review direction",
+  "description": "Choose the direction the agent should use for the next update.",
+  "submitLabel": "Send direction",
+  "fields": [
+    {
+      "id": "direction",
+      "type": "single-select",
+      "label": "Direction",
+      "required": true,
+      "options": [
+        {
+          "value": "continue",
+          "label": "Continue",
+          "description": "Keep the current approach and show the next step."
+        },
+        {
+          "value": "revise",
+          "label": "Revise",
+          "description": "Change the approach before moving forward."
+        }
+      ]
+    },
+    {
+      "id": "note",
+      "type": "textarea",
+      "label": "Optional note",
+      "placeholder": "Add context for the agent"
+    }
+  ]
+}

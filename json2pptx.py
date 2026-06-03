@@ -6,6 +6,7 @@ from enum import Enum
 from pptx import Presentation
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
+from pptx.enum.shapes import PP_PLACEHOLDER
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides, link_to_slide, boldify
 from utils.expand import expand
@@ -18,6 +19,58 @@ TEXT_ALIGN = {
     "center": PP_ALIGN.CENTER,
     "right": PP_ALIGN.RIGHT,
 }
+
+def shape_metadata(shape):
+    try:
+        metadata = json.loads(shape.name)
+    except Exception:
+        return {}
+    return metadata if isinstance(metadata, dict) else {}
+
+def layout_placeholder_metadata(shape, slide_layout):
+    if not getattr(shape, "is_placeholder", False):
+        return {}
+
+    idx = shape.placeholder_format.idx
+    layout_placeholder = next(
+        (
+            placeholder for placeholder in slide_layout.placeholders
+            if placeholder.placeholder_format.idx == idx
+        ),
+        None
+    )
+    if layout_placeholder is None:
+        return {}
+
+    return shape_metadata(layout_placeholder)
+
+def remove_shape(shape):
+    element = shape._element
+    element.getparent().remove(element)
+
+def set_shape_runs(shape, runs):
+    if not getattr(shape, "has_text_frame", False):
+        print(f"Error: Shape '{shape.name}' has no text frame.")
+        return
+
+    text_frame = shape.text_frame
+    text_frame.clear()
+    process_runs(runs, text_frame.paragraphs[0])
+
+def apply_named_shapes(slide_obj, slide_layout, named_shapes):
+    for shape in list(slide_obj.shapes):
+        metadata = shape_metadata(shape)
+        if not metadata:
+            metadata = layout_placeholder_metadata(shape, slide_layout)
+        shape_id = metadata.get("id")
+        if not shape_id:
+            continue
+
+        shape_data = named_shapes.get(shape_id)
+        if shape_data:
+            set_shape_runs(shape, shape_data.get("runs", []))
+        elif metadata.get("show_anyway", True) is False:
+            remove_shape(shape)
 
 def get_slide_layout_enum(prs):
 
@@ -37,6 +90,12 @@ def get_slide_layout_enum(prs):
     return SlideLayoutEnum
 
 def convert_json_to_pptx(prs, data, layouts, toc=1):
+    def get_content_placeholder(slide_obj):
+        for placeholder in slide_obj.placeholders:
+            if placeholder.placeholder_format.type != PP_PLACEHOLDER.TITLE:
+                return placeholder
+        return None
+
     def add_slide_notes(slide_obj, notes):
         if not notes:
             return
@@ -87,14 +146,15 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         # 제목을 설정합니다.
         title = slide.get("title", False)
         title_shape = current_slide.shapes.title
-        p = title_shape.text_frame.paragraphs[0]
-        if title:
-            runs = title.get("runs", [])
-            process_runs(runs, p)
-            prev_title = runs
-        else: 
-            if isinstance(prev_title, list):
-                process_runs(prev_title, p)            
+        if title_shape:
+            p = title_shape.text_frame.paragraphs[0]
+            if title:
+                runs = title.get("runs", [])
+                process_runs(runs, p)
+                prev_title = runs
+            else:
+                if isinstance(prev_title, list):
+                    process_runs(prev_title, p)
 
         # Placeholder에 토큰을 처리합니다.
         # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된 순서로)를 모아둠
@@ -106,11 +166,14 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         placeholder_count = len(current_slide.placeholders)
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
+            if not pholder_data:
+                continue
             if placeholder_count >= pholder_no:
                 try:
                     current_placeholder = current_slide.placeholders[p_map[pholder_no]]
-                except:
-                    pass
+                except KeyError:
+                    print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
+                    continue
 
                 for token in pholder_data:
                     pl_after = process_token(current_placeholder, token, current_slide)
@@ -171,6 +234,8 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
                 shape.top = foo_shp['top']
                 shape.width = foo_shp['width']
                 shape.height = foo_shp['height']
+
+        apply_named_shapes(current_slide, slide_layout_idx, slide.get("shapes", {}))
     
     # TOC 슬라이드 추가
     if toc:
@@ -184,10 +249,11 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
             layout_idx = layouts[layout_name].value
         
         toc_slide = prs.slides.add_slide(prs.slide_layouts[layout_idx])
-        toc_slide.shapes.title.text = "Table of Contents"
-        toc_placeholder = toc_slide.placeholders[1]
+        if toc_slide.shapes.title:
+            toc_slide.shapes.title.text = "Table of Contents"
+        toc_placeholder = get_content_placeholder(toc_slide)
         toc_data = data.get("toc", []).get("chapters", False)
-        if toc_data and toc>=1:
+        if toc_data and toc >= 1 and toc_placeholder:
             for item in toc_data:
                 p = define_paragraph(toc_placeholder)
                 p.level = 0
@@ -475,6 +541,17 @@ def process_runs(runs, paragraph):
             boldify(r)
             r.hyperlink.address = run.get("hyperlink", "https://google.com")
 
+def frontmatter_named_shapes(frontmatter):
+    named_shapes = {}
+    for key, value in frontmatter.items():
+        if value is None or value is False:
+            continue
+        if isinstance(value, dict) and "runs" in value:
+            named_shapes[key] = {"runs": value.get("runs", [])}
+        else:
+            named_shapes[key] = {"runs": [{"text": str(value)}]}
+    return named_shapes
+
 def add_title_slide(prs, frontmatter):
     """
     주어진 Presentation 객체(prs)에 제목 슬라이드를 추가합니다.
@@ -489,15 +566,16 @@ def add_title_slide(prs, frontmatter):
     subtitle = frontmatter.get("subtitle", False)
     author = frontmatter.get("author", False)   
     
-    slide.shapes.title.text = title if title else "제목없음"
+    if slide.shapes.title:
+        slide.shapes.title.text = title if title else "제목없음"
     pp.title = title if title else "Powerpoint 프레젠테이션"
     
     if subtitle:
-        first_slide_subtitle = slide.placeholders[1]
-        first_slide_subtitle = subtitle
         pp.subtitle = subtitle
     if author:
         pp.author = author
+
+    apply_named_shapes(slide, title_slide_layout, frontmatter_named_shapes(frontmatter))
 
 def main(data=None, argv=None):
     parser = argparse.ArgumentParser(
@@ -523,6 +601,9 @@ def main(data=None, argv=None):
     parser.add_argument(
         "--return-pptx", action="store_true", help="Return Presentation object instead of saving to file"
     )
+    parser.add_argument(
+        "--no-toc", action="store_true", help="Skip generating the table of contents slide"
+    )
     if argv is None and data is not None:
         argv = []
     args = parser.parse_args(argv)
@@ -531,6 +612,7 @@ def main(data=None, argv=None):
     ref_from_env = os.environ.get("JSON2PPTX_REF", "")
     output_from_env = os.environ.get("JSON2PPTX_OUTPUT", "")
     return_pptx_from_env = os.environ.get("JSON2PPTX_RETURN_PPTX", "")
+    toc_from_env = os.environ.get("JSON2PPTX_TOC", "")
 
     # 환경 변수에서 가져온 값으로 args 업데이트
     if ref_from_env and not args.ref:
@@ -539,6 +621,8 @@ def main(data=None, argv=None):
         args.output = output_from_env
     if return_pptx_from_env and not args.return_pptx:
         args.return_pptx = True
+    if toc_from_env == "0":
+        args.no_toc = True
 
     # JSON 데이터 로딩: 딕셔너리를 직접 전달받은 경우 우선 사용
     if data is None:
@@ -571,7 +655,7 @@ def main(data=None, argv=None):
         # print(f"{layout.name} = {layout.value}")
 
     # JSON 데이터를 기반으로 PPTX 변환 로직 실행
-    convert_json_to_pptx(prs, data, layouts=layouts)
+    convert_json_to_pptx(prs, data, layouts=layouts, toc=0 if args.no_toc else 1)
 
     # Presentation 객체 반환 모드
     if args.return_pptx:

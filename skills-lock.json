@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "deck-author": {
+      "source": "m00nlygreat/picky-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/deck-author/SKILL.md",
+      "computedHash": "8437edde5a7558357338eb0fb53f46728c502d493b5e1a557d019ae8ec5dc843"
+    },
+    "deck-reviewer": {
+      "source": "m00nlygreat/picky-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/deck-reviewer/SKILL.md",
+      "computedHash": "051f7e0dd9a9c669dde73520e0a90fbc8fc4101dffbc82e297502908285649c9"
+    },
+    "interact": {
+      "source": "m00nlygreat/picky-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/interact/SKILL.md",
+      "computedHash": "f34927873cf8e65682eb2aaf6de71133fd90b3479a4164a7be688cc18e0afd53"
+    },
+    "wiki": {
+      "source": "m00nlygreat/picky-skills",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/wiki/SKILL.md",
+      "computedHash": "edeb5c7ebb202040d2df8418004281d1938578cec8605998b179dd30fb1f8139"
+    }
+  }
+}
