@@ -6,6 +6,7 @@ from enum import Enum
 from pptx import Presentation
 from PIL import Image
 from pptx.enum.dml import MSO_THEME_COLOR
+from pptx.enum.shapes import PP_PLACEHOLDER
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from utils.util import unbullet, orderify, set_highlight, dict_shape, clear_slides, link_to_slide, boldify
 from utils.expand import expand
@@ -37,6 +38,12 @@ def get_slide_layout_enum(prs):
     return SlideLayoutEnum
 
 def convert_json_to_pptx(prs, data, layouts, toc=1):
+    def get_content_placeholder(slide_obj):
+        for placeholder in slide_obj.placeholders:
+            if placeholder.placeholder_format.type != PP_PLACEHOLDER.TITLE:
+                return placeholder
+        return None
+
     def add_slide_notes(slide_obj, notes):
         if not notes:
             return
@@ -87,14 +94,15 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         # 제목을 설정합니다.
         title = slide.get("title", False)
         title_shape = current_slide.shapes.title
-        p = title_shape.text_frame.paragraphs[0]
-        if title:
-            runs = title.get("runs", [])
-            process_runs(runs, p)
-            prev_title = runs
-        else: 
-            if isinstance(prev_title, list):
-                process_runs(prev_title, p)            
+        if title_shape:
+            p = title_shape.text_frame.paragraphs[0]
+            if title:
+                runs = title.get("runs", [])
+                process_runs(runs, p)
+                prev_title = runs
+            else:
+                if isinstance(prev_title, list):
+                    process_runs(prev_title, p)
 
         # Placeholder에 토큰을 처리합니다.
         # grow 룰을 적용하기 위한 타이틀 제외 shape (실제 추가된 순서로)를 모아둠
@@ -106,11 +114,14 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
         placeholder_count = len(current_slide.placeholders)
         for pholder_data in slide.get("placeholders", []):
             pholder_no += 1
+            if not pholder_data:
+                continue
             if placeholder_count >= pholder_no:
                 try:
                     current_placeholder = current_slide.placeholders[p_map[pholder_no]]
-                except:
-                    pass
+                except KeyError:
+                    print(f"Error: Placeholder index {pholder_no} exceeds available placeholders.")
+                    continue
 
                 for token in pholder_data:
                     pl_after = process_token(current_placeholder, token, current_slide)
@@ -184,10 +195,11 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
             layout_idx = layouts[layout_name].value
         
         toc_slide = prs.slides.add_slide(prs.slide_layouts[layout_idx])
-        toc_slide.shapes.title.text = "Table of Contents"
-        toc_placeholder = toc_slide.placeholders[1]
+        if toc_slide.shapes.title:
+            toc_slide.shapes.title.text = "Table of Contents"
+        toc_placeholder = get_content_placeholder(toc_slide)
         toc_data = data.get("toc", []).get("chapters", False)
-        if toc_data and toc>=1:
+        if toc_data and toc >= 1 and toc_placeholder:
             for item in toc_data:
                 p = define_paragraph(toc_placeholder)
                 p.level = 0
