@@ -30,7 +30,6 @@ def process_json(data):
 
     def finalize_slide(finalize_doc=False):
         nonlocal current_slide, current_placeholder # This allows us to modify current_slide
-        processed['slides'][current_slide]['layout'] = determine_layout(processed['slides'][current_slide])
         current_slide += 1
         current_placeholder = 0
         if not finalize_doc:
@@ -324,22 +323,33 @@ def process_json(data):
 
     finalize_slide(True)
     
+    slides_to_keep = []
+    old_to_new_slide_index = {}
     for i, slide in enumerate(processed['slides']):
-        def decrease_slide_count(target_idx, dictionary):
-            if dictionary['index'] == target_idx:
-                dictionary['index'] -= 1
-
         title_empty = not slide['title']
-        placeholder_empty = not slide['placeholders'][0]
+        layout_empty = not slide['layout']
+        placeholder_empty = not any(slide['placeholders'])
 
-        if title_empty and placeholder_empty:
-            processed['slides'].remove(slide)
-            if i != 0:
-                to_find = i + 1
-                for dict in processed['toc']['chapters']:
-                    for dic in dict['modules']:
-                        decrease_slide_count(to_find, dic)
-                    decrease_slide_count(to_find, dict)   
+        if title_empty and placeholder_empty and layout_empty:
+            continue
+
+        old_to_new_slide_index[i] = len(slides_to_keep)
+        slides_to_keep.append(slide)
+
+    processed['slides'] = slides_to_keep
+
+    def remap_slide_count(dictionary):
+        index = dictionary.get('index')
+        if index in old_to_new_slide_index:
+            dictionary['index'] = old_to_new_slide_index[index]
+
+    for dict in processed['toc']['chapters']:
+        for dic in dict['modules']:
+            remap_slide_count(dic)
+        remap_slide_count(dict)
+
+    for slide in processed['slides']:
+        slide['layout'] = determine_layout(slide)
 
     return processed 
 
