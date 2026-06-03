@@ -1,5 +1,6 @@
 import argparse
 import json
+import mistune
 import os
 from copy import deepcopy
 from urllib import parse
@@ -16,6 +17,7 @@ def process_json(data):
         'layout': '', 
         'placeholders': [[]],
         'notes': [],
+        'shapes': {},
         }
 
     processed = {}
@@ -117,6 +119,15 @@ def process_json(data):
     def runs_to_text(runs):
         text = ''.join([run['text'] for run in runs])
         return text
+
+    def markdown_inline_to_runs(text):
+        md = mistune.create_markdown(renderer=None)
+        tokens = md(text or "")
+        runs = []
+        for token in tokens:
+            if token.get("type") in ("paragraph", "block_text"):
+                runs.extend(paragraph(token.get("children", [])))
+        return runs
 
     def process_list(list_token, ordered=False):
         def iter_token(token, depth=0, ordered=ordered):
@@ -310,6 +321,10 @@ def process_json(data):
                         processed['slides'][current_slide]['layout'] = token['value']
                     case 'note':
                         processed['slides'][current_slide]['notes'].append(token['value'])
+                    case _:
+                        processed['slides'][current_slide]['shapes'][token['key']] = {
+                            "runs": markdown_inline_to_runs(token.get('value', ''))
+                        }
             case 'blank_line':
                 pass
             case 'table':
@@ -329,8 +344,9 @@ def process_json(data):
         title_empty = not slide['title']
         layout_empty = not slide['layout']
         placeholder_empty = not any(slide['placeholders'])
+        shapes_empty = not slide['shapes']
 
-        if title_empty and placeholder_empty and layout_empty:
+        if title_empty and placeholder_empty and layout_empty and shapes_empty:
             continue
 
         old_to_new_slide_index[i] = len(slides_to_keep)

@@ -20,6 +20,58 @@ TEXT_ALIGN = {
     "right": PP_ALIGN.RIGHT,
 }
 
+def shape_metadata(shape):
+    try:
+        metadata = json.loads(shape.name)
+    except Exception:
+        return {}
+    return metadata if isinstance(metadata, dict) else {}
+
+def layout_placeholder_metadata(shape, slide_layout):
+    if not getattr(shape, "is_placeholder", False):
+        return {}
+
+    idx = shape.placeholder_format.idx
+    layout_placeholder = next(
+        (
+            placeholder for placeholder in slide_layout.placeholders
+            if placeholder.placeholder_format.idx == idx
+        ),
+        None
+    )
+    if layout_placeholder is None:
+        return {}
+
+    return shape_metadata(layout_placeholder)
+
+def remove_shape(shape):
+    element = shape._element
+    element.getparent().remove(element)
+
+def set_shape_runs(shape, runs):
+    if not getattr(shape, "has_text_frame", False):
+        print(f"Error: Shape '{shape.name}' has no text frame.")
+        return
+
+    text_frame = shape.text_frame
+    text_frame.clear()
+    process_runs(runs, text_frame.paragraphs[0])
+
+def apply_named_shapes(slide_obj, slide_layout, named_shapes):
+    for shape in list(slide_obj.shapes):
+        metadata = shape_metadata(shape)
+        if not metadata:
+            metadata = layout_placeholder_metadata(shape, slide_layout)
+        shape_id = metadata.get("id")
+        if not shape_id:
+            continue
+
+        shape_data = named_shapes.get(shape_id)
+        if shape_data:
+            set_shape_runs(shape, shape_data.get("runs", []))
+        elif metadata.get("show_anyway", True) is False:
+            remove_shape(shape)
+
 def get_slide_layout_enum(prs):
 
     layout_members = {}
@@ -182,6 +234,8 @@ def convert_json_to_pptx(prs, data, layouts, toc=1):
                 shape.top = foo_shp['top']
                 shape.width = foo_shp['width']
                 shape.height = foo_shp['height']
+
+        apply_named_shapes(current_slide, slide_layout_idx, slide.get("shapes", {}))
     
     # TOC 슬라이드 추가
     if toc:
@@ -487,6 +541,17 @@ def process_runs(runs, paragraph):
             boldify(r)
             r.hyperlink.address = run.get("hyperlink", "https://google.com")
 
+def frontmatter_named_shapes(frontmatter):
+    named_shapes = {}
+    for key, value in frontmatter.items():
+        if value is None or value is False:
+            continue
+        if isinstance(value, dict) and "runs" in value:
+            named_shapes[key] = {"runs": value.get("runs", [])}
+        else:
+            named_shapes[key] = {"runs": [{"text": str(value)}]}
+    return named_shapes
+
 def add_title_slide(prs, frontmatter):
     """
     주어진 Presentation 객체(prs)에 제목 슬라이드를 추가합니다.
@@ -501,15 +566,16 @@ def add_title_slide(prs, frontmatter):
     subtitle = frontmatter.get("subtitle", False)
     author = frontmatter.get("author", False)   
     
-    slide.shapes.title.text = title if title else "제목없음"
+    if slide.shapes.title:
+        slide.shapes.title.text = title if title else "제목없음"
     pp.title = title if title else "Powerpoint 프레젠테이션"
     
     if subtitle:
-        first_slide_subtitle = slide.placeholders[1]
-        first_slide_subtitle = subtitle
         pp.subtitle = subtitle
     if author:
         pp.author = author
+
+    apply_named_shapes(slide, title_slide_layout, frontmatter_named_shapes(frontmatter))
 
 def main(data=None, argv=None):
     parser = argparse.ArgumentParser(
@@ -535,6 +601,9 @@ def main(data=None, argv=None):
     parser.add_argument(
         "--return-pptx", action="store_true", help="Return Presentation object instead of saving to file"
     )
+    parser.add_argument(
+        "--no-toc", action="store_true", help="Skip generating the table of contents slide"
+    )
     if argv is None and data is not None:
         argv = []
     args = parser.parse_args(argv)
@@ -543,6 +612,7 @@ def main(data=None, argv=None):
     ref_from_env = os.environ.get("JSON2PPTX_REF", "")
     output_from_env = os.environ.get("JSON2PPTX_OUTPUT", "")
     return_pptx_from_env = os.environ.get("JSON2PPTX_RETURN_PPTX", "")
+    toc_from_env = os.environ.get("JSON2PPTX_TOC", "")
 
     # 환경 변수에서 가져온 값으로 args 업데이트
     if ref_from_env and not args.ref:
@@ -551,6 +621,8 @@ def main(data=None, argv=None):
         args.output = output_from_env
     if return_pptx_from_env and not args.return_pptx:
         args.return_pptx = True
+    if toc_from_env == "0":
+        args.no_toc = True
 
     # JSON 데이터 로딩: 딕셔너리를 직접 전달받은 경우 우선 사용
     if data is None:
@@ -583,7 +655,7 @@ def main(data=None, argv=None):
         # print(f"{layout.name} = {layout.value}")
 
     # JSON 데이터를 기반으로 PPTX 변환 로직 실행
-    convert_json_to_pptx(prs, data, layouts=layouts)
+    convert_json_to_pptx(prs, data, layouts=layouts, toc=0 if args.no_toc else 1)
 
     # Presentation 객체 반환 모드
     if args.return_pptx:

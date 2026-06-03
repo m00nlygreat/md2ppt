@@ -27,6 +27,7 @@ def main():
     parser.add_argument("-t", "--template", default="default", help="Built-in template name (default: default)")
     parser.add_argument("--list-templates", action="store_true", help="List built-in templates and exit")
     parser.add_argument("-r", "--ref", help="Reference PPTX file path for styling. Overrides --template.")
+    parser.add_argument("--no-toc", action="store_true", help="Skip generating the table of contents slide")
     args = parser.parse_args()
 
     if args.list_templates:
@@ -89,6 +90,7 @@ def main():
             os.environ["JSON2PPTX_REF"] = str(ref_path) if ref_path else ""
             os.environ["JSON2PPTX_OUTPUT"] = output_file
             os.environ["JSON2PPTX_RETURN_PPTX"] = "1"
+            os.environ["JSON2PPTX_TOC"] = "0" if args.no_toc else "1"
         
         # json2pptx_main 함수 호출
             pptx_obj = json2pptx_main(data=slide_data)

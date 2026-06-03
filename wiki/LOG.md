@@ -16,3 +16,6 @@ usage: "중요한 결정, 새 사실, 범위 변경, 설계 방향 변경이 생
 - 프로젝트 위키 문서로 [요구사항](wiki/REQUIREMENT.md)과 [변경 로그](wiki/LOG.md)를 유지한다.
 - [요구사항](wiki/REQUIREMENT.md)은 제품 설명보다 기능 요구사항에 한정해 유지한다.
 - [요구사항](wiki/REQUIREMENT.md)에 Template/Ref PPT 메타정보 요구사항을 추가했다.
+- 도형 이름 JSON 메타정보의 `id`, `show_anyway`로 named shape 텍스트 입력과 조건부 제거를 지원한다.
+- 제목 슬라이드 named shape는 YAML frontmatter 값을 사용하고, 같은 `id` 도형 여러 개에 동일 입력을 적용한다.
+- `--no-toc` 옵션으로 TOC 슬라이드 생성을 건너뛸 수 있게 한다.
