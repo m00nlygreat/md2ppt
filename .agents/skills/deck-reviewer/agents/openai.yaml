@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deck Reviewer"
+  short_description: "Review and quickly improve Markdown slide decks."
+  default_prompt: "Use $deck-reviewer to review this Markdown deck and quickly fix slide quality issues."

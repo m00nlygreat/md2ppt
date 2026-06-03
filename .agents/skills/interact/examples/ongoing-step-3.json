@@ -1,0 +1,20 @@
+{
+  "title": "Final confirmation",
+  "description": "The agent can keep updating the same page until the workflow is complete.",
+  "submitLabel": "Finish",
+  "fields": [
+    {
+      "id": "approved",
+      "type": "boolean",
+      "label": "Approved",
+      "placeholder": "Ready to proceed",
+      "default": true
+    },
+    {
+      "id": "final_comment",
+      "type": "text",
+      "label": "Final comment",
+      "placeholder": "Optional closing note"
+    }
+  ]
+}

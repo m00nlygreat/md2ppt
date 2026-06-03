@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deck Author"
+  short_description: "Create md2ppt-ready Markdown slide decks."
+  default_prompt: "Use $deck-author to create an md2ppt-ready Markdown deck with embedded module files."

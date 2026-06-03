@@ -1,0 +1,42 @@
+{
+  "title": "Refine the next screen",
+  "description": "This schema updates the same open browser page after the first answer.",
+  "submitLabel": "Send refinement",
+  "fields": [
+    {
+      "id": "priority",
+      "type": "multi-select",
+      "label": "Priorities",
+      "required": true,
+      "min": 1,
+      "max": 2,
+      "options": [
+        {
+          "value": "speed",
+          "label": "Speed",
+          "description": "Prefer a fast, simple implementation."
+        },
+        {
+          "value": "polish",
+          "label": "Polish",
+          "description": "Spend more effort on the interaction details."
+        },
+        {
+          "value": "docs",
+          "label": "Docs",
+          "description": "Make the workflow clearer for future agents."
+        }
+      ]
+    },
+    {
+      "id": "confidence",
+      "type": "number",
+      "label": "Confidence",
+      "description": "Enter a value from 1 to 5.",
+      "required": true,
+      "min": 1,
+      "max": 5,
+      "default": 3
+    }
+  ]
+}
