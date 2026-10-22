@@ -1,0 +1,18 @@
+{
+  "name": "reveal.js",
+  "version": "6.0.2",
+  "source": "https://github.com/hakimel/reveal.js/tree/6.0.2",
+  "license": "MIT",
+  "files": {
+    "LICENSE": "b2883e4b610bfa1b4d8fff84c4d4b825cc7d553cbd9fec4777c04068a2859dc0",
+    "dist/reveal.js": "aa1bbbf2617b23a623b23612cb3c5bdb63de512e652bf20fcfa832b045d37844",
+    "dist/reveal.css": "5c38071afd0e46673eda82211146fbcf4e66b671a8a86f9763e1c3b0a883c271",
+    "dist/plugin/notes.js": "946159680c70354c665dbf4f3c9023a737d8b14b48c6c9af452553717a046729"
+  },
+  "speaker_view_csp": {
+    "source_file": "dist/plugin/notes.js",
+    "inline_script_sha256": "GzCveToXhSIzS3M5eQeRm3McVRB7cYneYKwTkzA3wDk=",
+    "csp_source": "'sha256-GzCveToXhSIzS3M5eQeRm3McVRB7cYneYKwTkzA3wDk='",
+    "script_count": 1
+  }
+}

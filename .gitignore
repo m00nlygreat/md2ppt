@@ -1,6 +1,7 @@
 *.pyc
 __pycache__/
 .venv/
+/build/
 
 # APM dependencies
 apm_modules/

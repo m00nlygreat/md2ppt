@@ -294,8 +294,15 @@ def process_json(data):
                         )
                     case 'image':
                         url_o = child["attrs"]["url"]
-                        url = url_o if parse.unquote(url_o) == url_o else parse.unquote(url_o)
-                        alt = child["children"][0]["raw"]
+                        # Local paths are decoded once in slide JSON; remote URLs
+                        # retain escapes so reserved characters keep their meaning.
+                        url = (
+                            url_o
+                            if parse.urlsplit(url_o).scheme.lower() in {"http", "https"}
+                            else parse.unquote(url_o)
+                        )
+                        alt_children = child.get("children", [])
+                        alt = alt_children[0].get("raw", "") if alt_children else ""
                         alt_dict = {} if alt == "" else {"alt": alt}
                         add_token(
                             {
@@ -332,6 +339,9 @@ def process_json(data):
                     process_table(token),
                     consume="monopoly"
                 )
+            case 'block_html':
+                # Raw HTML is intentionally not part of the slide format.
+                pass
             case _:
                 print(token)
                 pass

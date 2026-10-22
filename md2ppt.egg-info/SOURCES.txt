@@ -1,4 +1,5 @@
 LICENSE
+MANIFEST.in
 README.md
 absolute_paths.py
 flatten.py
@@ -6,8 +7,10 @@ json2pptx.py
 json2slide.py
 main.py
 md2json.py
+md2ppt_build.py
 pyproject.toml
 md2ppt/__init__.py
+md2ppt/pipeline.py
 md2ppt/templates.py
 md2ppt.egg-info/PKG-INFO
 md2ppt.egg-info/SOURCES.txt
@@ -19,6 +22,18 @@ md2ppt/refs/default.pptx
 md2ppt/refs/hanaro.pptx
 md2ppt/refs/hanyang.pptx
 md2ppt/refs/inno.pptx
+md2ppt/web/__init__.py
+md2ppt/web/render.py
+md2ppt/web/server.py
+md2ppt/web/assets/player.js
+md2ppt/web/assets/vendor/reveal/LICENSE
+md2ppt/web/assets/vendor/reveal/metadata.json
+md2ppt/web/assets/vendor/reveal/dist/reveal.css
+md2ppt/web/assets/vendor/reveal/dist/reveal.js
+md2ppt/web/assets/vendor/reveal/dist/plugin/notes.js
+styles/default.css
+tests/test_cli.py
+tests/test_web.py
 utils/code_highlight.py
 utils/comment.py
 utils/expand.py

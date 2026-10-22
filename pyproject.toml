@@ -26,7 +26,19 @@ py-modules = [
 include = ["md2ppt*", "utils*"]
 
 [tool.setuptools.package-data]
-md2ppt = ["refs/*.pptx"]
+md2ppt = [
+    "refs/*.pptx",
+    "styles/default.css",
+    "web/assets/*.js",
+    "web/assets/vendor/reveal/metadata.json",
+    "web/assets/vendor/reveal/LICENSE",
+    "web/assets/vendor/reveal/dist/*.js",
+    "web/assets/vendor/reveal/dist/*.css",
+    "web/assets/vendor/reveal/dist/plugin/*.js",
+]
+
+[tool.setuptools.cmdclass]
+build_py = "md2ppt_build.BuildPyWithDefaultTheme"
 
 [project.scripts]
 md2ppt = "main:main"

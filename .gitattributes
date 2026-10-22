@@ -1,0 +1,2 @@
+# Preserve vendored distribution bytes for the recorded SHA-256 hashes.
+md2ppt/web/assets/vendor/reveal/** -text

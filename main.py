@@ -3,23 +3,19 @@
 
 import argparse
 from contextlib import nullcontext
-import json
 import os
 import sys
-from md2json import process_markdown
-from json2slide import process_json
+
 from json2pptx import main as json2pptx_main
-from flatten import flatten_markdown
+from md2ppt.pipeline import build_slide_data
 from md2ppt.templates import list_templates, template_path
 
-def save_debug_data(data, filename):
-    """디버그 데이터를 JSON 파일로 저장합니다."""
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-    print(f"Debug data saved to {filename}")
 
-def main():
-    parser = argparse.ArgumentParser(description="Convert Markdown to PPTX using a pipeline of processors.")
+def _pptx_main(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Convert Markdown files to PowerPoint presentations.",
+        epilog="Run `md2ppt serve --help` for browser presentation options.",
+    )
     parser.add_argument("-i", "--input", help="Input Markdown file path")
     parser.add_argument("-o", "--output", help="Output PPTX file path (default: {input_filename}.pptx)")
     parser.add_argument("-d", "--debug", action="store_true", help="Save intermediate processing results to files")
@@ -28,7 +24,7 @@ def main():
     parser.add_argument("--list-templates", action="store_true", help="List built-in templates and exit")
     parser.add_argument("-r", "--ref", help="Reference PPTX file path for styling. Overrides --template.")
     parser.add_argument("--no-toc", action="store_true", help="Skip generating the table of contents slide")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if args.list_templates:
         for template in list_templates():
@@ -38,73 +34,43 @@ def main():
     if not args.input:
         parser.error("the following arguments are required: -i/--input")
 
-    # 입력 파일 확인
-    if not os.path.exists(args.input):
-        print(f"Error: Input file '{args.input}' does not exist.")
-        return 1
-
-    # 디버그 디렉토리 생성
-    if args.debug and not os.path.exists(args.debug_dir):
-        os.makedirs(args.debug_dir)
-
-    # 출력 파일 경로 결정
-    if args.output:
-        output_file = args.output
-    else:
-        base_name = os.path.splitext(args.input)[0]
-        output_file = f"{base_name}.pptx"
-
+    output_file = args.output or f"{os.path.splitext(args.input)[0]}.pptx"
     try:
-        # 1. flatten 파이프라인 적용
-        print(f"Flattening Markdown file: {args.input}")
-        flattened_md = flatten_markdown(args.input, is_root=True)
-        if args.debug:
-            debug_flatten_file = os.path.join(args.debug_dir, "0_flattened.md")
-            with open(debug_flatten_file, "w", encoding="utf-8") as f:
-                f.write(flattened_md)
-
-        # 2. 마크다운을 JSON 딕셔너리로 변환
-        print("Converting Markdown to JSON...")
-        json_data = process_markdown(flattened_md)
-        
-        # 디버그 모드에서 중간 결과 저장
-        if args.debug:
-            debug_json_file = os.path.join(args.debug_dir, "1_markdown_to_json.json")
-            save_debug_data(json_data, debug_json_file)
-
-        # 3. JSON 딕셔너리를 슬라이드 딕셔너리로 변환
-        print("Converting JSON to slide format...")
-        slide_data = process_json(json_data)
-        
-        # 디버그 모드에서 중간 결과 저장
-        if args.debug:
-            debug_slide_file = os.path.join(args.debug_dir, "2_json_to_slide.json")
-            save_debug_data(slide_data, debug_slide_file)
-
-        # 4. 슬라이드 딕셔너리를 PPTX로 변환
+        result = build_slide_data(
+            args.input,
+            debug=args.debug,
+            debug_dir=args.debug_dir,
+            verbose=True,
+        )
         print("Converting slide format to PPTX...")
-        # json2pptx_main 함수에 필요한 매개변수를 직접 전달
-        # 참조 PPTX 파일 경로와 출력 파일 경로는 환경 변수로 설정
-        ref_context = nullcontext(args.ref) if args.ref else template_path(args.template)
+        ref_context = (
+            nullcontext(os.path.abspath(args.ref))
+            if args.ref
+            else template_path(args.template)
+        )
         with ref_context as ref_path:
             os.environ["JSON2PPTX_REF"] = str(ref_path) if ref_path else ""
             os.environ["JSON2PPTX_OUTPUT"] = output_file
             os.environ["JSON2PPTX_RETURN_PPTX"] = "1"
             os.environ["JSON2PPTX_TOC"] = "0" if args.no_toc else "1"
-        
-        # json2pptx_main 함수 호출
-            pptx_obj = json2pptx_main(data=slide_data)
-
-        # 5. PPTX 파일 저장
+            pptx_obj = json2pptx_main(data=result.slide_data)
             print(f"Saving PPTX file: {output_file}")
             pptx_obj.save(output_file)
         print(f"Successfully converted {args.input} to {output_file}")
-
         return 0
-
-    except Exception as e:
-        print(f"Error: {str(e)}")
+    except Exception as error:
+        print(f"Error: {error}", file=sys.stderr)
         return 1
 
+
+def main(argv=None):
+    args = list(sys.argv[1:] if argv is None else argv)
+    if args and args[0] == "serve":
+        from md2ppt.web.server import serve_main
+
+        return serve_main(args[1:])
+    return _pptx_main(args)
+
+
 if __name__ == "__main__":
-    sys.exit(main()) 
+    sys.exit(main())

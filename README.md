@@ -1,6 +1,43 @@
 # md2ppt
 
-옵시디언 기반의 마크다운을 ppt 프레젠테이션으로 변환하는 파이썬 프로그램입니다. 기회가 되면 나중에 자세히 씀. 얍
+Obsidian Markdown을 PowerPoint로 변환하고, 같은 슬라이드 데이터를 로컬 웹 프레젠테이션으로 보여주는 Python 도구입니다.
+
+## 사용법
+
+```sh
+# 기존 PowerPoint 변환
+md2ppt -i deck.md -o deck.pptx
+
+# 기본 템플릿, --ref, --no-toc 등 기존 옵션도 사용할 수 있습니다.
+md2ppt -i deck.md --template default --no-toc
+
+# 브라우저 발표
+md2ppt serve -i deck.md
+md2ppt serve -i deck.md --host 127.0.0.1 --port 3000 --no-toc
+md2ppt serve -i deck.md --theme "./styles/company.css"
+```
+
+웹 발표는 실행하면 접속 주소를 출력합니다. Reveal.js 6.0.2와 Notes 플러그인을 패키지에서 제공하므로 Node.js 설치나 CDN 접속이 필요하지 않습니다. 로컬 Markdown과 이미지는 오프라인에서 표시되며, 외부 이미지 주소는 인터넷 연결이 필요합니다. 원본 Markdown, 이미지 또는 CSS가 바뀌면 브라우저를 새로고침해 반영합니다.
+
+`--theme`은 로컬 CSS 파일로 기본 테마 전체를 교체합니다. 생략하면 실행 위치와 관계없이 내장 기본 테마를 사용합니다. 사용자 테마의 상대 경로는 명령을 실행한 현재 디렉터리를 기준으로 하며, 입력 Markdown 폴더 밖의 CSS도 지정할 수 있습니다. 기본 스타일을 출발점으로 삼으려면 저장소의 [styles/default.css](styles/default.css)를 복사해 수정하세요.
+
+표지에는 frontmatter의 `title`, `subtitle`, `author`를 사용합니다. 제목이 없으면 입력 파일명을 표시합니다. 본문은 제목, 강조, 링크, 인라인 코드, 중첩 목록, 표, 인용문, 코드 블록, 로컬·외부 이미지를 지원합니다. 기존 `section_header`, `title_and_content`, `two_content`, `content_with_caption`, `two_images` 레이아웃을 웹 배치에 연결합니다. `[note]: # (발표 노트)` comment block은 Reveal 발표자 화면에 표시합니다.
+
+Reveal.js가 1280×720 기본 좌표계의 16:9 슬라이드를 창에 맞춰 확대·축소합니다. Reveal 기본 버튼, 방향키, PageUp/PageDown, Home/End, 터치 입력으로 이동합니다. `F`는 전체 화면, `S`는 발표자 화면, `Esc`는 전체 슬라이드 보기입니다. 목차 링크와 현재 위치는 `#/slide-N` 주소를 사용하며 이전 `#slide=N` 주소도 열 수 있습니다. 새로고침 후 현재 슬라이드 위치를 복원합니다. 코드 강조에는 기존 Pygments 의존성을 사용합니다.
+
+PPTX named shape 입력은 웹에 표시되지 않으며 경고로 안내합니다. 알 수 없는 레이아웃은 placeholder 그리드로 대체합니다. raw HTML은 실행하지 않고, 안전하지 않은 링크 scheme은 링크로 만들지 않습니다. 자동 파일 감지는 지원하지 않습니다.
+
+### CSS 테마 작성과 이전
+
+테마는 Reveal.js 핵심 CSS 위에 적용하는 완성형 md2ppt CSS입니다. `--theme`은 기본 테마 전체를 교체합니다. 주요 선택자는 `.reveal .slides > section.slide`, `.cover-slide`, `.toc-slide`, `.body-slide`, `.slide-inner`, `.slide-heading`, `.slide-content`, `.placeholder`, `.presentation-tools`, `.diagnostics`, `.overflow-warning`입니다. 본문 레이아웃은 `.layout-section_header`, `.layout-title_and_content`, `.layout-two_content`, `.layout-content_with_caption`, `.layout-two_images`와 미지원 레이아웃용 `.layout-fallback` 클래스로 구분합니다.
+
+`.slide-content`에는 `data-layout`, `data-slot-count`, `data-slot-columns`가 들어갑니다. fallback 레이아웃은 `data-slot-columns="1"`, `"2"`, `"3"` 선택자로 열 수 있습니다. 표 셀은 `data-align="left|center|right"`로 정렬 정보를 제공합니다. `--stage-width`, `--stage-height`에는 양수 픽셀 값을 지정하며 기본값은 `1280px`, `720px`입니다. 이 값을 Reveal 슬라이드 크기로 사용합니다. `--fit-scale`은 넘치는 본문만 줄이는 데 쓰고 Reveal 화면 배율과 겹쳐 계산하지 않습니다. 주요 색상은 `--ink`, `--muted`, `--accent`, `--accent-soft`, `--paper`, `--line` 변수로 조정할 수 있습니다.
+
+이전 테마가 `.stage`, `.slide.active`, `--stage-scale`을 사용했다면 자체 위치·표시·확대 규칙을 제거하고 Reveal 구조에 맞게 옮기세요. 예를 들어 슬라이드 배경과 여백은 `.reveal .slides > section.slide`에 지정하고, 활성 슬라이드 표시 상태는 Reveal가 관리하게 둡니다. 기본 테마는 [styles/default.css](styles/default.css)에서 확인할 수 있습니다.
+
+### Reveal.js 리소스 갱신
+
+공식 배포 파일은 [Reveal.js 6.0.2](https://github.com/hakimel/reveal.js/releases/tag/6.0.2)의 `dist/reveal.js`, `dist/reveal.css`, `dist/plugin/notes.js`, `LICENSE`입니다. 새 버전으로 갱신할 때는 공식 빌드 파일을 수정하지 말고 해당 태그에서 이 파일들을 [Reveal 리소스 폴더](md2ppt/web/assets/vendor/reveal/)로 복사하세요. 각 파일 SHA-256과 발표자 팝업의 고정 인라인 스크립트 CSP hash를 [배포 메타정보](md2ppt/web/assets/vendor/reveal/metadata.json)에 함께 갱신하고, [pyproject.toml](pyproject.toml)과 [MANIFEST.in](MANIFEST.in)의 패키징 포함 규칙을 확인합니다. Reveal의 MIT 라이선스와 저작권 고지도 함께 갱신합니다.
 
 ## in progress
 

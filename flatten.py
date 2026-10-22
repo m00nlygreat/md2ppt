@@ -7,11 +7,29 @@ def read_markdown_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as file:
         return file.read()
 
-def flatten_markdown(filepath, base_path=None, export_base_path=None, is_root=True):
-    if base_path is None:
-        base_path = os.path.dirname(filepath)
-    if export_base_path is None:
-        export_base_path = base_path
+class FlattenCycleError(ValueError):
+    """Raised when embedded Markdown files form a recursive cycle."""
+
+
+def flatten_markdown(
+    filepath,
+    base_path=None,
+    export_base_path=None,
+    is_root=True,
+    diagnostics=None,
+    _stack=None,
+):
+    filepath = os.path.abspath(filepath)
+    base_path = os.path.abspath(base_path or os.path.dirname(filepath))
+    export_base_path = os.path.abspath(export_base_path or base_path)
+    stack = list(_stack or [])
+    canonical_path = os.path.normcase(os.path.realpath(filepath))
+    if canonical_path in stack:
+        chain = stack[stack.index(canonical_path):] + [canonical_path]
+        raise FlattenCycleError(
+            "Circular Markdown embed: " + " -> ".join(chain)
+        )
+    stack.append(canonical_path)
 
     content = read_markdown_file(filepath)
     lines = content.splitlines()
@@ -50,22 +68,41 @@ def flatten_markdown(filepath, base_path=None, export_base_path=None, is_root=Tr
                 embedded_content = flatten_markdown(embedded_full_path, 
                                                  os.path.dirname(embedded_full_path), 
                                                  export_base_path,
-                                                 is_root=False)
+                                                 is_root=False,
+                                                 diagnostics=diagnostics,
+                                                 _stack=stack)
                 flattened_content.append(embedded_content)
             else:
+                if diagnostics is not None:
+                    diagnostics.append(
+                        f"{filepath}:{i + 1}: Embedded Markdown not found: {embedded_path}"
+                    )
                 flattened_content.append(f"<!-- Embedded file not found: {embedded_path} -->")
         else:
             # Check if the line is an image reference
             image_match = re.match(r'^!\[.*\]\((.*\.(png|jpg|jpeg|gif|svg|webp))\)$', line)
             if image_match:
                 image_path = image_match.group(1)
+                parsed_image = urllib.parse.urlsplit(image_path)
+                if parsed_image.scheme.lower() in ("http", "https"):
+                    flattened_content.append(line)
+                    continue
                 # Decode URL-encoded characters (e.g., %20 -> space)
                 image_path = urllib.parse.unquote(image_path)
-                image_full_path = os.path.abspath(os.path.join(base_path, image_path))
+                image_full_path = os.path.abspath(
+                    image_path if os.path.isabs(image_path)
+                    else os.path.join(base_path, image_path)
+                )
+                if diagnostics is not None and not os.path.isfile(image_full_path):
+                    diagnostics.append(
+                        f"{filepath}:{i + 1}: Image not found: {image_path}"
+                    )
                 # Create a new relative path from the export base path
                 new_relative_path = os.path.relpath(image_full_path, export_base_path)
-                # Replace backslashes with forward slashes and spaces with %20
-                new_relative_path = new_relative_path.replace('\\', '/').replace(' ', '%20')
+                # Keep URL paths portable while encoding filename characters.
+                new_relative_path = urllib.parse.quote(
+                    new_relative_path.replace('\\', '/'), safe='/@:+-._~'
+                )
                 # Reconstruct the line with the updated image path
                 updated_line = re.sub(r'\(.*\.(png|jpg|jpeg|gif|svg|webp)\)', lambda m: f'({new_relative_path})', line)
                 flattened_content.append(updated_line)

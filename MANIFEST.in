@@ -1,0 +1,3 @@
+include md2ppt_build.py
+include styles/default.css
+recursive-include md2ppt/web/assets/vendor/reveal *

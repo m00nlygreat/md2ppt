@@ -20,7 +20,9 @@ def extract_frontmatter(markdown_text: str):
         try:
             frontmatter = yaml.safe_load(fm_text) or {}
         except Exception as e:
-            print("YAML frontmatter 파싱 오류:", e)
+            raise ValueError(f"YAML frontmatter parsing failed: {e}") from e
+        if not isinstance(frontmatter, dict):
+            raise ValueError("YAML frontmatter must contain a mapping")
         # frontmatter 블록 제거
         markdown_text = markdown_text[m.end():]
     return frontmatter, markdown_text
